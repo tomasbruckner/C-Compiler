@@ -7,8 +7,8 @@
 * Date: 28/9/2016
 *************************************************************/
 
-grammar Parser;
-import Lexer;
+grammar VYPeParser;
+import VYPeLexer;
 
 
 data_type:
@@ -23,6 +23,10 @@ type:
 function_identifier:
     Identifier ;
 
+start:
+    function_declaration start
+    | function_definition start
+    | EOF;
 
 /************************************ FUNCTION DECLARATION ******************************************************/
 function_declaration:

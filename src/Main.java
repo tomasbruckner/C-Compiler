@@ -1,5 +1,7 @@
-import Constants.Constant;
-
+import constants.Constant;
+import gen.*;
+import org.antlr.runtime.tree.CommonTree;
+import org.antlr.v4.runtime.*;
 /*************************************************************
  * Filename: Main.java
  * Project: Compiler Implementation for VYPe16 Programming Language
@@ -11,14 +13,23 @@ import Constants.Constant;
 
 public class Main {
 
-    public static int main(String[] args) {
+    public static void main(String[] args) {
+        args = new String[] {"", "tests/testcase03/input.c"};
         if(args.length < 2 || args.length > 3){
-            return Constant.INTERNAL_ERROR;
+            System.exit(Constant.INTERNAL_ERROR);
         }
 
-        String inputFilename = args[1];
         String outputFilename = (args.length == 3) ? args[2] : "out.asm";
+        VYPeLexer lexer = null;
+        try{
+            lexer = new VYPeLexer(new ANTLRFileStream(args[1]));
+        }catch(java.io.IOException e){
+            System.exit(Constant.INTERNAL_ERROR);
+        }
 
-        return Constant.NO_ERROR;
+        VYPeParserParser parser = new VYPeParserParser(new CommonTokenStream (lexer));
+        VYPeParserParser.StartContext tree = parser.start();
+
+        System.exit(Constant.NO_ERROR);
     }
 }
