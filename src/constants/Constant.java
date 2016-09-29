@@ -23,6 +23,9 @@ public final class Constant {
 
     public static final int INTERNAL_ERROR = 5;
 
+    public enum Type {
+        CHAR, INT, STRING
+    }
     private Constant(){
         throw new AssertionError();
     }

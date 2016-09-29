@@ -1,23 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e39a7fbf-b678-42f0-a6fe-10318098d617" name="Default" comment="Init commit, first try of scanner and parser (NEED REVISION). IDEA settings.">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/testcase00/input.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/testcase01/input.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/testcase02/input.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/testcase03/input.c" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/grammer/Lexer.g4" afterPath="$PROJECT_DIR$/src/grammer/VYPeLexer.g4" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/grammer/Parser.g4" afterPath="$PROJECT_DIR$/src/grammer/VYPeParser.g4" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Constants/Constant.java" afterPath="$PROJECT_DIR$/src/constants/Constant.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Scanner/Scanner.java" afterPath="$PROJECT_DIR$/src/scanner/Scanner.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/project-template.xml" afterPath="$PROJECT_DIR$/.idea/project-template.xml" />
+    <list default="true" id="e39a7fbf-b678-42f0-a6fe-10318098d617" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/tables/Function.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/tables/FunctionTable.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/tables/SymbolTable.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/tables/Variable.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/scanner/Scanner.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main.java" afterPath="$PROJECT_DIR$/src/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vype.iml" afterPath="$PROJECT_DIR$/vype.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/constants/Constant.java" afterPath="$PROJECT_DIR$/src/constants/Constant.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/grammer/VYPeParser.g4" afterPath="$PROJECT_DIR$/src/grammer/VYPeParser.g4" />
     </list>
     <ignored path="vype.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -39,11 +31,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="29" column="25" selection-start-line="29" selection-start-column="25" selection-end-line="29" selection-end-column="25" />
+            <state relative-caret-position="68">
+              <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="11" selection-end-column="63" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -51,27 +43,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="VYPeLexer.g4" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/grammer/VYPeLexer.g4">
+      <file leaf-file-name="FunctionTable.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/tables/FunctionTable.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="14" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
+            <state relative-caret-position="206">
+              <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
               <folding>
-                <element signature="e#0#2193#0" expanded="true" />
+                <element signature="e#506#507#0" expanded="true" />
+                <element signature="e#550#551#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="VYPeParser.g4" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/grammer/VYPeParser.g4">
+      <file leaf-file-name="SymbolTable.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/tables/SymbolTable.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="11" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
-              <folding>
-                <element signature="e#0#3119#0" expanded="true" />
-                <marker date="1475099679941" expanded="true" signature="462:480" ph=":...;" />
-              </folding>
+            <state relative-caret-position="223">
+              <caret line="14" column="25" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -108,7 +98,6 @@
         <option value="$PROJECT_DIR$/src/Constants/Constant.java" />
         <option value="$PROJECT_DIR$/grammer/Parser.g4" />
         <option value="$PROJECT_DIR$/src/grammer/Lexer.g4" />
-        <option value="$PROJECT_DIR$/src/grammer/VYPeParser.g4" />
         <option value="$PROJECT_DIR$/tests/testcase0/input" />
         <option value="$PROJECT_DIR$/tests/testcase0/input.c" />
         <option value="$PROJECT_DIR$/tests/testcase01/input.c" />
@@ -116,6 +105,12 @@
         <option value="$PROJECT_DIR$/tests/testcase02/input.c" />
         <option value="$PROJECT_DIR$/tests/testcase03/input.c" />
         <option value="$PROJECT_DIR$/src/Main.java" />
+        <option value="$PROJECT_DIR$/src/grammer/VYPeParser.g4" />
+        <option value="$PROJECT_DIR$/src/tables/FunctionTable.java" />
+        <option value="$PROJECT_DIR$/src/tables/SymbolTable.java" />
+        <option value="$PROJECT_DIR$/src/constants/Constant.java" />
+        <option value="$PROJECT_DIR$/src/tables/Function.java" />
+        <option value="$PROJECT_DIR$/src/tables/Variable.java" />
       </list>
     </option>
   </component>
@@ -208,25 +203,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="grammer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vype" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vype" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gen" />
+              <option name="myItemId" value="tables" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -738,7 +715,7 @@
       <workItem from="1474821902921" duration="1145000" />
       <workItem from="1475055364982" duration="957000" />
       <workItem from="1475056446823" duration="3893000" />
-      <workItem from="1475073641104" duration="22957000" />
+      <workItem from="1475073641104" duration="33027000" />
     </task>
     <task id="LOCAL-00001" summary="Init commit, first try of scanner and parser (NEED REVISION). IDEA settings.">
       <created>1475096390815</created>
@@ -747,11 +724,18 @@
       <option name="project" value="LOCAL" />
       <updated>1475096390815</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Add folder for generated file from ANTLR, changed naming convention to be Java specific. Add start rule. Tests.">
+      <created>1475106451239</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1475106451239</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28952000" />
+    <option name="totallyTimeSpent" value="39022000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1319" height="784" extended-state="6" />
@@ -778,7 +762,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39938557" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39938557" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -801,18 +785,11 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="Init commit, first try of scanner and parser (NEED REVISION). IDEA settings." />
-    <option name="LAST_COMMIT_MESSAGE" value="Init commit, first try of scanner and parser (NEED REVISION). IDEA settings." />
+    <MESSAGE value="Add folder for generated file from ANTLR, changed naming convention to be Java specific. Add start rule. Tests." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add folder for generated file from ANTLR, changed naming convention to be Java specific. Add start rule. Tests." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>29</line>
-          <properties />
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-      </breakpoints>
       <option name="time" value="8" />
     </breakpoint-manager>
     <watches-manager>
@@ -841,9 +818,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -887,9 +862,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -915,9 +888,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -952,16 +923,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/constants/Constant.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="41" selection-start-line="13" selection-start-column="41" selection-end-line="13" selection-end-column="41" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/extensions">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -974,9 +935,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="63" selection-start-line="7" selection-start-column="63" selection-end-line="7" selection-end-column="63" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -993,27 +952,6 @@
         <state relative-caret-position="68">
           <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/grammer/VYPeLexer.g4">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="14" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#2193#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/grammer/VYPeParser.g4">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="11" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
-          <folding>
-            <element signature="e#0#3119#0" expanded="true" />
-            <marker date="1475099679941" expanded="true" signature="462:480" ph=":...;" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1107,11 +1045,74 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="29" column="25" selection-start-line="29" selection-start-column="25" selection-end-line="29" selection-end-column="25" />
+        <state relative-caret-position="68">
+          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="11" selection-end-column="63" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/grammer/VYPeParser.g4">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="164">
+          <caret line="83" column="64" selection-start-line="83" selection-start-column="64" selection-end-line="83" selection-end-column="64" />
+          <folding>
+            <element signature="e#0#3055#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/grammer/VYPeLexer.g4">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="9" column="14" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#2193#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tables/FunctionTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding>
+            <element signature="e#506#507#0" expanded="true" />
+            <element signature="e#550#551#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tables/Function.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/constants/Constant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="25" column="11" selection-start-line="25" selection-start-column="11" selection-end-line="25" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tables/Variable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="21" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tables/SymbolTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="223">
+          <caret line="14" column="25" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
+          <folding />
         </state>
       </provider>
     </entry>

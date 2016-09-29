@@ -10,6 +10,15 @@
 grammar VYPeParser;
 import VYPeLexer;
 
+any_value:
+    Identifier
+    | IntLiteral
+    | CharLiteral
+    | StringLiteral ;
+
+number_value:
+    Identifier
+    | IntLiteral ;
 
 data_type:
     Int
@@ -58,7 +67,7 @@ variable_definition_statement:
     data_type Identifier (Colon Identifier)* Semicolon ;
 
 assignment_statement:
-    Identifier AssignSign expression ;
+    Identifier AssignSign expression Semicolon ;
 
 conditional_statement:
     If condition_expression block_statements Else block_statements ;
@@ -67,7 +76,7 @@ while_statement:
     While condition_expression block_statements ;
 
 function_call_statement:
-    function_identifier LeftParenthesis (expression (Colon expression)*)? RightParenthesis Semicolon ;
+    function_call Semicolon ;
 
 return_statement:
     Return (expression)? Semicolon ;
@@ -76,34 +85,23 @@ return_statement:
 block_statements:
     LeftCurlyParenthesis (statement)* RightCurlyParenthesis ;
 
+function_call:
+    function_identifier LeftParenthesis (expression (Colon expression)*)? RightParenthesis ;
+
 condition_expression:
     LeftParenthesis expression RightParenthesis ;
 
 /******************************************* EXPRESSION ******************************************************/
 expression:
-    Identifier
-    | ExclamationMark expression
+    any_value
     | LeftParenthesis expression RightParenthesis
     | LeftParenthesis data_type RightParenthesis expression
-    | Identifier binary_operand expression
-    | ExclamationMark expression binary_operand expression
-    | LeftParenthesis expression RightParenthesis binary_operand expression
-    | LeftParenthesis data_type RightParenthesis binary_operand expression ;
-
-/******************************************* OPERANDS **********************************************************/
-binary_operand:
-    MultiplicationSign
-    | DivisionSign
-    | ModuloSign
-    | PlusSign
-    | MinusSign
-    | LowerSign
-    | GreaterSign
-    | LowerEqualSign
-    | GreaterEqualSign
-    | EqualSign
-    | NotEqualSign
-    | LogicalAndSign
-    | LogicalOrSign ;
-
+    | function_call
+    | ExclamationMark expression
+    | expression op=(MultiplicationSign | DivisionSign | ModuloSign) expression
+    | expression op=(PlusSign | MinusSign) expression
+    | expression op=(LowerSign | GreaterSign | LowerEqualSign | GreaterEqualSign) expression
+    | expression op=(EqualSign | NotEqualSign) expression
+    | expression LogicalAndSign expression
+    | expression LogicalOrSign expression ;
 
