@@ -1,5 +1,5 @@
 package tables;
-
+import java.util.HashMap;
 /*************************************************************
  * Filename: SymbolTable.java
  * Project: Compiler Implementation for VYPe16 Programming Language
@@ -10,7 +10,7 @@ package tables;
  *************************************************************/
 public class SymbolTable {
     private SymbolTable parent;
-    private Variable[] variableList;
+    private HashMap<String,Variable> variableList;
 
     public SymbolTable(){
 
@@ -21,10 +21,8 @@ public class SymbolTable {
     }
 
     public Variable getVariableByName(String name){
-        for(Variable item : variableList){
-            if(item.name.equals(name)){
-                return item;
-            }
+        if(variableList.containsKey(name)) {
+            return variableList.get(name);
         }
 
         return (parent != null) ? parent.getVariableByName(name) : null;

@@ -3,7 +3,6 @@ package gen;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
-import org.antlr.v4.runtime.misc.*;
 import org.antlr.v4.runtime.tree.*;
 import java.util.List;
 
@@ -24,18 +23,20 @@ public class VYPeParserParser extends Parser {
 		LogicalOrSign=32, IntLiteral=33, CharLiteral=34, StringLiteral=35, AssignSign=36, 
 		Colon=37, Semicolon=38, WhiteSpaces=39, LineComment=40, BlockComment=41;
 	public static final int
-		RULE_data_type = 0, RULE_type = 1, RULE_function_identifier = 2, RULE_start = 3, 
-		RULE_function_declaration = 4, RULE_param_type_list = 5, RULE_function_definition = 6, 
-		RULE_param_list = 7, RULE_statement = 8, RULE_variable_definition_statement = 9, 
-		RULE_assignment_statement = 10, RULE_conditional_statement = 11, RULE_while_statement = 12, 
-		RULE_function_call_statement = 13, RULE_return_statement = 14, RULE_block_statements = 15, 
-		RULE_condition_expression = 16, RULE_expression = 17, RULE_binary_operand = 18;
+		RULE_any_value = 0, RULE_number_value = 1, RULE_data_type = 2, RULE_type = 3, 
+		RULE_function_identifier = 4, RULE_parse = 5, RULE_start = 6, RULE_function_declaration = 7, 
+		RULE_param_type_list = 8, RULE_function_definition = 9, RULE_param_list = 10, 
+		RULE_statement = 11, RULE_variable_definition_statement = 12, RULE_assignment_statement = 13, 
+		RULE_conditional_statement = 14, RULE_while_statement = 15, RULE_function_call_statement = 16, 
+		RULE_return_statement = 17, RULE_block_statements = 18, RULE_function_call = 19, 
+		RULE_condition_expression = 20, RULE_expression = 21;
 	public static final String[] ruleNames = {
-		"data_type", "type", "function_identifier", "start", "function_declaration", 
-		"param_type_list", "function_definition", "param_list", "statement", "variable_definition_statement", 
-		"assignment_statement", "conditional_statement", "while_statement", "function_call_statement", 
-		"return_statement", "block_statements", "condition_expression", "expression", 
-		"binary_operand"
+		"any_value", "number_value", "data_type", "type", "function_identifier", 
+		"parse", "start", "function_declaration", "param_type_list", "function_definition", 
+		"param_list", "statement", "variable_definition_statement", "assignment_statement", 
+		"conditional_statement", "while_statement", "function_call_statement", 
+		"return_statement", "block_statements", "function_call", "condition_expression", 
+		"expression"
 	};
 
 	private static final String[] _LITERAL_NAMES = {
@@ -104,6 +105,96 @@ public class VYPeParserParser extends Parser {
 		super(input);
 		_interp = new ParserATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
+	public static class Any_valueContext extends ParserRuleContext {
+		public TerminalNode Identifier() { return getToken(VYPeParserParser.Identifier, 0); }
+		public TerminalNode IntLiteral() { return getToken(VYPeParserParser.IntLiteral, 0); }
+		public TerminalNode CharLiteral() { return getToken(VYPeParserParser.CharLiteral, 0); }
+		public TerminalNode StringLiteral() { return getToken(VYPeParserParser.StringLiteral, 0); }
+		public Any_valueContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_any_value; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).enterAny_value(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).exitAny_value(this);
+		}
+	}
+
+	public final Any_valueContext any_value() throws RecognitionException {
+		Any_valueContext _localctx = new Any_valueContext(_ctx, getState());
+		enterRule(_localctx, 0, RULE_any_value);
+		int _la;
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(44);
+			_la = _input.LA(1);
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << Identifier) | (1L << IntLiteral) | (1L << CharLiteral) | (1L << StringLiteral))) != 0)) ) {
+			_errHandler.recoverInline(this);
+			} else {
+				consume();
+			}
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class Number_valueContext extends ParserRuleContext {
+		public TerminalNode Identifier() { return getToken(VYPeParserParser.Identifier, 0); }
+		public TerminalNode IntLiteral() { return getToken(VYPeParserParser.IntLiteral, 0); }
+		public Number_valueContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_number_value; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).enterNumber_value(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).exitNumber_value(this);
+		}
+	}
+
+	public final Number_valueContext number_value() throws RecognitionException {
+		Number_valueContext _localctx = new Number_valueContext(_ctx, getState());
+		enterRule(_localctx, 2, RULE_number_value);
+		int _la;
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(46);
+			_la = _input.LA(1);
+			if ( !(_la==Identifier || _la==IntLiteral) ) {
+			_errHandler.recoverInline(this);
+			} else {
+				consume();
+			}
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
 	public static class Data_typeContext extends ParserRuleContext {
 		public TerminalNode Int() { return getToken(VYPeParserParser.Int, 0); }
 		public TerminalNode Char() { return getToken(VYPeParserParser.Char, 0); }
@@ -120,21 +211,16 @@ public class VYPeParserParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).exitData_type(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VYPeParserVisitor ) return ((VYPeParserVisitor<? extends T>)visitor).visitData_type(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final Data_typeContext data_type() throws RecognitionException {
 		Data_typeContext _localctx = new Data_typeContext(_ctx, getState());
-		enterRule(_localctx, 0, RULE_data_type);
+		enterRule(_localctx, 4, RULE_data_type);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(38);
+			setState(48);
 			_la = _input.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << Char) | (1L << Int) | (1L << String))) != 0)) ) {
 			_errHandler.recoverInline(this);
@@ -171,32 +257,27 @@ public class VYPeParserParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).exitType(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VYPeParserVisitor ) return ((VYPeParserVisitor<? extends T>)visitor).visitType(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final TypeContext type() throws RecognitionException {
 		TypeContext _localctx = new TypeContext(_ctx, getState());
-		enterRule(_localctx, 2, RULE_type);
+		enterRule(_localctx, 6, RULE_type);
 		try {
-			setState(42);
+			setState(52);
 			switch (_input.LA(1)) {
 			case Char:
 			case Int:
 			case String:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(40);
+				setState(50);
 				data_type();
 				}
 				break;
 			case Void:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(41);
+				setState(51);
 				match(Void);
 				}
 				break;
@@ -229,20 +310,15 @@ public class VYPeParserParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).exitFunction_identifier(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VYPeParserVisitor ) return ((VYPeParserVisitor<? extends T>)visitor).visitFunction_identifier(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final Function_identifierContext function_identifier() throws RecognitionException {
 		Function_identifierContext _localctx = new Function_identifierContext(_ctx, getState());
-		enterRule(_localctx, 4, RULE_function_identifier);
+		enterRule(_localctx, 8, RULE_function_identifier);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(44);
+			setState(54);
 			match(Identifier);
 			}
 		}
@@ -257,17 +333,59 @@ public class VYPeParserParser extends Parser {
 		return _localctx;
 	}
 
-	public static class StartContext extends ParserRuleContext {
-		public Function_declarationContext function_declaration() {
-			return getRuleContext(Function_declarationContext.class,0);
-		}
+	public static class ParseContext extends ParserRuleContext {
 		public StartContext start() {
 			return getRuleContext(StartContext.class,0);
 		}
-		public Function_definitionContext function_definition() {
-			return getRuleContext(Function_definitionContext.class,0);
+		public ParseContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
+		@Override public int getRuleIndex() { return RULE_parse; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).enterParse(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).exitParse(this);
+		}
+	}
+
+	public final ParseContext parse() throws RecognitionException {
+		ParseContext _localctx = new ParseContext(_ctx, getState());
+		enterRule(_localctx, 10, RULE_parse);
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(56);
+			start();
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class StartContext extends ParserRuleContext {
 		public TerminalNode EOF() { return getToken(VYPeParserParser.EOF, 0); }
+		public List<Function_declarationContext> function_declaration() {
+			return getRuleContexts(Function_declarationContext.class);
+		}
+		public Function_declarationContext function_declaration(int i) {
+			return getRuleContext(Function_declarationContext.class,i);
+		}
+		public List<Function_definitionContext> function_definition() {
+			return getRuleContexts(Function_definitionContext.class);
+		}
+		public Function_definitionContext function_definition(int i) {
+			return getRuleContext(Function_definitionContext.class,i);
+		}
 		public StartContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -280,45 +398,43 @@ public class VYPeParserParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).exitStart(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VYPeParserVisitor ) return ((VYPeParserVisitor<? extends T>)visitor).visitStart(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final StartContext start() throws RecognitionException {
 		StartContext _localctx = new StartContext(_ctx, getState());
-		enterRule(_localctx, 6, RULE_start);
+		enterRule(_localctx, 12, RULE_start);
+		int _la;
 		try {
-			setState(53);
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(60); 
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,1,_ctx) ) {
-			case 1:
-				enterOuterAlt(_localctx, 1);
+			_la = _input.LA(1);
+			do {
 				{
-				setState(46);
-				function_declaration();
-				setState(47);
-				start();
+				setState(60);
+				_errHandler.sync(this);
+				switch ( getInterpreter().adaptivePredict(_input,1,_ctx) ) {
+				case 1:
+					{
+					setState(58);
+					function_declaration();
+					}
+					break;
+				case 2:
+					{
+					setState(59);
+					function_definition();
+					}
+					break;
 				}
-				break;
-			case 2:
-				enterOuterAlt(_localctx, 2);
-				{
-				setState(49);
-				function_definition();
-				setState(50);
-				start();
 				}
-				break;
-			case 3:
-				enterOuterAlt(_localctx, 3);
-				{
-				setState(52);
-				match(EOF);
-				}
-				break;
+				setState(62); 
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << Char) | (1L << Int) | (1L << String) | (1L << Void))) != 0) );
+			setState(64);
+			match(EOF);
 			}
 		}
 		catch (RecognitionException re) {
@@ -355,30 +471,25 @@ public class VYPeParserParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).exitFunction_declaration(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VYPeParserVisitor ) return ((VYPeParserVisitor<? extends T>)visitor).visitFunction_declaration(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final Function_declarationContext function_declaration() throws RecognitionException {
 		Function_declarationContext _localctx = new Function_declarationContext(_ctx, getState());
-		enterRule(_localctx, 8, RULE_function_declaration);
+		enterRule(_localctx, 14, RULE_function_declaration);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(55);
+			setState(66);
 			type();
-			setState(56);
+			setState(67);
 			match(Identifier);
-			setState(57);
+			setState(68);
 			match(LeftParenthesis);
-			setState(58);
+			setState(69);
 			param_type_list();
-			setState(59);
+			setState(70);
 			match(RightParenthesis);
-			setState(60);
+			setState(71);
 			match(Semicolon);
 			}
 		}
@@ -417,40 +528,35 @@ public class VYPeParserParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).exitParam_type_list(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VYPeParserVisitor ) return ((VYPeParserVisitor<? extends T>)visitor).visitParam_type_list(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final Param_type_listContext param_type_list() throws RecognitionException {
 		Param_type_listContext _localctx = new Param_type_listContext(_ctx, getState());
-		enterRule(_localctx, 10, RULE_param_type_list);
+		enterRule(_localctx, 16, RULE_param_type_list);
 		int _la;
 		try {
-			setState(71);
+			setState(82);
 			switch (_input.LA(1)) {
 			case Char:
 			case Int:
 			case String:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(62);
+				setState(73);
 				data_type();
-				setState(67);
+				setState(78);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				while (_la==Colon) {
 					{
 					{
-					setState(63);
+					setState(74);
 					match(Colon);
-					setState(64);
+					setState(75);
 					data_type();
 					}
 					}
-					setState(69);
+					setState(80);
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 				}
@@ -459,7 +565,7 @@ public class VYPeParserParser extends Parser {
 			case Void:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(70);
+				setState(81);
 				match(Void);
 				}
 				break;
@@ -503,30 +609,25 @@ public class VYPeParserParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).exitFunction_definition(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VYPeParserVisitor ) return ((VYPeParserVisitor<? extends T>)visitor).visitFunction_definition(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final Function_definitionContext function_definition() throws RecognitionException {
 		Function_definitionContext _localctx = new Function_definitionContext(_ctx, getState());
-		enterRule(_localctx, 12, RULE_function_definition);
+		enterRule(_localctx, 18, RULE_function_definition);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(73);
+			setState(84);
 			type();
-			setState(74);
+			setState(85);
 			match(Identifier);
-			setState(75);
+			setState(86);
 			match(LeftParenthesis);
-			setState(76);
+			setState(87);
 			param_list();
-			setState(77);
+			setState(88);
 			match(RightParenthesis);
-			setState(78);
+			setState(89);
 			block_statements();
 			}
 		}
@@ -569,44 +670,39 @@ public class VYPeParserParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).exitParam_list(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VYPeParserVisitor ) return ((VYPeParserVisitor<? extends T>)visitor).visitParam_list(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final Param_listContext param_list() throws RecognitionException {
 		Param_listContext _localctx = new Param_listContext(_ctx, getState());
-		enterRule(_localctx, 14, RULE_param_list);
+		enterRule(_localctx, 20, RULE_param_list);
 		int _la;
 		try {
-			setState(92);
+			setState(103);
 			switch (_input.LA(1)) {
 			case Char:
 			case Int:
 			case String:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(80);
+				setState(91);
 				data_type();
-				setState(81);
+				setState(92);
 				match(Identifier);
-				setState(88);
+				setState(99);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				while (_la==Colon) {
 					{
 					{
-					setState(82);
+					setState(93);
 					match(Colon);
-					setState(83);
+					setState(94);
 					data_type();
-					setState(84);
+					setState(95);
 					match(Identifier);
 					}
 					}
-					setState(90);
+					setState(101);
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 				}
@@ -615,7 +711,7 @@ public class VYPeParserParser extends Parser {
 			case Void:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(91);
+				setState(102);
 				match(Void);
 				}
 				break;
@@ -665,59 +761,54 @@ public class VYPeParserParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).exitStatement(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VYPeParserVisitor ) return ((VYPeParserVisitor<? extends T>)visitor).visitStatement(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final StatementContext statement() throws RecognitionException {
 		StatementContext _localctx = new StatementContext(_ctx, getState());
-		enterRule(_localctx, 16, RULE_statement);
+		enterRule(_localctx, 22, RULE_statement);
 		try {
-			setState(100);
+			setState(111);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,6,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,7,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(94);
+				setState(105);
 				variable_definition_statement();
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(95);
+				setState(106);
 				assignment_statement();
 				}
 				break;
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(96);
+				setState(107);
 				conditional_statement();
 				}
 				break;
 			case 4:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(97);
+				setState(108);
 				while_statement();
 				}
 				break;
 			case 5:
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(98);
+				setState(109);
 				function_call_statement();
 				}
 				break;
 			case 6:
 				enterOuterAlt(_localctx, 6);
 				{
-				setState(99);
+				setState(110);
 				return_statement();
 				}
 				break;
@@ -759,41 +850,36 @@ public class VYPeParserParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).exitVariable_definition_statement(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VYPeParserVisitor ) return ((VYPeParserVisitor<? extends T>)visitor).visitVariable_definition_statement(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final Variable_definition_statementContext variable_definition_statement() throws RecognitionException {
 		Variable_definition_statementContext _localctx = new Variable_definition_statementContext(_ctx, getState());
-		enterRule(_localctx, 18, RULE_variable_definition_statement);
+		enterRule(_localctx, 24, RULE_variable_definition_statement);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(102);
+			setState(113);
 			data_type();
-			setState(103);
+			setState(114);
 			match(Identifier);
-			setState(108);
+			setState(119);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==Colon) {
 				{
 				{
-				setState(104);
+				setState(115);
 				match(Colon);
-				setState(105);
+				setState(116);
 				match(Identifier);
 				}
 				}
-				setState(110);
+				setState(121);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(111);
+			setState(122);
 			match(Semicolon);
 			}
 		}
@@ -814,6 +900,7 @@ public class VYPeParserParser extends Parser {
 		public ExpressionContext expression() {
 			return getRuleContext(ExpressionContext.class,0);
 		}
+		public TerminalNode Semicolon() { return getToken(VYPeParserParser.Semicolon, 0); }
 		public Assignment_statementContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -826,25 +913,22 @@ public class VYPeParserParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).exitAssignment_statement(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VYPeParserVisitor ) return ((VYPeParserVisitor<? extends T>)visitor).visitAssignment_statement(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final Assignment_statementContext assignment_statement() throws RecognitionException {
 		Assignment_statementContext _localctx = new Assignment_statementContext(_ctx, getState());
-		enterRule(_localctx, 20, RULE_assignment_statement);
+		enterRule(_localctx, 26, RULE_assignment_statement);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(113);
+			setState(124);
 			match(Identifier);
-			setState(114);
+			setState(125);
 			match(AssignSign);
-			setState(115);
-			expression();
+			setState(126);
+			expression(0);
+			setState(127);
+			match(Semicolon);
 			}
 		}
 		catch (RecognitionException re) {
@@ -882,28 +966,23 @@ public class VYPeParserParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).exitConditional_statement(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VYPeParserVisitor ) return ((VYPeParserVisitor<? extends T>)visitor).visitConditional_statement(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final Conditional_statementContext conditional_statement() throws RecognitionException {
 		Conditional_statementContext _localctx = new Conditional_statementContext(_ctx, getState());
-		enterRule(_localctx, 22, RULE_conditional_statement);
+		enterRule(_localctx, 28, RULE_conditional_statement);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(117);
+			setState(129);
 			match(If);
-			setState(118);
+			setState(130);
 			condition_expression();
-			setState(119);
+			setState(131);
 			block_statements();
-			setState(120);
+			setState(132);
 			match(Else);
-			setState(121);
+			setState(133);
 			block_statements();
 			}
 		}
@@ -938,24 +1017,19 @@ public class VYPeParserParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).exitWhile_statement(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VYPeParserVisitor ) return ((VYPeParserVisitor<? extends T>)visitor).visitWhile_statement(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final While_statementContext while_statement() throws RecognitionException {
 		While_statementContext _localctx = new While_statementContext(_ctx, getState());
-		enterRule(_localctx, 24, RULE_while_statement);
+		enterRule(_localctx, 30, RULE_while_statement);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(123);
+			setState(135);
 			match(While);
-			setState(124);
+			setState(136);
 			condition_expression();
-			setState(125);
+			setState(137);
 			block_statements();
 			}
 		}
@@ -971,22 +1045,10 @@ public class VYPeParserParser extends Parser {
 	}
 
 	public static class Function_call_statementContext extends ParserRuleContext {
-		public Function_identifierContext function_identifier() {
-			return getRuleContext(Function_identifierContext.class,0);
+		public Function_callContext function_call() {
+			return getRuleContext(Function_callContext.class,0);
 		}
-		public TerminalNode LeftParenthesis() { return getToken(VYPeParserParser.LeftParenthesis, 0); }
-		public TerminalNode RightParenthesis() { return getToken(VYPeParserParser.RightParenthesis, 0); }
 		public TerminalNode Semicolon() { return getToken(VYPeParserParser.Semicolon, 0); }
-		public List<ExpressionContext> expression() {
-			return getRuleContexts(ExpressionContext.class);
-		}
-		public ExpressionContext expression(int i) {
-			return getRuleContext(ExpressionContext.class,i);
-		}
-		public List<TerminalNode> Colon() { return getTokens(VYPeParserParser.Colon); }
-		public TerminalNode Colon(int i) {
-			return getToken(VYPeParserParser.Colon, i);
-		}
 		public Function_call_statementContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -999,51 +1061,16 @@ public class VYPeParserParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).exitFunction_call_statement(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VYPeParserVisitor ) return ((VYPeParserVisitor<? extends T>)visitor).visitFunction_call_statement(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final Function_call_statementContext function_call_statement() throws RecognitionException {
 		Function_call_statementContext _localctx = new Function_call_statementContext(_ctx, getState());
-		enterRule(_localctx, 26, RULE_function_call_statement);
-		int _la;
+		enterRule(_localctx, 32, RULE_function_call_statement);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(127);
-			function_identifier();
-			setState(128);
-			match(LeftParenthesis);
-			setState(137);
-			_la = _input.LA(1);
-			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << Identifier) | (1L << LeftParenthesis) | (1L << ExclamationMark))) != 0)) {
-				{
-				setState(129);
-				expression();
-				setState(134);
-				_errHandler.sync(this);
-				_la = _input.LA(1);
-				while (_la==Colon) {
-					{
-					{
-					setState(130);
-					match(Colon);
-					setState(131);
-					expression();
-					}
-					}
-					setState(136);
-					_errHandler.sync(this);
-					_la = _input.LA(1);
-				}
-				}
-			}
-
 			setState(139);
-			match(RightParenthesis);
+			function_call();
 			setState(140);
 			match(Semicolon);
 			}
@@ -1077,16 +1104,11 @@ public class VYPeParserParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).exitReturn_statement(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VYPeParserVisitor ) return ((VYPeParserVisitor<? extends T>)visitor).visitReturn_statement(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final Return_statementContext return_statement() throws RecognitionException {
 		Return_statementContext _localctx = new Return_statementContext(_ctx, getState());
-		enterRule(_localctx, 28, RULE_return_statement);
+		enterRule(_localctx, 34, RULE_return_statement);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -1095,10 +1117,10 @@ public class VYPeParserParser extends Parser {
 			match(Return);
 			setState(144);
 			_la = _input.LA(1);
-			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << Identifier) | (1L << LeftParenthesis) | (1L << ExclamationMark))) != 0)) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << Identifier) | (1L << LeftParenthesis) | (1L << ExclamationMark) | (1L << IntLiteral) | (1L << CharLiteral) | (1L << StringLiteral))) != 0)) {
 				{
 				setState(143);
-				expression();
+				expression(0);
 				}
 			}
 
@@ -1138,16 +1160,11 @@ public class VYPeParserParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).exitBlock_statements(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VYPeParserVisitor ) return ((VYPeParserVisitor<? extends T>)visitor).visitBlock_statements(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final Block_statementsContext block_statements() throws RecognitionException {
 		Block_statementsContext _localctx = new Block_statementsContext(_ctx, getState());
-		enterRule(_localctx, 30, RULE_block_statements);
+		enterRule(_localctx, 36, RULE_block_statements);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -1183,6 +1200,87 @@ public class VYPeParserParser extends Parser {
 		return _localctx;
 	}
 
+	public static class Function_callContext extends ParserRuleContext {
+		public Function_identifierContext function_identifier() {
+			return getRuleContext(Function_identifierContext.class,0);
+		}
+		public TerminalNode LeftParenthesis() { return getToken(VYPeParserParser.LeftParenthesis, 0); }
+		public TerminalNode RightParenthesis() { return getToken(VYPeParserParser.RightParenthesis, 0); }
+		public List<ExpressionContext> expression() {
+			return getRuleContexts(ExpressionContext.class);
+		}
+		public ExpressionContext expression(int i) {
+			return getRuleContext(ExpressionContext.class,i);
+		}
+		public List<TerminalNode> Colon() { return getTokens(VYPeParserParser.Colon); }
+		public TerminalNode Colon(int i) {
+			return getToken(VYPeParserParser.Colon, i);
+		}
+		public Function_callContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_function_call; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).enterFunction_call(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).exitFunction_call(this);
+		}
+	}
+
+	public final Function_callContext function_call() throws RecognitionException {
+		Function_callContext _localctx = new Function_callContext(_ctx, getState());
+		enterRule(_localctx, 38, RULE_function_call);
+		int _la;
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(157);
+			function_identifier();
+			setState(158);
+			match(LeftParenthesis);
+			setState(167);
+			_la = _input.LA(1);
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << Identifier) | (1L << LeftParenthesis) | (1L << ExclamationMark) | (1L << IntLiteral) | (1L << CharLiteral) | (1L << StringLiteral))) != 0)) {
+				{
+				setState(159);
+				expression(0);
+				setState(164);
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+				while (_la==Colon) {
+					{
+					{
+					setState(160);
+					match(Colon);
+					setState(161);
+					expression(0);
+					}
+					}
+					setState(166);
+					_errHandler.sync(this);
+					_la = _input.LA(1);
+				}
+				}
+			}
+
+			setState(169);
+			match(RightParenthesis);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
 	public static class Condition_expressionContext extends ParserRuleContext {
 		public TerminalNode LeftParenthesis() { return getToken(VYPeParserParser.LeftParenthesis, 0); }
 		public ExpressionContext expression() {
@@ -1201,24 +1299,19 @@ public class VYPeParserParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).exitCondition_expression(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VYPeParserVisitor ) return ((VYPeParserVisitor<? extends T>)visitor).visitCondition_expression(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final Condition_expressionContext condition_expression() throws RecognitionException {
 		Condition_expressionContext _localctx = new Condition_expressionContext(_ctx, getState());
-		enterRule(_localctx, 32, RULE_condition_expression);
+		enterRule(_localctx, 40, RULE_condition_expression);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(157);
+			setState(171);
 			match(LeftParenthesis);
-			setState(158);
-			expression();
-			setState(159);
+			setState(172);
+			expression(0);
+			setState(173);
 			match(RightParenthesis);
 			}
 		}
@@ -1234,156 +1327,25 @@ public class VYPeParserParser extends Parser {
 	}
 
 	public static class ExpressionContext extends ParserRuleContext {
-		public TerminalNode Identifier() { return getToken(VYPeParserParser.Identifier, 0); }
-		public TerminalNode ExclamationMark() { return getToken(VYPeParserParser.ExclamationMark, 0); }
+		public Token op;
+		public Any_valueContext any_value() {
+			return getRuleContext(Any_valueContext.class,0);
+		}
+		public TerminalNode LeftParenthesis() { return getToken(VYPeParserParser.LeftParenthesis, 0); }
 		public List<ExpressionContext> expression() {
 			return getRuleContexts(ExpressionContext.class);
 		}
 		public ExpressionContext expression(int i) {
 			return getRuleContext(ExpressionContext.class,i);
 		}
-		public TerminalNode LeftParenthesis() { return getToken(VYPeParserParser.LeftParenthesis, 0); }
 		public TerminalNode RightParenthesis() { return getToken(VYPeParserParser.RightParenthesis, 0); }
 		public Data_typeContext data_type() {
 			return getRuleContext(Data_typeContext.class,0);
 		}
-		public Binary_operandContext binary_operand() {
-			return getRuleContext(Binary_operandContext.class,0);
+		public Function_callContext function_call() {
+			return getRuleContext(Function_callContext.class,0);
 		}
-		public ExpressionContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_expression; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).enterExpression(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).exitExpression(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VYPeParserVisitor ) return ((VYPeParserVisitor<? extends T>)visitor).visitExpression(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-
-	public final ExpressionContext expression() throws RecognitionException {
-		ExpressionContext _localctx = new ExpressionContext(_ctx, getState());
-		enterRule(_localctx, 34, RULE_expression);
-		try {
-			setState(194);
-			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,12,_ctx) ) {
-			case 1:
-				enterOuterAlt(_localctx, 1);
-				{
-				setState(161);
-				match(Identifier);
-				}
-				break;
-			case 2:
-				enterOuterAlt(_localctx, 2);
-				{
-				setState(162);
-				match(ExclamationMark);
-				setState(163);
-				expression();
-				}
-				break;
-			case 3:
-				enterOuterAlt(_localctx, 3);
-				{
-				setState(164);
-				match(LeftParenthesis);
-				setState(165);
-				expression();
-				setState(166);
-				match(RightParenthesis);
-				}
-				break;
-			case 4:
-				enterOuterAlt(_localctx, 4);
-				{
-				setState(168);
-				match(LeftParenthesis);
-				setState(169);
-				data_type();
-				setState(170);
-				match(RightParenthesis);
-				setState(171);
-				expression();
-				}
-				break;
-			case 5:
-				enterOuterAlt(_localctx, 5);
-				{
-				setState(173);
-				match(Identifier);
-				setState(174);
-				binary_operand();
-				setState(175);
-				expression();
-				}
-				break;
-			case 6:
-				enterOuterAlt(_localctx, 6);
-				{
-				setState(177);
-				match(ExclamationMark);
-				setState(178);
-				expression();
-				setState(179);
-				binary_operand();
-				setState(180);
-				expression();
-				}
-				break;
-			case 7:
-				enterOuterAlt(_localctx, 7);
-				{
-				setState(182);
-				match(LeftParenthesis);
-				setState(183);
-				expression();
-				setState(184);
-				match(RightParenthesis);
-				setState(185);
-				binary_operand();
-				setState(186);
-				expression();
-				}
-				break;
-			case 8:
-				enterOuterAlt(_localctx, 8);
-				{
-				setState(188);
-				match(LeftParenthesis);
-				setState(189);
-				data_type();
-				setState(190);
-				match(RightParenthesis);
-				setState(191);
-				binary_operand();
-				setState(192);
-				expression();
-				}
-				break;
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class Binary_operandContext extends ParserRuleContext {
+		public TerminalNode ExclamationMark() { return getToken(VYPeParserParser.ExclamationMark, 0); }
 		public TerminalNode MultiplicationSign() { return getToken(VYPeParserParser.MultiplicationSign, 0); }
 		public TerminalNode DivisionSign() { return getToken(VYPeParserParser.DivisionSign, 0); }
 		public TerminalNode ModuloSign() { return getToken(VYPeParserParser.ModuloSign, 0); }
@@ -1397,38 +1359,196 @@ public class VYPeParserParser extends Parser {
 		public TerminalNode NotEqualSign() { return getToken(VYPeParserParser.NotEqualSign, 0); }
 		public TerminalNode LogicalAndSign() { return getToken(VYPeParserParser.LogicalAndSign, 0); }
 		public TerminalNode LogicalOrSign() { return getToken(VYPeParserParser.LogicalOrSign, 0); }
-		public Binary_operandContext(ParserRuleContext parent, int invokingState) {
+		public ExpressionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_binary_operand; }
+		@Override public int getRuleIndex() { return RULE_expression; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).enterBinary_operand(this);
+			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).enterExpression(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).exitBinary_operand(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VYPeParserVisitor ) return ((VYPeParserVisitor<? extends T>)visitor).visitBinary_operand(this);
-			else return visitor.visitChildren(this);
+			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).exitExpression(this);
 		}
 	}
 
-	public final Binary_operandContext binary_operand() throws RecognitionException {
-		Binary_operandContext _localctx = new Binary_operandContext(_ctx, getState());
-		enterRule(_localctx, 36, RULE_binary_operand);
+	public final ExpressionContext expression() throws RecognitionException {
+		return expression(0);
+	}
+
+	private ExpressionContext expression(int _p) throws RecognitionException {
+		ParserRuleContext _parentctx = _ctx;
+		int _parentState = getState();
+		ExpressionContext _localctx = new ExpressionContext(_ctx, _parentState);
+		ExpressionContext _prevctx = _localctx;
+		int _startState = 42;
+		enterRecursionRule(_localctx, 42, RULE_expression, _p);
 		int _la;
 		try {
+			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(196);
-			_la = _input.LA(1);
-			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << MultiplicationSign) | (1L << DivisionSign) | (1L << ModuloSign) | (1L << PlusSign) | (1L << MinusSign) | (1L << LowerSign) | (1L << GreaterSign) | (1L << LowerEqualSign) | (1L << GreaterEqualSign) | (1L << EqualSign) | (1L << NotEqualSign) | (1L << LogicalAndSign) | (1L << LogicalOrSign))) != 0)) ) {
-			_errHandler.recoverInline(this);
-			} else {
-				consume();
+			setState(189);
+			_errHandler.sync(this);
+			switch ( getInterpreter().adaptivePredict(_input,13,_ctx) ) {
+			case 1:
+				{
+				setState(176);
+				any_value();
+				}
+				break;
+			case 2:
+				{
+				setState(177);
+				match(LeftParenthesis);
+				setState(178);
+				expression(0);
+				setState(179);
+				match(RightParenthesis);
+				}
+				break;
+			case 3:
+				{
+				setState(181);
+				match(LeftParenthesis);
+				setState(182);
+				data_type();
+				setState(183);
+				match(RightParenthesis);
+				setState(184);
+				expression(9);
+				}
+				break;
+			case 4:
+				{
+				setState(186);
+				function_call();
+				}
+				break;
+			case 5:
+				{
+				setState(187);
+				match(ExclamationMark);
+				setState(188);
+				expression(7);
+				}
+				break;
+			}
+			_ctx.stop = _input.LT(-1);
+			setState(211);
+			_errHandler.sync(this);
+			_alt = getInterpreter().adaptivePredict(_input,15,_ctx);
+			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
+				if ( _alt==1 ) {
+					if ( _parseListeners!=null ) triggerExitRuleEvent();
+					_prevctx = _localctx;
+					{
+					setState(209);
+					_errHandler.sync(this);
+					switch ( getInterpreter().adaptivePredict(_input,14,_ctx) ) {
+					case 1:
+						{
+						_localctx = new ExpressionContext(_parentctx, _parentState);
+						pushNewRecursionContext(_localctx, _startState, RULE_expression);
+						setState(191);
+						if (!(precpred(_ctx, 6))) throw new FailedPredicateException(this, "precpred(_ctx, 6)");
+						setState(192);
+						((ExpressionContext)_localctx).op = _input.LT(1);
+						_la = _input.LA(1);
+						if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << MultiplicationSign) | (1L << DivisionSign) | (1L << ModuloSign))) != 0)) ) {
+							((ExpressionContext)_localctx).op = (Token)_errHandler.recoverInline(this);
+						} else {
+							consume();
+						}
+						setState(193);
+						expression(7);
+						}
+						break;
+					case 2:
+						{
+						_localctx = new ExpressionContext(_parentctx, _parentState);
+						pushNewRecursionContext(_localctx, _startState, RULE_expression);
+						setState(194);
+						if (!(precpred(_ctx, 5))) throw new FailedPredicateException(this, "precpred(_ctx, 5)");
+						setState(195);
+						((ExpressionContext)_localctx).op = _input.LT(1);
+						_la = _input.LA(1);
+						if ( !(_la==PlusSign || _la==MinusSign) ) {
+							((ExpressionContext)_localctx).op = (Token)_errHandler.recoverInline(this);
+						} else {
+							consume();
+						}
+						setState(196);
+						expression(6);
+						}
+						break;
+					case 3:
+						{
+						_localctx = new ExpressionContext(_parentctx, _parentState);
+						pushNewRecursionContext(_localctx, _startState, RULE_expression);
+						setState(197);
+						if (!(precpred(_ctx, 4))) throw new FailedPredicateException(this, "precpred(_ctx, 4)");
+						setState(198);
+						((ExpressionContext)_localctx).op = _input.LT(1);
+						_la = _input.LA(1);
+						if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << LowerSign) | (1L << GreaterSign) | (1L << LowerEqualSign) | (1L << GreaterEqualSign))) != 0)) ) {
+							((ExpressionContext)_localctx).op = (Token)_errHandler.recoverInline(this);
+						} else {
+							consume();
+						}
+						setState(199);
+						expression(5);
+						}
+						break;
+					case 4:
+						{
+						_localctx = new ExpressionContext(_parentctx, _parentState);
+						pushNewRecursionContext(_localctx, _startState, RULE_expression);
+						setState(200);
+						if (!(precpred(_ctx, 3))) throw new FailedPredicateException(this, "precpred(_ctx, 3)");
+						setState(201);
+						((ExpressionContext)_localctx).op = _input.LT(1);
+						_la = _input.LA(1);
+						if ( !(_la==EqualSign || _la==NotEqualSign) ) {
+							((ExpressionContext)_localctx).op = (Token)_errHandler.recoverInline(this);
+						} else {
+							consume();
+						}
+						setState(202);
+						expression(4);
+						}
+						break;
+					case 5:
+						{
+						_localctx = new ExpressionContext(_parentctx, _parentState);
+						pushNewRecursionContext(_localctx, _startState, RULE_expression);
+						setState(203);
+						if (!(precpred(_ctx, 2))) throw new FailedPredicateException(this, "precpred(_ctx, 2)");
+						setState(204);
+						match(LogicalAndSign);
+						setState(205);
+						expression(3);
+						}
+						break;
+					case 6:
+						{
+						_localctx = new ExpressionContext(_parentctx, _parentState);
+						pushNewRecursionContext(_localctx, _startState, RULE_expression);
+						setState(206);
+						if (!(precpred(_ctx, 1))) throw new FailedPredicateException(this, "precpred(_ctx, 1)");
+						setState(207);
+						match(LogicalOrSign);
+						setState(208);
+						expression(2);
+						}
+						break;
+					}
+					} 
+				}
+				setState(213);
+				_errHandler.sync(this);
+				_alt = getInterpreter().adaptivePredict(_input,15,_ctx);
 			}
 			}
 		}
@@ -1438,72 +1558,104 @@ public class VYPeParserParser extends Parser {
 			_errHandler.recover(this, re);
 		}
 		finally {
-			exitRule();
+			unrollRecursionContexts(_parentctx);
 		}
 		return _localctx;
 	}
 
+	public boolean sempred(RuleContext _localctx, int ruleIndex, int predIndex) {
+		switch (ruleIndex) {
+		case 21:
+			return expression_sempred((ExpressionContext)_localctx, predIndex);
+		}
+		return true;
+	}
+	private boolean expression_sempred(ExpressionContext _localctx, int predIndex) {
+		switch (predIndex) {
+		case 0:
+			return precpred(_ctx, 6);
+		case 1:
+			return precpred(_ctx, 5);
+		case 2:
+			return precpred(_ctx, 4);
+		case 3:
+			return precpred(_ctx, 3);
+		case 4:
+			return precpred(_ctx, 2);
+		case 5:
+			return precpred(_ctx, 1);
+		}
+		return true;
+	}
+
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3+\u00c9\4\2\t\2\4"+
+		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3+\u00d9\4\2\t\2\4"+
 		"\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t"+
 		"\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22"+
-		"\4\23\t\23\4\24\t\24\3\2\3\2\3\3\3\3\5\3-\n\3\3\4\3\4\3\5\3\5\3\5\3\5"+
-		"\3\5\3\5\3\5\5\58\n\5\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\7\3\7\3\7\7\7D\n\7"+
-		"\f\7\16\7G\13\7\3\7\5\7J\n\7\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\t\3\t\3\t\3"+
-		"\t\3\t\3\t\7\tY\n\t\f\t\16\t\\\13\t\3\t\5\t_\n\t\3\n\3\n\3\n\3\n\3\n\3"+
-		"\n\5\ng\n\n\3\13\3\13\3\13\3\13\7\13m\n\13\f\13\16\13p\13\13\3\13\3\13"+
-		"\3\f\3\f\3\f\3\f\3\r\3\r\3\r\3\r\3\r\3\r\3\16\3\16\3\16\3\16\3\17\3\17"+
-		"\3\17\3\17\3\17\7\17\u0087\n\17\f\17\16\17\u008a\13\17\5\17\u008c\n\17"+
-		"\3\17\3\17\3\17\3\20\3\20\5\20\u0093\n\20\3\20\3\20\3\21\3\21\7\21\u0099"+
-		"\n\21\f\21\16\21\u009c\13\21\3\21\3\21\3\22\3\22\3\22\3\22\3\23\3\23\3"+
-		"\23\3\23\3\23\3\23\3\23\3\23\3\23\3\23\3\23\3\23\3\23\3\23\3\23\3\23\3"+
-		"\23\3\23\3\23\3\23\3\23\3\23\3\23\3\23\3\23\3\23\3\23\3\23\3\23\3\23\3"+
-		"\23\3\23\3\23\5\23\u00c5\n\23\3\24\3\24\3\24\2\2\25\2\4\6\b\n\f\16\20"+
-		"\22\24\26\30\32\34\36 \"$&\2\4\5\2\3\3\6\6\b\b\3\2\26\"\u00cd\2(\3\2\2"+
-		"\2\4,\3\2\2\2\6.\3\2\2\2\b\67\3\2\2\2\n9\3\2\2\2\fI\3\2\2\2\16K\3\2\2"+
-		"\2\20^\3\2\2\2\22f\3\2\2\2\24h\3\2\2\2\26s\3\2\2\2\30w\3\2\2\2\32}\3\2"+
-		"\2\2\34\u0081\3\2\2\2\36\u0090\3\2\2\2 \u0096\3\2\2\2\"\u009f\3\2\2\2"+
-		"$\u00c4\3\2\2\2&\u00c6\3\2\2\2()\t\2\2\2)\3\3\2\2\2*-\5\2\2\2+-\7\t\2"+
-		"\2,*\3\2\2\2,+\3\2\2\2-\5\3\2\2\2./\7\20\2\2/\7\3\2\2\2\60\61\5\n\6\2"+
-		"\61\62\5\b\5\2\628\3\2\2\2\63\64\5\16\b\2\64\65\5\b\5\2\658\3\2\2\2\66"+
-		"8\7\2\2\3\67\60\3\2\2\2\67\63\3\2\2\2\67\66\3\2\2\28\t\3\2\2\29:\5\4\3"+
-		"\2:;\7\20\2\2;<\7\21\2\2<=\5\f\7\2=>\7\22\2\2>?\7(\2\2?\13\3\2\2\2@E\5"+
-		"\2\2\2AB\7\'\2\2BD\5\2\2\2CA\3\2\2\2DG\3\2\2\2EC\3\2\2\2EF\3\2\2\2FJ\3"+
-		"\2\2\2GE\3\2\2\2HJ\7\t\2\2I@\3\2\2\2IH\3\2\2\2J\r\3\2\2\2KL\5\4\3\2LM"+
-		"\7\20\2\2MN\7\21\2\2NO\5\20\t\2OP\7\22\2\2PQ\5 \21\2Q\17\3\2\2\2RS\5\2"+
-		"\2\2SZ\7\20\2\2TU\7\'\2\2UV\5\2\2\2VW\7\20\2\2WY\3\2\2\2XT\3\2\2\2Y\\"+
-		"\3\2\2\2ZX\3\2\2\2Z[\3\2\2\2[_\3\2\2\2\\Z\3\2\2\2]_\7\t\2\2^R\3\2\2\2"+
-		"^]\3\2\2\2_\21\3\2\2\2`g\5\24\13\2ag\5\26\f\2bg\5\30\r\2cg\5\32\16\2d"+
-		"g\5\34\17\2eg\5\36\20\2f`\3\2\2\2fa\3\2\2\2fb\3\2\2\2fc\3\2\2\2fd\3\2"+
-		"\2\2fe\3\2\2\2g\23\3\2\2\2hi\5\2\2\2in\7\20\2\2jk\7\'\2\2km\7\20\2\2l"+
-		"j\3\2\2\2mp\3\2\2\2nl\3\2\2\2no\3\2\2\2oq\3\2\2\2pn\3\2\2\2qr\7(\2\2r"+
-		"\25\3\2\2\2st\7\20\2\2tu\7&\2\2uv\5$\23\2v\27\3\2\2\2wx\7\5\2\2xy\5\""+
-		"\22\2yz\5 \21\2z{\7\4\2\2{|\5 \21\2|\31\3\2\2\2}~\7\n\2\2~\177\5\"\22"+
-		"\2\177\u0080\5 \21\2\u0080\33\3\2\2\2\u0081\u0082\5\6\4\2\u0082\u008b"+
-		"\7\21\2\2\u0083\u0088\5$\23\2\u0084\u0085\7\'\2\2\u0085\u0087\5$\23\2"+
-		"\u0086\u0084\3\2\2\2\u0087\u008a\3\2\2\2\u0088\u0086\3\2\2\2\u0088\u0089"+
-		"\3\2\2\2\u0089\u008c\3\2\2\2\u008a\u0088\3\2\2\2\u008b\u0083\3\2\2\2\u008b"+
-		"\u008c\3\2\2\2\u008c\u008d\3\2\2\2\u008d\u008e\7\22\2\2\u008e\u008f\7"+
-		"(\2\2\u008f\35\3\2\2\2\u0090\u0092\7\7\2\2\u0091\u0093\5$\23\2\u0092\u0091"+
-		"\3\2\2\2\u0092\u0093\3\2\2\2\u0093\u0094\3\2\2\2\u0094\u0095\7(\2\2\u0095"+
-		"\37\3\2\2\2\u0096\u009a\7\23\2\2\u0097\u0099\5\22\n\2\u0098\u0097\3\2"+
-		"\2\2\u0099\u009c\3\2\2\2\u009a\u0098\3\2\2\2\u009a\u009b\3\2\2\2\u009b"+
-		"\u009d\3\2\2\2\u009c\u009a\3\2\2\2\u009d\u009e\7\24\2\2\u009e!\3\2\2\2"+
-		"\u009f\u00a0\7\21\2\2\u00a0\u00a1\5$\23\2\u00a1\u00a2\7\22\2\2\u00a2#"+
-		"\3\2\2\2\u00a3\u00c5\7\20\2\2\u00a4\u00a5\7\25\2\2\u00a5\u00c5\5$\23\2"+
-		"\u00a6\u00a7\7\21\2\2\u00a7\u00a8\5$\23\2\u00a8\u00a9\7\22\2\2\u00a9\u00c5"+
-		"\3\2\2\2\u00aa\u00ab\7\21\2\2\u00ab\u00ac\5\2\2\2\u00ac\u00ad\7\22\2\2"+
-		"\u00ad\u00ae\5$\23\2\u00ae\u00c5\3\2\2\2\u00af\u00b0\7\20\2\2\u00b0\u00b1"+
-		"\5&\24\2\u00b1\u00b2\5$\23\2\u00b2\u00c5\3\2\2\2\u00b3\u00b4\7\25\2\2"+
-		"\u00b4\u00b5\5$\23\2\u00b5\u00b6\5&\24\2\u00b6\u00b7\5$\23\2\u00b7\u00c5"+
-		"\3\2\2\2\u00b8\u00b9\7\21\2\2\u00b9\u00ba\5$\23\2\u00ba\u00bb\7\22\2\2"+
-		"\u00bb\u00bc\5&\24\2\u00bc\u00bd\5$\23\2\u00bd\u00c5\3\2\2\2\u00be\u00bf"+
-		"\7\21\2\2\u00bf\u00c0\5\2\2\2\u00c0\u00c1\7\22\2\2\u00c1\u00c2\5&\24\2"+
-		"\u00c2\u00c3\5$\23\2\u00c3\u00c5\3\2\2\2\u00c4\u00a3\3\2\2\2\u00c4\u00a4"+
-		"\3\2\2\2\u00c4\u00a6\3\2\2\2\u00c4\u00aa\3\2\2\2\u00c4\u00af\3\2\2\2\u00c4"+
-		"\u00b3\3\2\2\2\u00c4\u00b8\3\2\2\2\u00c4\u00be\3\2\2\2\u00c5%\3\2\2\2"+
-		"\u00c6\u00c7\t\3\2\2\u00c7\'\3\2\2\2\17,\67EIZ^fn\u0088\u008b\u0092\u009a"+
-		"\u00c4";
+		"\4\23\t\23\4\24\t\24\4\25\t\25\4\26\t\26\4\27\t\27\3\2\3\2\3\3\3\3\3\4"+
+		"\3\4\3\5\3\5\5\5\67\n\5\3\6\3\6\3\7\3\7\3\b\3\b\6\b?\n\b\r\b\16\b@\3\b"+
+		"\3\b\3\t\3\t\3\t\3\t\3\t\3\t\3\t\3\n\3\n\3\n\7\nO\n\n\f\n\16\nR\13\n\3"+
+		"\n\5\nU\n\n\3\13\3\13\3\13\3\13\3\13\3\13\3\13\3\f\3\f\3\f\3\f\3\f\3\f"+
+		"\7\fd\n\f\f\f\16\fg\13\f\3\f\5\fj\n\f\3\r\3\r\3\r\3\r\3\r\3\r\5\rr\n\r"+
+		"\3\16\3\16\3\16\3\16\7\16x\n\16\f\16\16\16{\13\16\3\16\3\16\3\17\3\17"+
+		"\3\17\3\17\3\17\3\20\3\20\3\20\3\20\3\20\3\20\3\21\3\21\3\21\3\21\3\22"+
+		"\3\22\3\22\3\23\3\23\5\23\u0093\n\23\3\23\3\23\3\24\3\24\7\24\u0099\n"+
+		"\24\f\24\16\24\u009c\13\24\3\24\3\24\3\25\3\25\3\25\3\25\3\25\7\25\u00a5"+
+		"\n\25\f\25\16\25\u00a8\13\25\5\25\u00aa\n\25\3\25\3\25\3\26\3\26\3\26"+
+		"\3\26\3\27\3\27\3\27\3\27\3\27\3\27\3\27\3\27\3\27\3\27\3\27\3\27\3\27"+
+		"\3\27\5\27\u00c0\n\27\3\27\3\27\3\27\3\27\3\27\3\27\3\27\3\27\3\27\3\27"+
+		"\3\27\3\27\3\27\3\27\3\27\3\27\3\27\3\27\7\27\u00d4\n\27\f\27\16\27\u00d7"+
+		"\13\27\3\27\2\3,\30\2\4\6\b\n\f\16\20\22\24\26\30\32\34\36 \"$&(*,\2\t"+
+		"\4\2\20\20#%\4\2\20\20##\5\2\3\3\6\6\b\b\3\2\26\30\3\2\31\32\3\2\33\36"+
+		"\3\2\37 \u00dd\2.\3\2\2\2\4\60\3\2\2\2\6\62\3\2\2\2\b\66\3\2\2\2\n8\3"+
+		"\2\2\2\f:\3\2\2\2\16>\3\2\2\2\20D\3\2\2\2\22T\3\2\2\2\24V\3\2\2\2\26i"+
+		"\3\2\2\2\30q\3\2\2\2\32s\3\2\2\2\34~\3\2\2\2\36\u0083\3\2\2\2 \u0089\3"+
+		"\2\2\2\"\u008d\3\2\2\2$\u0090\3\2\2\2&\u0096\3\2\2\2(\u009f\3\2\2\2*\u00ad"+
+		"\3\2\2\2,\u00bf\3\2\2\2./\t\2\2\2/\3\3\2\2\2\60\61\t\3\2\2\61\5\3\2\2"+
+		"\2\62\63\t\4\2\2\63\7\3\2\2\2\64\67\5\6\4\2\65\67\7\t\2\2\66\64\3\2\2"+
+		"\2\66\65\3\2\2\2\67\t\3\2\2\289\7\20\2\29\13\3\2\2\2:;\5\16\b\2;\r\3\2"+
+		"\2\2<?\5\20\t\2=?\5\24\13\2><\3\2\2\2>=\3\2\2\2?@\3\2\2\2@>\3\2\2\2@A"+
+		"\3\2\2\2AB\3\2\2\2BC\7\2\2\3C\17\3\2\2\2DE\5\b\5\2EF\7\20\2\2FG\7\21\2"+
+		"\2GH\5\22\n\2HI\7\22\2\2IJ\7(\2\2J\21\3\2\2\2KP\5\6\4\2LM\7\'\2\2MO\5"+
+		"\6\4\2NL\3\2\2\2OR\3\2\2\2PN\3\2\2\2PQ\3\2\2\2QU\3\2\2\2RP\3\2\2\2SU\7"+
+		"\t\2\2TK\3\2\2\2TS\3\2\2\2U\23\3\2\2\2VW\5\b\5\2WX\7\20\2\2XY\7\21\2\2"+
+		"YZ\5\26\f\2Z[\7\22\2\2[\\\5&\24\2\\\25\3\2\2\2]^\5\6\4\2^e\7\20\2\2_`"+
+		"\7\'\2\2`a\5\6\4\2ab\7\20\2\2bd\3\2\2\2c_\3\2\2\2dg\3\2\2\2ec\3\2\2\2"+
+		"ef\3\2\2\2fj\3\2\2\2ge\3\2\2\2hj\7\t\2\2i]\3\2\2\2ih\3\2\2\2j\27\3\2\2"+
+		"\2kr\5\32\16\2lr\5\34\17\2mr\5\36\20\2nr\5 \21\2or\5\"\22\2pr\5$\23\2"+
+		"qk\3\2\2\2ql\3\2\2\2qm\3\2\2\2qn\3\2\2\2qo\3\2\2\2qp\3\2\2\2r\31\3\2\2"+
+		"\2st\5\6\4\2ty\7\20\2\2uv\7\'\2\2vx\7\20\2\2wu\3\2\2\2x{\3\2\2\2yw\3\2"+
+		"\2\2yz\3\2\2\2z|\3\2\2\2{y\3\2\2\2|}\7(\2\2}\33\3\2\2\2~\177\7\20\2\2"+
+		"\177\u0080\7&\2\2\u0080\u0081\5,\27\2\u0081\u0082\7(\2\2\u0082\35\3\2"+
+		"\2\2\u0083\u0084\7\5\2\2\u0084\u0085\5*\26\2\u0085\u0086\5&\24\2\u0086"+
+		"\u0087\7\4\2\2\u0087\u0088\5&\24\2\u0088\37\3\2\2\2\u0089\u008a\7\n\2"+
+		"\2\u008a\u008b\5*\26\2\u008b\u008c\5&\24\2\u008c!\3\2\2\2\u008d\u008e"+
+		"\5(\25\2\u008e\u008f\7(\2\2\u008f#\3\2\2\2\u0090\u0092\7\7\2\2\u0091\u0093"+
+		"\5,\27\2\u0092\u0091\3\2\2\2\u0092\u0093\3\2\2\2\u0093\u0094\3\2\2\2\u0094"+
+		"\u0095\7(\2\2\u0095%\3\2\2\2\u0096\u009a\7\23\2\2\u0097\u0099\5\30\r\2"+
+		"\u0098\u0097\3\2\2\2\u0099\u009c\3\2\2\2\u009a\u0098\3\2\2\2\u009a\u009b"+
+		"\3\2\2\2\u009b\u009d\3\2\2\2\u009c\u009a\3\2\2\2\u009d\u009e\7\24\2\2"+
+		"\u009e\'\3\2\2\2\u009f\u00a0\5\n\6\2\u00a0\u00a9\7\21\2\2\u00a1\u00a6"+
+		"\5,\27\2\u00a2\u00a3\7\'\2\2\u00a3\u00a5\5,\27\2\u00a4\u00a2\3\2\2\2\u00a5"+
+		"\u00a8\3\2\2\2\u00a6\u00a4\3\2\2\2\u00a6\u00a7\3\2\2\2\u00a7\u00aa\3\2"+
+		"\2\2\u00a8\u00a6\3\2\2\2\u00a9\u00a1\3\2\2\2\u00a9\u00aa\3\2\2\2\u00aa"+
+		"\u00ab\3\2\2\2\u00ab\u00ac\7\22\2\2\u00ac)\3\2\2\2\u00ad\u00ae\7\21\2"+
+		"\2\u00ae\u00af\5,\27\2\u00af\u00b0\7\22\2\2\u00b0+\3\2\2\2\u00b1\u00b2"+
+		"\b\27\1\2\u00b2\u00c0\5\2\2\2\u00b3\u00b4\7\21\2\2\u00b4\u00b5\5,\27\2"+
+		"\u00b5\u00b6\7\22\2\2\u00b6\u00c0\3\2\2\2\u00b7\u00b8\7\21\2\2\u00b8\u00b9"+
+		"\5\6\4\2\u00b9\u00ba\7\22\2\2\u00ba\u00bb\5,\27\13\u00bb\u00c0\3\2\2\2"+
+		"\u00bc\u00c0\5(\25\2\u00bd\u00be\7\25\2\2\u00be\u00c0\5,\27\t\u00bf\u00b1"+
+		"\3\2\2\2\u00bf\u00b3\3\2\2\2\u00bf\u00b7\3\2\2\2\u00bf\u00bc\3\2\2\2\u00bf"+
+		"\u00bd\3\2\2\2\u00c0\u00d5\3\2\2\2\u00c1\u00c2\f\b\2\2\u00c2\u00c3\t\5"+
+		"\2\2\u00c3\u00d4\5,\27\t\u00c4\u00c5\f\7\2\2\u00c5\u00c6\t\6\2\2\u00c6"+
+		"\u00d4\5,\27\b\u00c7\u00c8\f\6\2\2\u00c8\u00c9\t\7\2\2\u00c9\u00d4\5,"+
+		"\27\7\u00ca\u00cb\f\5\2\2\u00cb\u00cc\t\b\2\2\u00cc\u00d4\5,\27\6\u00cd"+
+		"\u00ce\f\4\2\2\u00ce\u00cf\7!\2\2\u00cf\u00d4\5,\27\5\u00d0\u00d1\f\3"+
+		"\2\2\u00d1\u00d2\7\"\2\2\u00d2\u00d4\5,\27\4\u00d3\u00c1\3\2\2\2\u00d3"+
+		"\u00c4\3\2\2\2\u00d3\u00c7\3\2\2\2\u00d3\u00ca\3\2\2\2\u00d3\u00cd\3\2"+
+		"\2\2\u00d3\u00d0\3\2\2\2\u00d4\u00d7\3\2\2\2\u00d5\u00d3\3\2\2\2\u00d5"+
+		"\u00d6\3\2\2\2\u00d6-\3\2\2\2\u00d7\u00d5\3\2\2\2\22\66>@PTeiqy\u0092"+
+		"\u009a\u00a6\u00a9\u00bf\u00d3\u00d5";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

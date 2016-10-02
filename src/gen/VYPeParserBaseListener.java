@@ -16,6 +16,30 @@ public class VYPeParserBaseListener implements VYPeParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterAny_value(VYPeParserParser.Any_valueContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitAny_value(VYPeParserParser.Any_valueContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterNumber_value(VYPeParserParser.Number_valueContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitNumber_value(VYPeParserParser.Number_valueContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterData_type(VYPeParserParser.Data_typeContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -47,6 +71,18 @@ public class VYPeParserBaseListener implements VYPeParserListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitFunction_identifier(VYPeParserParser.Function_identifierContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterParse(VYPeParserParser.ParseContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitParse(VYPeParserParser.ParseContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -208,6 +244,18 @@ public class VYPeParserBaseListener implements VYPeParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterFunction_call(VYPeParserParser.Function_callContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitFunction_call(VYPeParserParser.Function_callContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterCondition_expression(VYPeParserParser.Condition_expressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -227,18 +275,6 @@ public class VYPeParserBaseListener implements VYPeParserListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitExpression(VYPeParserParser.ExpressionContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterBinary_operand(VYPeParserParser.Binary_operandContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitBinary_operand(VYPeParserParser.Binary_operandContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

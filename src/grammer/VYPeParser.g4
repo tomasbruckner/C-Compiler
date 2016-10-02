@@ -32,10 +32,11 @@ type:
 function_identifier:
     Identifier ;
 
+parse: start ;
+
 start:
-    function_declaration start
-    | function_definition start
-    | EOF;
+    (function_declaration | function_definition)+ EOF;
+
 
 /************************************ FUNCTION DECLARATION ******************************************************/
 function_declaration:

@@ -8,6 +8,26 @@ import org.antlr.v4.runtime.tree.ParseTreeListener;
  */
 public interface VYPeParserListener extends ParseTreeListener {
 	/**
+	 * Enter a parse tree produced by {@link VYPeParserParser#any_value}.
+	 * @param ctx the parse tree
+	 */
+	void enterAny_value(VYPeParserParser.Any_valueContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link VYPeParserParser#any_value}.
+	 * @param ctx the parse tree
+	 */
+	void exitAny_value(VYPeParserParser.Any_valueContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link VYPeParserParser#number_value}.
+	 * @param ctx the parse tree
+	 */
+	void enterNumber_value(VYPeParserParser.Number_valueContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link VYPeParserParser#number_value}.
+	 * @param ctx the parse tree
+	 */
+	void exitNumber_value(VYPeParserParser.Number_valueContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link VYPeParserParser#data_type}.
 	 * @param ctx the parse tree
 	 */
@@ -37,6 +57,16 @@ public interface VYPeParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitFunction_identifier(VYPeParserParser.Function_identifierContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link VYPeParserParser#parse}.
+	 * @param ctx the parse tree
+	 */
+	void enterParse(VYPeParserParser.ParseContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link VYPeParserParser#parse}.
+	 * @param ctx the parse tree
+	 */
+	void exitParse(VYPeParserParser.ParseContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link VYPeParserParser#start}.
 	 * @param ctx the parse tree
@@ -168,6 +198,16 @@ public interface VYPeParserListener extends ParseTreeListener {
 	 */
 	void exitBlock_statements(VYPeParserParser.Block_statementsContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link VYPeParserParser#function_call}.
+	 * @param ctx the parse tree
+	 */
+	void enterFunction_call(VYPeParserParser.Function_callContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link VYPeParserParser#function_call}.
+	 * @param ctx the parse tree
+	 */
+	void exitFunction_call(VYPeParserParser.Function_callContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link VYPeParserParser#condition_expression}.
 	 * @param ctx the parse tree
 	 */
@@ -187,14 +227,4 @@ public interface VYPeParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitExpression(VYPeParserParser.ExpressionContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link VYPeParserParser#binary_operand}.
-	 * @param ctx the parse tree
-	 */
-	void enterBinary_operand(VYPeParserParser.Binary_operandContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link VYPeParserParser#binary_operand}.
-	 * @param ctx the parse tree
-	 */
-	void exitBinary_operand(VYPeParserParser.Binary_operandContext ctx);
 }

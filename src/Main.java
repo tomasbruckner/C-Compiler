@@ -2,6 +2,10 @@ import constants.Constant;
 import gen.*;
 import org.antlr.runtime.tree.CommonTree;
 import org.antlr.v4.runtime.*;
+import org.antlr.v4.runtime.tree.ParseTreeWalker;
+
+import java.util.List;
+
 /*************************************************************
  * Filename: Main.java
  * Project: Compiler Implementation for VYPe16 Programming Language
@@ -28,8 +32,14 @@ public class Main {
         }
 
         VYPeParserParser parser = new VYPeParserParser(new CommonTokenStream (lexer));
-        VYPeParserParser.StartContext tree = parser.start();
 
+        VYPeParserParser.StartContext parseTree = parser.start();
+        VYPeListener walker = new VYPeListener();
+
+        // needs to catch exceptions
+        ParseTreeWalker.DEFAULT.walk(walker, parseTree);
+
+        //System.out.println(parseTree.toStringTree());
         System.exit(Constant.NO_ERROR);
     }
 }
