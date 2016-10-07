@@ -1,10 +1,7 @@
 import constants.Constant;
 import gen.*;
-import org.antlr.runtime.tree.CommonTree;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
-
-import java.util.List;
 
 /*************************************************************
  * Filename: Main.java

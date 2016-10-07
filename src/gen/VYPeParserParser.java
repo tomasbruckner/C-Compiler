@@ -122,6 +122,11 @@ public class VYPeParserParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).exitAny_value(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof VYPeParserVisitor ) return ((VYPeParserVisitor<? extends T>)visitor).visitAny_value(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final Any_valueContext any_value() throws RecognitionException {
@@ -165,6 +170,11 @@ public class VYPeParserParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).exitNumber_value(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof VYPeParserVisitor ) return ((VYPeParserVisitor<? extends T>)visitor).visitNumber_value(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -211,6 +221,11 @@ public class VYPeParserParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).exitData_type(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof VYPeParserVisitor ) return ((VYPeParserVisitor<? extends T>)visitor).visitData_type(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final Data_typeContext data_type() throws RecognitionException {
@@ -256,6 +271,11 @@ public class VYPeParserParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).exitType(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof VYPeParserVisitor ) return ((VYPeParserVisitor<? extends T>)visitor).visitType(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -310,6 +330,11 @@ public class VYPeParserParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).exitFunction_identifier(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof VYPeParserVisitor ) return ((VYPeParserVisitor<? extends T>)visitor).visitFunction_identifier(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final Function_identifierContext function_identifier() throws RecognitionException {
@@ -348,6 +373,11 @@ public class VYPeParserParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).exitParse(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof VYPeParserVisitor ) return ((VYPeParserVisitor<? extends T>)visitor).visitParse(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -397,6 +427,11 @@ public class VYPeParserParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).exitStart(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof VYPeParserVisitor ) return ((VYPeParserVisitor<? extends T>)visitor).visitStart(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -471,6 +506,11 @@ public class VYPeParserParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).exitFunction_declaration(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof VYPeParserVisitor ) return ((VYPeParserVisitor<? extends T>)visitor).visitFunction_declaration(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final Function_declarationContext function_declaration() throws RecognitionException {
@@ -527,6 +567,11 @@ public class VYPeParserParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).exitParam_type_list(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof VYPeParserVisitor ) return ((VYPeParserVisitor<? extends T>)visitor).visitParam_type_list(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -609,6 +654,11 @@ public class VYPeParserParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).exitFunction_definition(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof VYPeParserVisitor ) return ((VYPeParserVisitor<? extends T>)visitor).visitFunction_definition(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final Function_definitionContext function_definition() throws RecognitionException {
@@ -669,6 +719,11 @@ public class VYPeParserParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).exitParam_list(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof VYPeParserVisitor ) return ((VYPeParserVisitor<? extends T>)visitor).visitParam_list(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -761,6 +816,11 @@ public class VYPeParserParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).exitStatement(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof VYPeParserVisitor ) return ((VYPeParserVisitor<? extends T>)visitor).visitStatement(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final StatementContext statement() throws RecognitionException {
@@ -850,6 +910,11 @@ public class VYPeParserParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).exitVariable_definition_statement(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof VYPeParserVisitor ) return ((VYPeParserVisitor<? extends T>)visitor).visitVariable_definition_statement(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final Variable_definition_statementContext variable_definition_statement() throws RecognitionException {
@@ -913,6 +978,11 @@ public class VYPeParserParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).exitAssignment_statement(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof VYPeParserVisitor ) return ((VYPeParserVisitor<? extends T>)visitor).visitAssignment_statement(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final Assignment_statementContext assignment_statement() throws RecognitionException {
@@ -966,6 +1036,11 @@ public class VYPeParserParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).exitConditional_statement(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof VYPeParserVisitor ) return ((VYPeParserVisitor<? extends T>)visitor).visitConditional_statement(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final Conditional_statementContext conditional_statement() throws RecognitionException {
@@ -1017,6 +1092,11 @@ public class VYPeParserParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).exitWhile_statement(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof VYPeParserVisitor ) return ((VYPeParserVisitor<? extends T>)visitor).visitWhile_statement(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final While_statementContext while_statement() throws RecognitionException {
@@ -1061,6 +1141,11 @@ public class VYPeParserParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).exitFunction_call_statement(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof VYPeParserVisitor ) return ((VYPeParserVisitor<? extends T>)visitor).visitFunction_call_statement(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final Function_call_statementContext function_call_statement() throws RecognitionException {
@@ -1103,6 +1188,11 @@ public class VYPeParserParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).exitReturn_statement(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof VYPeParserVisitor ) return ((VYPeParserVisitor<? extends T>)visitor).visitReturn_statement(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1159,6 +1249,11 @@ public class VYPeParserParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).exitBlock_statements(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof VYPeParserVisitor ) return ((VYPeParserVisitor<? extends T>)visitor).visitBlock_statements(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1227,6 +1322,11 @@ public class VYPeParserParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).exitFunction_call(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof VYPeParserVisitor ) return ((VYPeParserVisitor<? extends T>)visitor).visitFunction_call(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1299,6 +1399,11 @@ public class VYPeParserParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).exitCondition_expression(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof VYPeParserVisitor ) return ((VYPeParserVisitor<? extends T>)visitor).visitCondition_expression(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final Condition_expressionContext condition_expression() throws RecognitionException {
@@ -1370,6 +1475,11 @@ public class VYPeParserParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).exitExpression(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof VYPeParserVisitor ) return ((VYPeParserVisitor<? extends T>)visitor).visitExpression(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 

@@ -1,6 +1,8 @@
 package value;
 
 
+import constants.Constant.Type;
+
 /*************************************************************
  * Filename: Value.java
  * Project: Compiler Implementation for VYPe16 Programming Language
@@ -10,4 +12,5 @@ package value;
  * Date: 29/9/2016
  *************************************************************/
 public interface Value {
+    Type getType();
 }
