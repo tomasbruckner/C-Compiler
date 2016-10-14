@@ -1,26 +1,31 @@
-package value;
+package values;
 
+import constants.Constant.Type;
 
 /*************************************************************
- * Filename: IntValue.java
+ * Filename: StringValue.java
  * Project: Compiler Implementation for VYPe16 Programming Language
  * Compiler Team: 04
  * Authors: Filip Benna, xbenna01
  *          Tomas Bruckner, xbruck02
  * Date: 1/10/2016
  *************************************************************/
-public class IntValue implements Value {
-    private int value;
+public class StringValue extends Value {
+    private String value;
 
-    public IntValue(int value){
+    public Type getType(){
+        return Type.STRING;
+    }
+
+    public StringValue(String value){
         this.value = value;
     }
 
-    public int getValue() {
+    public String getValue() {
         return this.value;
     }
 
-    public int setValue(int value){
+    public String setValue(String value){
         this.value = value;
         return this.value;
     }

@@ -1,4 +1,6 @@
 package tables;
+import values.Value;
+
 import java.util.HashMap;
 /*************************************************************
  * Filename: SymbolTable.java
@@ -10,7 +12,7 @@ import java.util.HashMap;
  *************************************************************/
 public class SymbolTable {
     private SymbolTable parent;
-    private HashMap<String,Variable> variableList;
+    private HashMap<String,Value> variableList;
 
     public SymbolTable(){
 
@@ -20,7 +22,7 @@ public class SymbolTable {
         this.parent = parent;
     }
 
-    public Variable getVariableByName(String name){
+    public Value getVariableByName(String name){
         if(variableList.containsKey(name)) {
             return variableList.get(name);
         }

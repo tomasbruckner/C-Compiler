@@ -1,5 +1,5 @@
-// Generated from C:/Users/Tom/IdeaProjects/vype/src/grammer\VYPeParser.g4 by ANTLR 4.5.3
-package gen;
+// Generated from C:/Users/Tom/IdeaProjects/vype/src/grammar\VYPeParser.g4 by ANTLR 4.5.3
+package grammar.gen;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
@@ -28,25 +28,65 @@ public interface VYPeParserListener extends ParseTreeListener {
 	 */
 	void exitNumber_value(VYPeParserParser.Number_valueContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link VYPeParserParser#data_type}.
+	 * Enter a parse tree produced by the {@code IntLabel}
+	 * labeled alternative in {@link VYPeParserParser#data_type}.
 	 * @param ctx the parse tree
 	 */
-	void enterData_type(VYPeParserParser.Data_typeContext ctx);
+	void enterIntLabel(VYPeParserParser.IntLabelContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link VYPeParserParser#data_type}.
+	 * Exit a parse tree produced by the {@code IntLabel}
+	 * labeled alternative in {@link VYPeParserParser#data_type}.
 	 * @param ctx the parse tree
 	 */
-	void exitData_type(VYPeParserParser.Data_typeContext ctx);
+	void exitIntLabel(VYPeParserParser.IntLabelContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link VYPeParserParser#type}.
+	 * Enter a parse tree produced by the {@code CharLabel}
+	 * labeled alternative in {@link VYPeParserParser#data_type}.
 	 * @param ctx the parse tree
 	 */
-	void enterType(VYPeParserParser.TypeContext ctx);
+	void enterCharLabel(VYPeParserParser.CharLabelContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link VYPeParserParser#type}.
+	 * Exit a parse tree produced by the {@code CharLabel}
+	 * labeled alternative in {@link VYPeParserParser#data_type}.
 	 * @param ctx the parse tree
 	 */
-	void exitType(VYPeParserParser.TypeContext ctx);
+	void exitCharLabel(VYPeParserParser.CharLabelContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code StringLabel}
+	 * labeled alternative in {@link VYPeParserParser#data_type}.
+	 * @param ctx the parse tree
+	 */
+	void enterStringLabel(VYPeParserParser.StringLabelContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code StringLabel}
+	 * labeled alternative in {@link VYPeParserParser#data_type}.
+	 * @param ctx the parse tree
+	 */
+	void exitStringLabel(VYPeParserParser.StringLabelContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code DateTypeLabel}
+	 * labeled alternative in {@link VYPeParserParser#type}.
+	 * @param ctx the parse tree
+	 */
+	void enterDateTypeLabel(VYPeParserParser.DateTypeLabelContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code DateTypeLabel}
+	 * labeled alternative in {@link VYPeParserParser#type}.
+	 * @param ctx the parse tree
+	 */
+	void exitDateTypeLabel(VYPeParserParser.DateTypeLabelContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code VoidLabel}
+	 * labeled alternative in {@link VYPeParserParser#type}.
+	 * @param ctx the parse tree
+	 */
+	void enterVoidLabel(VYPeParserParser.VoidLabelContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code VoidLabel}
+	 * labeled alternative in {@link VYPeParserParser#type}.
+	 * @param ctx the parse tree
+	 */
+	void exitVoidLabel(VYPeParserParser.VoidLabelContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link VYPeParserParser#function_identifier}.
 	 * @param ctx the parse tree

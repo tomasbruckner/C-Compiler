@@ -1,5 +1,5 @@
-// Generated from C:/Users/Tom/IdeaProjects/vype/src/grammer\VYPeParser.g4 by ANTLR 4.5.3
-package gen;
+// Generated from C:/Users/Tom/IdeaProjects/vype/src/grammar\VYPeParser.g4 by ANTLR 4.5.3
+package grammar.gen;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
 /**
@@ -23,17 +23,40 @@ public interface VYPeParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitNumber_value(VYPeParserParser.Number_valueContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link VYPeParserParser#data_type}.
+	 * Visit a parse tree produced by the {@code IntLabel}
+	 * labeled alternative in {@link VYPeParserParser#data_type}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitData_type(VYPeParserParser.Data_typeContext ctx);
+	T visitIntLabel(VYPeParserParser.IntLabelContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link VYPeParserParser#type}.
+	 * Visit a parse tree produced by the {@code CharLabel}
+	 * labeled alternative in {@link VYPeParserParser#data_type}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitType(VYPeParserParser.TypeContext ctx);
+	T visitCharLabel(VYPeParserParser.CharLabelContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code StringLabel}
+	 * labeled alternative in {@link VYPeParserParser#data_type}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitStringLabel(VYPeParserParser.StringLabelContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code DateTypeLabel}
+	 * labeled alternative in {@link VYPeParserParser#type}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDateTypeLabel(VYPeParserParser.DateTypeLabelContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code VoidLabel}
+	 * labeled alternative in {@link VYPeParserParser#type}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitVoidLabel(VYPeParserParser.VoidLabelContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link VYPeParserParser#function_identifier}.
 	 * @param ctx the parse tree

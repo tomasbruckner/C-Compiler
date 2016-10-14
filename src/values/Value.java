@@ -1,4 +1,4 @@
-package value;
+package values;
 
 
 import constants.Constant.Type;
@@ -11,6 +11,8 @@ import constants.Constant.Type;
  *          Tomas Bruckner, xbruck02
  * Date: 29/9/2016
  *************************************************************/
-public interface Value {
-    Type getType();
+public abstract class Value {
+    private boolean compilationTime;
+
+    abstract Type getType();
 }

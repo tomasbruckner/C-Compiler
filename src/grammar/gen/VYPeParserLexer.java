@@ -1,5 +1,5 @@
-// Generated from C:/Users/Tom/IdeaProjects/vype/src/grammer\VYPeLexer.g4 by ANTLR 4.5.3
-package gen;
+// Generated from C:/Users/Tom/IdeaProjects/vype/src/grammar\VYPeParser.g4 by ANTLR 4.5.3
+package grammar.gen;
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Token;
@@ -10,7 +10,7 @@ import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.misc.*;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
-public class VYPeLexer extends Lexer {
+public class VYPeParserLexer extends Lexer {
 	static { RuntimeMetaData.checkVersion("4.5.3", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
@@ -91,13 +91,13 @@ public class VYPeLexer extends Lexer {
 	}
 
 
-	public VYPeLexer(CharStream input) {
+	public VYPeParserLexer(CharStream input) {
 		super(input);
 		_interp = new LexerATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
 
 	@Override
-	public String getGrammarFileName() { return "VYPeLexer.g4"; }
+	public String getGrammarFileName() { return "VYPeParser.g4"; }
 
 	@Override
 	public String[] getRuleNames() { return ruleNames; }

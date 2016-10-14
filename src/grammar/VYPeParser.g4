@@ -21,13 +21,15 @@ number_value:
     | IntLiteral ;
 
 data_type:
-    Int
-    | Char
-    | String ;
+    Int         # IntLabel
+    | Char      # CharLabel
+    | String    # StringLabel
+    ;
 
 type:
-    data_type
-    | Void ;
+    data_type   # DateTypeLabel
+    | Void      # VoidLabel
+    ;
 
 function_identifier:
     Identifier ;

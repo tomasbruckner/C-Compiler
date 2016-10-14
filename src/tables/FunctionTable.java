@@ -1,5 +1,7 @@
 package tables;
 
+import exceptions.SemanticException;
+
 import java.util.HashMap;
 
 /*************************************************************
@@ -26,12 +28,10 @@ public class FunctionTable {
         Function f = this.functionList.get(functionName);
 
         if(f != null && function.isDeclaration()){
-            // trying to redeclare function
-            // throw error
+            throw new SemanticException("Function " + functionName + " already declared!");
         }
         else if(f != null && f.isDefinition()){
-            // function is already defined
-            // throw error
+            throw new SemanticException("Function " + functionName + " already defined!");
         }
         else{
             this.functionList.put(functionName, function);
@@ -41,8 +41,7 @@ public class FunctionTable {
     public Function getFunctionByName(String name){
         Function f = this.functionList.get(name);
         if(f == null || f.isDeclaration()){
-            // function is not defined
-            // throw error
+            throw new SemanticException("Function " + name + " is not defined!");
         }
         return f;
     }

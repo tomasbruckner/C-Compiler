@@ -1,5 +1,5 @@
-// Generated from C:/Users/Tom/IdeaProjects/vype/src/grammer\VYPeParser.g4 by ANTLR 4.5.3
-package gen;
+// Generated from C:/Users/Tom/IdeaProjects/vype/src/grammar\VYPeParser.g4 by ANTLR 4.5.3
+package grammar.gen;
 
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
@@ -40,25 +40,61 @@ public class VYPeParserBaseListener implements VYPeParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterData_type(VYPeParserParser.Data_typeContext ctx) { }
+	@Override public void enterIntLabel(VYPeParserParser.IntLabelContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitData_type(VYPeParserParser.Data_typeContext ctx) { }
+	@Override public void exitIntLabel(VYPeParserParser.IntLabelContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterType(VYPeParserParser.TypeContext ctx) { }
+	@Override public void enterCharLabel(VYPeParserParser.CharLabelContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitType(VYPeParserParser.TypeContext ctx) { }
+	@Override public void exitCharLabel(VYPeParserParser.CharLabelContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterStringLabel(VYPeParserParser.StringLabelContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitStringLabel(VYPeParserParser.StringLabelContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterDateTypeLabel(VYPeParserParser.DateTypeLabelContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitDateTypeLabel(VYPeParserParser.DateTypeLabelContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterVoidLabel(VYPeParserParser.VoidLabelContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitVoidLabel(VYPeParserParser.VoidLabelContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
