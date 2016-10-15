@@ -51,7 +51,13 @@ public class Function {
         return this.parameterList;
     }
 
-    public boolean isParameterListEqual(List<Value> parameterList) {
+    public boolean isParameterListValid(List<Value> parameterList) {
+        // print function is special (variable number of non-specified arguments)
+        // must contain at least one parameter
+        if(this.name.equals("print")){
+            return parameterList.size() > 0;
+        }
+
         if(this.parameterList.size() != parameterList.size()){
             return false;
         }

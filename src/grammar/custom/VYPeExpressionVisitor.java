@@ -73,7 +73,7 @@ public class VYPeExpressionVisitor extends VYPeParserBaseVisitor {
         Function function = this.functionTable.getFunctionByName(name);
         List<Value> parameters = this.getFunctionCallParameters(ctx);
 
-        if(!function.isParameterListEqual(parameters)){
+        if(!function.isParameterListValid(parameters)){
             throw new SemanticException("Invalid function call parameters for function: " + name + "! Line: " + ctx.start.getLine());
         }
 
@@ -101,9 +101,9 @@ public class VYPeExpressionVisitor extends VYPeParserBaseVisitor {
     }
 
     private void checkConditionExpression(VYPeParserParser.Condition_expressionContext ctx) {
-        Object conditionType = visit(ctx);
+        Type conditionType = (Type)visit(ctx.expression());
 
-        if(!(conditionType instanceof Type && conditionType == Type.INT)){
+        if(conditionType != Type.INT){
             throw new SemanticException("Condition expression is not integer! Line: " + ctx.start.getLine());
         }
     }
@@ -176,11 +176,14 @@ public class VYPeExpressionVisitor extends VYPeParserBaseVisitor {
     }
 
     private boolean isValidCasting(Type typeFrom, Type typeTo) {
+        // TODO check response https://wis.fit.vutbr.cz/FIT/st/phorum-msg-show.php?id=45216&mode=single
         switch(typeFrom) {
             case CHAR:
-                return typeTo == Type.INT || typeTo == Type.STRING;
+                return typeTo == Type.INT || typeTo == Type.STRING || typeTo == Type.CHAR;
             case INT:
-                return typeTo == Type.CHAR;
+                return typeTo == Type.CHAR || typeTo == Type.INT;
+            case STRING:
+                return typeTo == Type.STRING;
             default:
                 return false;
         }
@@ -204,7 +207,7 @@ public class VYPeExpressionVisitor extends VYPeParserBaseVisitor {
 
     @Override
     public Type visitMulDivModLabel(VYPeParserParser.MulDivModLabelContext ctx) {
-        if(areNumberTypes(ctx.expression(0), ctx.expression(1))){
+        if(!areNumberTypes(ctx.expression(0), ctx.expression(1))){
             throw new SemanticException("Invalid operand types for mul/div/mod! Line: " + ctx.start.getLine());
         }
 
@@ -213,7 +216,7 @@ public class VYPeExpressionVisitor extends VYPeParserBaseVisitor {
 
     @Override
     public Type visitPlusMinusLabel(VYPeParserParser.PlusMinusLabelContext ctx) {
-        if(areNumberTypes(ctx.expression(0), ctx.expression(1))){
+        if(!areNumberTypes(ctx.expression(0), ctx.expression(1))){
             throw new SemanticException("Invalid operand types for plus/minus! Line: " + ctx.start.getLine());
         }
 
@@ -222,7 +225,7 @@ public class VYPeExpressionVisitor extends VYPeParserBaseVisitor {
 
     @Override
     public Type visitGreaterLowerLabel(VYPeParserParser.GreaterLowerLabelContext ctx) {
-        if(areSameTypes(ctx.expression(0), ctx.expression(1))){
+        if(!areSameTypes(ctx.expression(0), ctx.expression(1))){
             throw new SemanticException("Invalid operand types for greater/lower! Line: " + ctx.start.getLine());
         }
 
@@ -231,7 +234,7 @@ public class VYPeExpressionVisitor extends VYPeParserBaseVisitor {
 
     @Override
     public Type visitEqualLabel(VYPeParserParser.EqualLabelContext ctx) {
-        if(areSameTypes(ctx.expression(0), ctx.expression(1))){
+        if(!areSameTypes(ctx.expression(0), ctx.expression(1))){
             throw new SemanticException("Invalid operand types for equal/not equal! Line: " + ctx.start.getLine());
         }
 
@@ -240,7 +243,7 @@ public class VYPeExpressionVisitor extends VYPeParserBaseVisitor {
 
     @Override
     public Type visitAndLabel(VYPeParserParser.AndLabelContext ctx) {
-        if(areNumberTypes(ctx.expression(0), ctx.expression(1))){
+        if(!areNumberTypes(ctx.expression(0), ctx.expression(1))){
             throw new SemanticException("Invalid operand types for and! Line: " + ctx.start.getLine());
         }
 
@@ -249,7 +252,7 @@ public class VYPeExpressionVisitor extends VYPeParserBaseVisitor {
 
     @Override
     public Type visitOrLabel(VYPeParserParser.OrLabelContext ctx) {
-        if(areNumberTypes(ctx.expression(0), ctx.expression(1))){
+        if(!areNumberTypes(ctx.expression(0), ctx.expression(1))){
             throw new SemanticException("Invalid operand types for and! Line: " + ctx.start.getLine());
         }
 
@@ -267,7 +270,7 @@ public class VYPeExpressionVisitor extends VYPeParserBaseVisitor {
         Type leftOperandType = (Type) visit(leftExpression);
         Type rightOperandType = (Type) visit(rightExpression);
 
-        return leftOperandType != Type.INT || rightOperandType != Type.INT;
+        return leftOperandType == Type.INT && rightOperandType == Type.INT;
     }
 
     /****************************************** VALUES *****************************************************************/

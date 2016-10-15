@@ -1,9 +1,9 @@
+import exceptions.SemanticException;
 import util.Constant;
 import grammar.custom.VYPeMainListener;
 import grammar.gen.*;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
-import tables.FunctionTable;
 
 /*************************************************************
  * Filename: Main.java
@@ -17,7 +17,7 @@ import tables.FunctionTable;
 public class Main {
 
     public static void main(String[] args) {
-        args = new String[] {"", "tests/lexical_errors/testcase00.c"};
+        args = new String[] {"", "tests/valid/testcase03.c"};
         if(args.length < 2 || args.length > 3){
             System.exit(Constant.INTERNAL_ERROR);
         }
@@ -31,18 +31,25 @@ public class Main {
         }
 
         VYPeParserParser parser = new VYPeParserParser(new CommonTokenStream (lexer));
-
         VYPeParserParser.StartContext parseTree = parser.start();
+
+        // TODO add lexical error detection
+        if(parser.getNumberOfSyntaxErrors() > 0) {
+            System.exit(Constant.SYNTAX_ERROR);
+        }
+
         VYPeMainListener walker = new VYPeMainListener();
 
-        // needs to catch exceptions
-        ParseTreeWalker.DEFAULT.walk(walker, parseTree);
+        try {
+            ParseTreeWalker.DEFAULT.walk(walker, parseTree);
+            walker.getFunctionTable().semanticCheckAll();
+        }
+        catch(SemanticException e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+            System.exit(Constant.SEMANTIC_ERROR);
+        }
 
-        FunctionTable functionTable = walker.getFunctionTable();
-
-        functionTable.semanticCheckAll();
-
-        //System.out.println(parseTree.toStringTree());
         System.exit(Constant.NO_ERROR);
     }
 }

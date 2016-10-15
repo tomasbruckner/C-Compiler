@@ -1,6 +1,5 @@
 package tables;
 
-import grammar.custom.VYPeExpressionVisitor;
 import util.Constant;
 import util.Constant.Type;
 import exceptions.SemanticException;
@@ -61,7 +60,7 @@ public class FunctionTable {
             throw new SemanticException("Function " + functionName + " already defined!");
         }
         else if(f != null && f.isDeclaration()) {
-            if(!f.isParameterListEqual(function.getParameterList())){
+            if(!f.isParameterListValid(function.getParameterList())){
                 String errorMessage = "Different types of parameters in function declaration: " + functionName;
                 throw new SemanticException(errorMessage);
             }
