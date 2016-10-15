@@ -9,6 +9,9 @@
 
 package constants;
 
+import java.util.Arrays;
+import java.util.List;
+
 public final class Constant {
 
     public static final int NO_ERROR = 0;
@@ -24,8 +27,11 @@ public final class Constant {
     public static final int INTERNAL_ERROR = 5;
 
     public enum Type {
-        CHAR, INT, STRING
+        CHAR, INT, STRING, VOID, VARIABLE
     }
+
+    public static final List<String> EMBEDDED = Arrays.asList("print", "read_char", "read_int", "read_string", "get_at", "set_at", "strcat");
+
     private Constant(){
         throw new AssertionError();
     }

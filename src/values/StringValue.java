@@ -13,12 +13,21 @@ import constants.Constant.Type;
 public class StringValue extends Value {
     private String value;
 
-    public Type getType(){
-        return Type.STRING;
+    public StringValue(){}
+
+    public StringValue(String name, String value){
+        this.name = name;
+        this.value = value;
     }
 
-    public StringValue(String value){
-        this.value = value;
+    public StringValue(String name, String value, boolean compilationTime){
+        this(name, value);
+        this.compilationTime = compilationTime;
+    }
+
+    @Override
+    public Type getType(){
+        return Type.STRING;
     }
 
     public String getValue() {

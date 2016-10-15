@@ -2,6 +2,7 @@ package tables;
 
 import constants.Constant.Type;
 import grammar.gen.VYPeParserParser;
+import values.Value;
 
 import java.util.ArrayList;
 
@@ -14,22 +15,41 @@ import java.util.ArrayList;
  * Date: 29/9/2016
  *************************************************************/
 public class Function {
+    private Type returnType;
     private String name;
-    private ArrayList<Type> parameters;
+    private ArrayList<Value> parameterList;
     private VYPeParserParser.Block_statementsContext block;
     private boolean defined;
 
-    public Function(String name, ArrayList<Type> parameters, boolean defined){
+    public Function(Type returnType, String name, ArrayList<Value> parameterList, boolean defined){
+        this.returnType = returnType;
         this.name = name;
-        this.parameters = parameters;
+        this.parameterList = parameterList;
         this.defined = defined;
     }
 
-    public Function(String name, ArrayList<Type> parameters, VYPeParserParser.Block_statementsContext block, boolean defined){
-        this(name, parameters, defined);
+    public Function(Type returnType, String name, ArrayList<Value> parameterList, VYPeParserParser.Block_statementsContext block, boolean defined){
+        this(returnType, name, parameterList, defined);
         this.block = block;
     }
 
+    public ArrayList<Value> getParameterList(){
+        return this.parameterList;
+    }
+
+    public boolean isParameterListEqual(ArrayList<Value> parameterList) {
+        if(this.parameterList.size() != parameterList.size()){
+            return false;
+        }
+
+        for(int i = 0, len = parameterList.size(); i < len; i++) {
+            if(this.parameterList.get(i).getType() != parameterList.get(i).getType()){
+                return false;
+            }
+        }
+
+        return true;
+    }
 
     public boolean isDeclaration(){
         return !this.defined;

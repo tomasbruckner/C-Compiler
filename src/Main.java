@@ -1,5 +1,5 @@
 import constants.Constant;
-import grammar.custom.VYPeListener;
+import grammar.custom.VYPeMainListener;
 import grammar.gen.*;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
@@ -32,7 +32,7 @@ public class Main {
         VYPeParserParser parser = new VYPeParserParser(new CommonTokenStream (lexer));
 
         VYPeParserParser.StartContext parseTree = parser.start();
-        VYPeListener walker = new VYPeListener();
+        VYPeMainListener walker = new VYPeMainListener();
 
         // needs to catch exceptions
         ParseTreeWalker.DEFAULT.walk(walker, parseTree);

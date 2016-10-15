@@ -12,7 +12,21 @@ import constants.Constant.Type;
  * Date: 29/9/2016
  *************************************************************/
 public abstract class Value {
-    private boolean compilationTime;
+    protected String name;
+    protected boolean compilationTime = false;
 
-    abstract Type getType();
+    abstract public Type getType();
+
+    public String getName(){
+        return this.name;
+    }
+
+    public boolean getCompilationTime(){
+        return this.compilationTime;
+    }
+
+    public boolean setCompilationTime(boolean compilationTime){
+        this.compilationTime = compilationTime;
+        return this.compilationTime;
+    }
 }
