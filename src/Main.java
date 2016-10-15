@@ -1,8 +1,9 @@
-import constants.Constant;
+import util.Constant;
 import grammar.custom.VYPeMainListener;
 import grammar.gen.*;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
+import tables.FunctionTable;
 
 /*************************************************************
  * Filename: Main.java
@@ -36,6 +37,10 @@ public class Main {
 
         // needs to catch exceptions
         ParseTreeWalker.DEFAULT.walk(walker, parseTree);
+
+        FunctionTable table = walker.getFunctionTable();
+
+        table.getFunctionByName("main").invoke();
 
         //System.out.println(parseTree.toStringTree());
         System.exit(Constant.NO_ERROR);

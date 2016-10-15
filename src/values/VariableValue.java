@@ -1,5 +1,5 @@
 package values;
-import constants.Constant.Type;
+import util.Constant.Type;
 /*************************************************************
  * Filename: VariableValue.java
  * Project: Compiler Implementation for VYPe16 Programming Language

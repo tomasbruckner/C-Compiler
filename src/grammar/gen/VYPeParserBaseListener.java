@@ -16,25 +16,49 @@ public class VYPeParserBaseListener implements VYPeParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAny_value(VYPeParserParser.Any_valueContext ctx) { }
+	@Override public void enterIdentifierLabel(VYPeParserParser.IdentifierLabelContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAny_value(VYPeParserParser.Any_valueContext ctx) { }
+	@Override public void exitIdentifierLabel(VYPeParserParser.IdentifierLabelContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterNumber_value(VYPeParserParser.Number_valueContext ctx) { }
+	@Override public void enterIntLiteralLabel(VYPeParserParser.IntLiteralLabelContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitNumber_value(VYPeParserParser.Number_valueContext ctx) { }
+	@Override public void exitIntLiteralLabel(VYPeParserParser.IntLiteralLabelContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterCharLiteralLabel(VYPeParserParser.CharLiteralLabelContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitCharLiteralLabel(VYPeParserParser.CharLiteralLabelContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterStringLiteralLabel(VYPeParserParser.StringLiteralLabelContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitStringLiteralLabel(VYPeParserParser.StringLiteralLabelContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -76,13 +100,13 @@ public class VYPeParserBaseListener implements VYPeParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterDateTypeLabel(VYPeParserParser.DateTypeLabelContext ctx) { }
+	@Override public void enterDataTypeLabel(VYPeParserParser.DataTypeLabelContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitDateTypeLabel(VYPeParserParser.DateTypeLabelContext ctx) { }
+	@Override public void exitDataTypeLabel(VYPeParserParser.DataTypeLabelContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -95,18 +119,6 @@ public class VYPeParserBaseListener implements VYPeParserListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitVoidLabel(VYPeParserParser.VoidLabelContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterFunction_identifier(VYPeParserParser.Function_identifierContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitFunction_identifier(VYPeParserParser.Function_identifierContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

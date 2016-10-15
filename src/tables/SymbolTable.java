@@ -1,7 +1,11 @@
 package tables;
+import exceptions.SemanticException;
 import values.Value;
+import util.Constant.Type;
 
 import java.util.HashMap;
+import java.util.List;
+
 /*************************************************************
  * Filename: SymbolTable.java
  * Project: Compiler Implementation for VYPe16 Programming Language
@@ -12,21 +16,39 @@ import java.util.HashMap;
  *************************************************************/
 public class SymbolTable {
     private SymbolTable parent;
-    private HashMap<String,Value> variableList;
+    private HashMap<String,Value> variableList = new HashMap<>();
 
     public SymbolTable(){
 
+    }
+
+    public SymbolTable(List<Value> list) {
+        for(Value value : list) {
+            variableList.put(value.getName(), value);
+        }
     }
 
     public SymbolTable(SymbolTable parent){
         this.parent = parent;
     }
 
-    public Value getVariableByName(String name){
+    public void add(Value value){
+        String name = value.getName();
+        if(this.getValueByName(name) != null) {
+            throw new SemanticException("Variable " + name + " already defined!");
+        }
+        this.variableList.put(name, value);
+    }
+
+    public Value getValueByName(String name){
         if(variableList.containsKey(name)) {
             return variableList.get(name);
         }
 
-        return (parent != null) ? parent.getVariableByName(name) : null;
+        return (parent != null) ? parent.getValueByName(name) : null;
+    }
+
+    public Type getVariableType(String name) {
+        return variableList.get(name).getType();
     }
 }

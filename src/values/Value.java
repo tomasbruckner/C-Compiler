@@ -1,7 +1,7 @@
 package values;
 
 
-import constants.Constant.Type;
+import util.Constant.Type;
 
 /*************************************************************
  * Filename: Value.java
@@ -19,6 +19,10 @@ public abstract class Value {
 
     public String getName(){
         return this.name;
+    }
+
+    public void setName(String name){
+        this.name = name;
     }
 
     public boolean getCompilationTime(){

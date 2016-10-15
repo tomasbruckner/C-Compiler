@@ -1,6 +1,5 @@
 package grammar.custom;
 
-import constants.Constant.Type;
 import grammar.gen.VYPeParserBaseListener;
 import grammar.gen.VYPeParserParser;
 import values.CharValue;

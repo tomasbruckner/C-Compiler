@@ -1,12 +1,13 @@
 package grammar.custom;
 
-import constants.Constant.Type;
+import util.Constant.Type;
 import exceptions.SemanticException;
 import grammar.gen.VYPeParserBaseListener;
 import grammar.gen.VYPeParserParser;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 import tables.Function;
 import tables.FunctionTable;
+import util.Utility;
 import values.Value;
 
 import java.util.ArrayList;
@@ -29,36 +30,27 @@ public class VYPeMainListener extends VYPeParserBaseListener {
 
     @Override
     public void enterFunction_declaration(VYPeParserParser.Function_declarationContext ctx) {
-        Type returnType = this.getReturnType(ctx.type().getText());
+        Type returnType = Utility.getType(ctx.type().getText());
         String functionName = ctx.Identifier().getText();
         this.functionTable.add(functionName, new Function(returnType, functionName, this.getParameters(ctx.param_type_list()), false));
     }
 
     @Override
     public void enterFunction_definition(VYPeParserParser.Function_definitionContext ctx) {
-        Type returnType = this.getReturnType(ctx.type().getText());
+        Type returnType = Utility.getType(ctx.type().getText());
         String functionName = ctx.Identifier().getText();
         this.functionTable.add(functionName, new Function(returnType, functionName, this.getParameters(ctx.param_list()), ctx.block_statements(), true));
     }
 
-    private Type getReturnType(String type) {
-        switch(type) {
-            case "void":
-                return Type.VOID;
-            case "int":
-                return Type.INT;
-            case "char":
-                return Type.CHAR;
-            case "string":
-                return Type.STRING;
-            default:
-                throw new SemanticException("Unknown return type!");
-        }
+    public FunctionTable getFunctionTable(){
+        return this.functionTable;
     }
+
+
 
     public ArrayList<Value> getParameters(VYPeParserParser.Param_type_listContext ctx) {
         if(ctx.getChildCount() == 0){
-            throw new SemanticException("No parameters in function declaration!");
+            throw new SemanticException("No parameters in function declaration! Line: " + ctx.start.getLine());
         }
         else if(ctx.Void() != null){
             return new ArrayList<>();
@@ -73,7 +65,7 @@ public class VYPeMainListener extends VYPeParserBaseListener {
 
     public ArrayList<Value> getParameters(VYPeParserParser.Param_listContext ctx) {
         if(ctx.getChildCount() == 0){
-            throw new SemanticException("No parameters in function definition!");
+            throw new SemanticException("No parameters in function definition! Line: " + ctx.start.getLine());
         }
         else if(ctx.Void() != null){
             return new ArrayList<>();

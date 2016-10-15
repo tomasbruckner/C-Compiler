@@ -11,14 +11,11 @@ grammar VYPeParser;
 import VYPeLexer;
 
 any_value:
-    Identifier
-    | IntLiteral
-    | CharLiteral
-    | StringLiteral ;
-
-number_value:
-    Identifier
-    | IntLiteral ;
+    Identifier      # IdentifierLabel
+    | IntLiteral    # IntLiteralLabel
+    | CharLiteral   # CharLiteralLabel
+    | StringLiteral # StringLiteralLabel
+    ;
 
 data_type:
     Int         # IntLabel
@@ -27,12 +24,9 @@ data_type:
     ;
 
 type:
-    data_type   # DateTypeLabel
+    data_type   # DataTypeLabel
     | Void      # VoidLabel
     ;
-
-function_identifier:
-    Identifier ;
 
 parse: start ;
 
@@ -89,7 +83,7 @@ block_statements:
     LeftCurlyParenthesis (statement)* RightCurlyParenthesis ;
 
 function_call:
-    function_identifier LeftParenthesis (expression (Colon expression)*)? RightParenthesis ;
+    Identifier LeftParenthesis (expression (Colon expression)*)? RightParenthesis ;
 
 condition_expression:
     LeftParenthesis expression RightParenthesis ;

@@ -1,7 +1,7 @@
 package values;
 
 
-import constants.Constant.Type;
+import util.Constant.Type;
 
 /*************************************************************
  * Filename: IntValue.java

@@ -17,14 +17,28 @@ public class VYPeParserBaseVisitor<T> extends AbstractParseTreeVisitor<T> implem
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitAny_value(VYPeParserParser.Any_valueContext ctx) { return visitChildren(ctx); }
+	@Override public T visitIdentifierLabel(VYPeParserParser.IdentifierLabelContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitNumber_value(VYPeParserParser.Number_valueContext ctx) { return visitChildren(ctx); }
+	@Override public T visitIntLiteralLabel(VYPeParserParser.IntLiteralLabelContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitCharLiteralLabel(VYPeParserParser.CharLiteralLabelContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitStringLiteralLabel(VYPeParserParser.StringLiteralLabelContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -52,7 +66,7 @@ public class VYPeParserBaseVisitor<T> extends AbstractParseTreeVisitor<T> implem
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitDateTypeLabel(VYPeParserParser.DateTypeLabelContext ctx) { return visitChildren(ctx); }
+	@Override public T visitDataTypeLabel(VYPeParserParser.DataTypeLabelContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -60,13 +74,6 @@ public class VYPeParserBaseVisitor<T> extends AbstractParseTreeVisitor<T> implem
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
 	@Override public T visitVoidLabel(VYPeParserParser.VoidLabelContext ctx) { return visitChildren(ctx); }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
-	@Override public T visitFunction_identifier(VYPeParserParser.Function_identifierContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *

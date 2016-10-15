@@ -1,10 +1,9 @@
 package tables;
 
-import constants.Constant.Type;
+import util.Constant.Type;
 import grammar.gen.VYPeParserParser;
 import values.Value;
-
-import java.util.ArrayList;
+import java.util.List;
 
 /*************************************************************
  * Filename: Function.java
@@ -17,27 +16,35 @@ import java.util.ArrayList;
 public class Function {
     private Type returnType;
     private String name;
-    private ArrayList<Value> parameterList;
+    private List<Value> parameterList;
     private VYPeParserParser.Block_statementsContext block;
     private boolean defined;
 
-    public Function(Type returnType, String name, ArrayList<Value> parameterList, boolean defined){
+    public Function(Type returnType, String name, List<Value> parameterList, boolean defined){
         this.returnType = returnType;
         this.name = name;
         this.parameterList = parameterList;
         this.defined = defined;
     }
 
-    public Function(Type returnType, String name, ArrayList<Value> parameterList, VYPeParserParser.Block_statementsContext block, boolean defined){
+    public Function(Type returnType, String name, List<Value> parameterList, VYPeParserParser.Block_statementsContext block, boolean defined){
         this(returnType, name, parameterList, defined);
         this.block = block;
     }
 
-    public ArrayList<Value> getParameterList(){
+    public void invoke() {
+//        VYPeExpressionVisitor walker = new VYPeExpressionVisitor();
+    }
+
+    public Type getReturnType() {
+        return this.returnType;
+    }
+
+    public List<Value> getParameterList(){
         return this.parameterList;
     }
 
-    public boolean isParameterListEqual(ArrayList<Value> parameterList) {
+    public boolean isParameterListEqual(List<Value> parameterList) {
         if(this.parameterList.size() != parameterList.size()){
             return false;
         }
@@ -50,6 +57,7 @@ public class Function {
 
         return true;
     }
+
 
     public boolean isDeclaration(){
         return !this.defined;

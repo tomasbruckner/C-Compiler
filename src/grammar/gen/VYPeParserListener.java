@@ -8,25 +8,53 @@ import org.antlr.v4.runtime.tree.ParseTreeListener;
  */
 public interface VYPeParserListener extends ParseTreeListener {
 	/**
-	 * Enter a parse tree produced by {@link VYPeParserParser#any_value}.
+	 * Enter a parse tree produced by the {@code IdentifierLabel}
+	 * labeled alternative in {@link VYPeParserParser#any_value}.
 	 * @param ctx the parse tree
 	 */
-	void enterAny_value(VYPeParserParser.Any_valueContext ctx);
+	void enterIdentifierLabel(VYPeParserParser.IdentifierLabelContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link VYPeParserParser#any_value}.
+	 * Exit a parse tree produced by the {@code IdentifierLabel}
+	 * labeled alternative in {@link VYPeParserParser#any_value}.
 	 * @param ctx the parse tree
 	 */
-	void exitAny_value(VYPeParserParser.Any_valueContext ctx);
+	void exitIdentifierLabel(VYPeParserParser.IdentifierLabelContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link VYPeParserParser#number_value}.
+	 * Enter a parse tree produced by the {@code IntLiteralLabel}
+	 * labeled alternative in {@link VYPeParserParser#any_value}.
 	 * @param ctx the parse tree
 	 */
-	void enterNumber_value(VYPeParserParser.Number_valueContext ctx);
+	void enterIntLiteralLabel(VYPeParserParser.IntLiteralLabelContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link VYPeParserParser#number_value}.
+	 * Exit a parse tree produced by the {@code IntLiteralLabel}
+	 * labeled alternative in {@link VYPeParserParser#any_value}.
 	 * @param ctx the parse tree
 	 */
-	void exitNumber_value(VYPeParserParser.Number_valueContext ctx);
+	void exitIntLiteralLabel(VYPeParserParser.IntLiteralLabelContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code CharLiteralLabel}
+	 * labeled alternative in {@link VYPeParserParser#any_value}.
+	 * @param ctx the parse tree
+	 */
+	void enterCharLiteralLabel(VYPeParserParser.CharLiteralLabelContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code CharLiteralLabel}
+	 * labeled alternative in {@link VYPeParserParser#any_value}.
+	 * @param ctx the parse tree
+	 */
+	void exitCharLiteralLabel(VYPeParserParser.CharLiteralLabelContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code StringLiteralLabel}
+	 * labeled alternative in {@link VYPeParserParser#any_value}.
+	 * @param ctx the parse tree
+	 */
+	void enterStringLiteralLabel(VYPeParserParser.StringLiteralLabelContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code StringLiteralLabel}
+	 * labeled alternative in {@link VYPeParserParser#any_value}.
+	 * @param ctx the parse tree
+	 */
+	void exitStringLiteralLabel(VYPeParserParser.StringLiteralLabelContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code IntLabel}
 	 * labeled alternative in {@link VYPeParserParser#data_type}.
@@ -64,17 +92,17 @@ public interface VYPeParserListener extends ParseTreeListener {
 	 */
 	void exitStringLabel(VYPeParserParser.StringLabelContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code DateTypeLabel}
+	 * Enter a parse tree produced by the {@code DataTypeLabel}
 	 * labeled alternative in {@link VYPeParserParser#type}.
 	 * @param ctx the parse tree
 	 */
-	void enterDateTypeLabel(VYPeParserParser.DateTypeLabelContext ctx);
+	void enterDataTypeLabel(VYPeParserParser.DataTypeLabelContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code DateTypeLabel}
+	 * Exit a parse tree produced by the {@code DataTypeLabel}
 	 * labeled alternative in {@link VYPeParserParser#type}.
 	 * @param ctx the parse tree
 	 */
-	void exitDateTypeLabel(VYPeParserParser.DateTypeLabelContext ctx);
+	void exitDataTypeLabel(VYPeParserParser.DataTypeLabelContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code VoidLabel}
 	 * labeled alternative in {@link VYPeParserParser#type}.
@@ -87,16 +115,6 @@ public interface VYPeParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitVoidLabel(VYPeParserParser.VoidLabelContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link VYPeParserParser#function_identifier}.
-	 * @param ctx the parse tree
-	 */
-	void enterFunction_identifier(VYPeParserParser.Function_identifierContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link VYPeParserParser#function_identifier}.
-	 * @param ctx the parse tree
-	 */
-	void exitFunction_identifier(VYPeParserParser.Function_identifierContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link VYPeParserParser#parse}.
 	 * @param ctx the parse tree

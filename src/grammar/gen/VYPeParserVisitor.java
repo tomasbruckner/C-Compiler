@@ -11,17 +11,33 @@ import org.antlr.v4.runtime.tree.ParseTreeVisitor;
  */
 public interface VYPeParserVisitor<T> extends ParseTreeVisitor<T> {
 	/**
-	 * Visit a parse tree produced by {@link VYPeParserParser#any_value}.
+	 * Visit a parse tree produced by the {@code IdentifierLabel}
+	 * labeled alternative in {@link VYPeParserParser#any_value}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitAny_value(VYPeParserParser.Any_valueContext ctx);
+	T visitIdentifierLabel(VYPeParserParser.IdentifierLabelContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link VYPeParserParser#number_value}.
+	 * Visit a parse tree produced by the {@code IntLiteralLabel}
+	 * labeled alternative in {@link VYPeParserParser#any_value}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitNumber_value(VYPeParserParser.Number_valueContext ctx);
+	T visitIntLiteralLabel(VYPeParserParser.IntLiteralLabelContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code CharLiteralLabel}
+	 * labeled alternative in {@link VYPeParserParser#any_value}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitCharLiteralLabel(VYPeParserParser.CharLiteralLabelContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code StringLiteralLabel}
+	 * labeled alternative in {@link VYPeParserParser#any_value}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitStringLiteralLabel(VYPeParserParser.StringLiteralLabelContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code IntLabel}
 	 * labeled alternative in {@link VYPeParserParser#data_type}.
@@ -44,12 +60,12 @@ public interface VYPeParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitStringLabel(VYPeParserParser.StringLabelContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code DateTypeLabel}
+	 * Visit a parse tree produced by the {@code DataTypeLabel}
 	 * labeled alternative in {@link VYPeParserParser#type}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitDateTypeLabel(VYPeParserParser.DateTypeLabelContext ctx);
+	T visitDataTypeLabel(VYPeParserParser.DataTypeLabelContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code VoidLabel}
 	 * labeled alternative in {@link VYPeParserParser#type}.
@@ -57,12 +73,6 @@ public interface VYPeParserVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitVoidLabel(VYPeParserParser.VoidLabelContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link VYPeParserParser#function_identifier}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitFunction_identifier(VYPeParserParser.Function_identifierContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link VYPeParserParser#parse}.
 	 * @param ctx the parse tree

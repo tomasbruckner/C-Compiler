@@ -1,7 +1,7 @@
 package tables;
 
-import constants.Constant;
-import constants.Constant.Type;
+import util.Constant;
+import util.Constant.Type;
 import exceptions.SemanticException;
 import values.*;
 
@@ -17,10 +17,9 @@ import java.util.HashMap;
  * Date: 29/9/2016
  *************************************************************/
 public class FunctionTable {
-    private HashMap<String, Function> functionList;
+    private HashMap<String, Function> functionList = new HashMap<>();
 
     public FunctionTable(){
-        this.functionList = new HashMap<>();
         this.loadEmbeddedFunctions();
     }
 
@@ -60,7 +59,7 @@ public class FunctionTable {
         else if(f != null && f.isDefinition()){
             throw new SemanticException("Function " + functionName + " already defined!");
         }
-        else if(f.isDeclaration()) {
+        else if(f != null && f.isDeclaration()) {
             if(!f.isParameterListEqual(function.getParameterList())){
                 String errorMessage = "Different types of parameters in function declaration: " + functionName;
                 throw new SemanticException(errorMessage);
