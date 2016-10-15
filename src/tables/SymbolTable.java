@@ -49,6 +49,10 @@ public class SymbolTable {
     }
 
     public Type getVariableType(String name) {
-        return variableList.get(name).getType();
+        Value value = variableList.get(name);
+        if(value == null) {
+            throw new SemanticException("Variable " + name + " not defined!");
+        }
+        return value.getType();
     }
 }

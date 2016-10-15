@@ -24,8 +24,8 @@ data_type:
     ;
 
 type:
-    data_type   # DataTypeLabel
-    | Void      # VoidLabel
+    data_type
+    | Void
     ;
 
 parse: start ;
@@ -90,15 +90,16 @@ condition_expression:
 
 /******************************************* EXPRESSION ******************************************************/
 expression:
-    any_value
-    | LeftParenthesis expression RightParenthesis
-    | LeftParenthesis data_type RightParenthesis expression
-    | function_call
-    | ExclamationMark expression
-    | expression op=(MultiplicationSign | DivisionSign | ModuloSign) expression
-    | expression op=(PlusSign | MinusSign) expression
-    | expression op=(LowerSign | GreaterSign | LowerEqualSign | GreaterEqualSign) expression
-    | expression op=(EqualSign | NotEqualSign) expression
-    | expression LogicalAndSign expression
-    | expression LogicalOrSign expression ;
+    any_value                                                   # AnyValueLabel
+    | LeftParenthesis expression RightParenthesis               # ExpressionLabel
+    | LeftParenthesis data_type RightParenthesis expression     # CastingLabel
+    | function_call                                             # FunctionCallLabel
+    | ExclamationMark expression                                # NegationLabel
+    | expression op=(MultiplicationSign | DivisionSign | ModuloSign) expression     # MulDivModLabel
+    | expression op=(PlusSign | MinusSign) expression                               # PlusMinusLabel
+    | expression op=(LowerSign | GreaterSign | LowerEqualSign | GreaterEqualSign) expression    # GreaterLowerLabel
+    | expression op=(EqualSign | NotEqualSign) expression                           # EqualLabel
+    | expression LogicalAndSign expression                                          # AndLabel
+    | expression LogicalOrSign expression                                           # OrLabel
+    ;
 

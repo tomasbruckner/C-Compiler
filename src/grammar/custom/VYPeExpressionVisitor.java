@@ -33,6 +33,8 @@ public class VYPeExpressionVisitor extends VYPeParserBaseVisitor {
         this.symbolTable = symbolTable;
     }
 
+    /************************************ STATEMENTS ********************************************************************/
+
     @Override
     public Type visitVariable_definition_statement(VYPeParserParser.Variable_definition_statementContext ctx) {
         Type type = Utility.getType(ctx.getChild(0).getText());
@@ -62,6 +64,11 @@ public class VYPeExpressionVisitor extends VYPeParserBaseVisitor {
 
     @Override
     public Type visitFunction_call_statement(VYPeParserParser.Function_call_statementContext ctx) {
+        return this.visitFunction_call(ctx.function_call());
+    }
+
+    @Override
+    public Type visitFunction_call(VYPeParserParser.Function_callContext ctx) {
         String name = ctx.getChild(0).getText();
         Function function = this.functionTable.getFunctionByName(name);
         List<Value> parameters = this.getFunctionCallParameters(ctx);
@@ -118,7 +125,7 @@ public class VYPeExpressionVisitor extends VYPeParserBaseVisitor {
         return Type.VOID;
     }
 
-    private List<Value> getFunctionCallParameters(VYPeParserParser.Function_call_statementContext ctx) {
+    private List<Value> getFunctionCallParameters(VYPeParserParser.Function_callContext ctx) {
         List<Value> parameterList = new ArrayList<>();
 
         for(int i = 2, len = ctx.getChildCount() - 1; i < len; i += 2) {
@@ -133,6 +140,127 @@ public class VYPeExpressionVisitor extends VYPeParserBaseVisitor {
         return parameterList;
     }
 
+    /****************************************** EXPRESSION *************************************************************/
+
+    @Override
+    public Type visitAnyValueLabel(VYPeParserParser.AnyValueLabelContext ctx) {
+        return (Type)visit(ctx.any_value());
+    }
+
+    @Override
+    public Type visitExpressionLabel(VYPeParserParser.ExpressionLabelContext ctx) {
+        return (Type)visit(ctx.expression());
+    }
+
+    @Override
+    public Type visitCastingLabel(VYPeParserParser.CastingLabelContext ctx) {
+        Type castType = Utility.getType(ctx.getChild(1).getText());
+        Type expressionType = (Type) visit(ctx.expression());
+
+        if(!isValidCasting(castType, expressionType)){
+            throw new SemanticException("Invalid casting! Line: " + ctx.start.getLine());
+        }
+
+        return castType;
+    }
+
+    private boolean isValidCasting(Type typeFrom, Type typeTo) {
+        switch(typeFrom) {
+            case CHAR:
+                return typeTo == Type.INT || typeTo == Type.STRING;
+            case INT:
+                return typeTo == Type.CHAR;
+            default:
+                return false;
+        }
+    }
+
+    @Override
+    public Type visitFunctionCallLabel(VYPeParserParser.FunctionCallLabelContext ctx) {
+        return this.visitFunction_call(ctx.function_call());
+    }
+
+    @Override
+    public Type visitNegationLabel(VYPeParserParser.NegationLabelContext ctx) {
+        Type expressionType = (Type)visit(ctx.expression());
+
+        if(expressionType != Type.INT) {
+            throw new SemanticException("Invalid negation type! Line: " + ctx.start.getLine());
+        }
+
+        return Type.INT;
+    }
+
+    @Override
+    public Type visitMulDivModLabel(VYPeParserParser.MulDivModLabelContext ctx) {
+        if(areNumberTypes(ctx.expression(0), ctx.expression(1))){
+            throw new SemanticException("Invalid operand types for mul/div/mod! Line: " + ctx.start.getLine());
+        }
+
+        return Type.INT;
+    }
+
+    @Override
+    public Type visitPlusMinusLabel(VYPeParserParser.PlusMinusLabelContext ctx) {
+        if(areNumberTypes(ctx.expression(0), ctx.expression(1))){
+            throw new SemanticException("Invalid operand types for plus/minus! Line: " + ctx.start.getLine());
+        }
+
+        return Type.INT;
+    }
+
+    @Override
+    public Type visitGreaterLowerLabel(VYPeParserParser.GreaterLowerLabelContext ctx) {
+        if(areSameTypes(ctx.expression(0), ctx.expression(1))){
+            throw new SemanticException("Invalid operand types for greater/lower! Line: " + ctx.start.getLine());
+        }
+
+        return Type.INT;
+    }
+
+    @Override
+    public Type visitEqualLabel(VYPeParserParser.EqualLabelContext ctx) {
+        if(areSameTypes(ctx.expression(0), ctx.expression(1))){
+            throw new SemanticException("Invalid operand types for equal/not equal! Line: " + ctx.start.getLine());
+        }
+
+        return Type.INT;
+    }
+
+    @Override
+    public Type visitAndLabel(VYPeParserParser.AndLabelContext ctx) {
+        if(areNumberTypes(ctx.expression(0), ctx.expression(1))){
+            throw new SemanticException("Invalid operand types for and! Line: " + ctx.start.getLine());
+        }
+
+        return Type.INT;
+    }
+
+    @Override
+    public Type visitOrLabel(VYPeParserParser.OrLabelContext ctx) {
+        if(areNumberTypes(ctx.expression(0), ctx.expression(1))){
+            throw new SemanticException("Invalid operand types for and! Line: " + ctx.start.getLine());
+        }
+
+        return Type.INT;
+    }
+
+    private boolean areSameTypes(VYPeParserParser.ExpressionContext leftExpression, VYPeParserParser.ExpressionContext rightExpression){
+        Type leftOperandType = (Type) visit(leftExpression);
+        Type rightOperandType = (Type) visit(rightExpression);
+
+        return leftOperandType == rightOperandType;
+    }
+
+    private boolean areNumberTypes(VYPeParserParser.ExpressionContext leftExpression, VYPeParserParser.ExpressionContext rightExpression) {
+        Type leftOperandType = (Type) visit(leftExpression);
+        Type rightOperandType = (Type) visit(rightExpression);
+
+        return leftOperandType != Type.INT || rightOperandType != Type.INT;
+    }
+
+    /****************************************** VALUES *****************************************************************/
+
     private Value toValue(Type type){
         switch(type){
             case INT:
@@ -144,6 +272,11 @@ public class VYPeExpressionVisitor extends VYPeParserBaseVisitor {
             default:
                 throw new SemanticException("Invalid function call parameter!");
         }
+    }
+
+    @Override
+    public Type visitIdentifierLabel(VYPeParserParser.IdentifierLabelContext ctx) {
+        return this.symbolTable.getVariableType(ctx.getText());
     }
 
     @Override

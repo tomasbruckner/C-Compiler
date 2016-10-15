@@ -346,49 +346,25 @@ public class VYPeParserParser extends Parser {
 	}
 
 	public static class TypeContext extends ParserRuleContext {
+		public Data_typeContext data_type() {
+			return getRuleContext(Data_typeContext.class,0);
+		}
+		public TerminalNode Void() { return getToken(VYPeParserParser.Void, 0); }
 		public TypeContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_type; }
-	 
-		public TypeContext() { }
-		public void copyFrom(TypeContext ctx) {
-			super.copyFrom(ctx);
-		}
-	}
-	public static class DataTypeLabelContext extends TypeContext {
-		public Data_typeContext data_type() {
-			return getRuleContext(Data_typeContext.class,0);
-		}
-		public DataTypeLabelContext(TypeContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).enterDataTypeLabel(this);
+			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).enterType(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).exitDataTypeLabel(this);
+			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).exitType(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VYPeParserVisitor ) return ((VYPeParserVisitor<? extends T>)visitor).visitDataTypeLabel(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	public static class VoidLabelContext extends TypeContext {
-		public TerminalNode Void() { return getToken(VYPeParserParser.Void, 0); }
-		public VoidLabelContext(TypeContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).enterVoidLabel(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).exitVoidLabel(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VYPeParserVisitor ) return ((VYPeParserVisitor<? extends T>)visitor).visitVoidLabel(this);
+			if ( visitor instanceof VYPeParserVisitor ) return ((VYPeParserVisitor<? extends T>)visitor).visitType(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -402,7 +378,6 @@ public class VYPeParserParser extends Parser {
 			case Char:
 			case Int:
 			case String:
-				_localctx = new DataTypeLabelContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(51);
@@ -410,7 +385,6 @@ public class VYPeParserParser extends Parser {
 				}
 				break;
 			case Void:
-				_localctx = new VoidLabelContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(52);
@@ -1504,53 +1478,265 @@ public class VYPeParserParser extends Parser {
 	}
 
 	public static class ExpressionContext extends ParserRuleContext {
-		public Token op;
-		public Any_valueContext any_value() {
-			return getRuleContext(Any_valueContext.class,0);
+		public ExpressionContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
-		public TerminalNode LeftParenthesis() { return getToken(VYPeParserParser.LeftParenthesis, 0); }
+		@Override public int getRuleIndex() { return RULE_expression; }
+	 
+		public ExpressionContext() { }
+		public void copyFrom(ExpressionContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	public static class OrLabelContext extends ExpressionContext {
 		public List<ExpressionContext> expression() {
 			return getRuleContexts(ExpressionContext.class);
 		}
 		public ExpressionContext expression(int i) {
 			return getRuleContext(ExpressionContext.class,i);
 		}
-		public TerminalNode RightParenthesis() { return getToken(VYPeParserParser.RightParenthesis, 0); }
-		public Data_typeContext data_type() {
-			return getRuleContext(Data_typeContext.class,0);
+		public TerminalNode LogicalOrSign() { return getToken(VYPeParserParser.LogicalOrSign, 0); }
+		public OrLabelContext(ExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).enterOrLabel(this);
 		}
-		public Function_callContext function_call() {
-			return getRuleContext(Function_callContext.class,0);
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).exitOrLabel(this);
 		}
-		public TerminalNode ExclamationMark() { return getToken(VYPeParserParser.ExclamationMark, 0); }
-		public TerminalNode MultiplicationSign() { return getToken(VYPeParserParser.MultiplicationSign, 0); }
-		public TerminalNode DivisionSign() { return getToken(VYPeParserParser.DivisionSign, 0); }
-		public TerminalNode ModuloSign() { return getToken(VYPeParserParser.ModuloSign, 0); }
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof VYPeParserVisitor ) return ((VYPeParserVisitor<? extends T>)visitor).visitOrLabel(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class PlusMinusLabelContext extends ExpressionContext {
+		public Token op;
+		public List<ExpressionContext> expression() {
+			return getRuleContexts(ExpressionContext.class);
+		}
+		public ExpressionContext expression(int i) {
+			return getRuleContext(ExpressionContext.class,i);
+		}
 		public TerminalNode PlusSign() { return getToken(VYPeParserParser.PlusSign, 0); }
 		public TerminalNode MinusSign() { return getToken(VYPeParserParser.MinusSign, 0); }
+		public PlusMinusLabelContext(ExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).enterPlusMinusLabel(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).exitPlusMinusLabel(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof VYPeParserVisitor ) return ((VYPeParserVisitor<? extends T>)visitor).visitPlusMinusLabel(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class NegationLabelContext extends ExpressionContext {
+		public TerminalNode ExclamationMark() { return getToken(VYPeParserParser.ExclamationMark, 0); }
+		public ExpressionContext expression() {
+			return getRuleContext(ExpressionContext.class,0);
+		}
+		public NegationLabelContext(ExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).enterNegationLabel(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).exitNegationLabel(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof VYPeParserVisitor ) return ((VYPeParserVisitor<? extends T>)visitor).visitNegationLabel(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class ExpressionLabelContext extends ExpressionContext {
+		public TerminalNode LeftParenthesis() { return getToken(VYPeParserParser.LeftParenthesis, 0); }
+		public ExpressionContext expression() {
+			return getRuleContext(ExpressionContext.class,0);
+		}
+		public TerminalNode RightParenthesis() { return getToken(VYPeParserParser.RightParenthesis, 0); }
+		public ExpressionLabelContext(ExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).enterExpressionLabel(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).exitExpressionLabel(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof VYPeParserVisitor ) return ((VYPeParserVisitor<? extends T>)visitor).visitExpressionLabel(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class AnyValueLabelContext extends ExpressionContext {
+		public Any_valueContext any_value() {
+			return getRuleContext(Any_valueContext.class,0);
+		}
+		public AnyValueLabelContext(ExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).enterAnyValueLabel(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).exitAnyValueLabel(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof VYPeParserVisitor ) return ((VYPeParserVisitor<? extends T>)visitor).visitAnyValueLabel(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class GreaterLowerLabelContext extends ExpressionContext {
+		public Token op;
+		public List<ExpressionContext> expression() {
+			return getRuleContexts(ExpressionContext.class);
+		}
+		public ExpressionContext expression(int i) {
+			return getRuleContext(ExpressionContext.class,i);
+		}
 		public TerminalNode LowerSign() { return getToken(VYPeParserParser.LowerSign, 0); }
 		public TerminalNode GreaterSign() { return getToken(VYPeParserParser.GreaterSign, 0); }
 		public TerminalNode LowerEqualSign() { return getToken(VYPeParserParser.LowerEqualSign, 0); }
 		public TerminalNode GreaterEqualSign() { return getToken(VYPeParserParser.GreaterEqualSign, 0); }
-		public TerminalNode EqualSign() { return getToken(VYPeParserParser.EqualSign, 0); }
-		public TerminalNode NotEqualSign() { return getToken(VYPeParserParser.NotEqualSign, 0); }
-		public TerminalNode LogicalAndSign() { return getToken(VYPeParserParser.LogicalAndSign, 0); }
-		public TerminalNode LogicalOrSign() { return getToken(VYPeParserParser.LogicalOrSign, 0); }
-		public ExpressionContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_expression; }
+		public GreaterLowerLabelContext(ExpressionContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).enterExpression(this);
+			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).enterGreaterLowerLabel(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).exitExpression(this);
+			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).exitGreaterLowerLabel(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VYPeParserVisitor ) return ((VYPeParserVisitor<? extends T>)visitor).visitExpression(this);
+			if ( visitor instanceof VYPeParserVisitor ) return ((VYPeParserVisitor<? extends T>)visitor).visitGreaterLowerLabel(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class AndLabelContext extends ExpressionContext {
+		public List<ExpressionContext> expression() {
+			return getRuleContexts(ExpressionContext.class);
+		}
+		public ExpressionContext expression(int i) {
+			return getRuleContext(ExpressionContext.class,i);
+		}
+		public TerminalNode LogicalAndSign() { return getToken(VYPeParserParser.LogicalAndSign, 0); }
+		public AndLabelContext(ExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).enterAndLabel(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).exitAndLabel(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof VYPeParserVisitor ) return ((VYPeParserVisitor<? extends T>)visitor).visitAndLabel(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class MulDivModLabelContext extends ExpressionContext {
+		public Token op;
+		public List<ExpressionContext> expression() {
+			return getRuleContexts(ExpressionContext.class);
+		}
+		public ExpressionContext expression(int i) {
+			return getRuleContext(ExpressionContext.class,i);
+		}
+		public TerminalNode MultiplicationSign() { return getToken(VYPeParserParser.MultiplicationSign, 0); }
+		public TerminalNode DivisionSign() { return getToken(VYPeParserParser.DivisionSign, 0); }
+		public TerminalNode ModuloSign() { return getToken(VYPeParserParser.ModuloSign, 0); }
+		public MulDivModLabelContext(ExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).enterMulDivModLabel(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).exitMulDivModLabel(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof VYPeParserVisitor ) return ((VYPeParserVisitor<? extends T>)visitor).visitMulDivModLabel(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class EqualLabelContext extends ExpressionContext {
+		public Token op;
+		public List<ExpressionContext> expression() {
+			return getRuleContexts(ExpressionContext.class);
+		}
+		public ExpressionContext expression(int i) {
+			return getRuleContext(ExpressionContext.class,i);
+		}
+		public TerminalNode EqualSign() { return getToken(VYPeParserParser.EqualSign, 0); }
+		public TerminalNode NotEqualSign() { return getToken(VYPeParserParser.NotEqualSign, 0); }
+		public EqualLabelContext(ExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).enterEqualLabel(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).exitEqualLabel(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof VYPeParserVisitor ) return ((VYPeParserVisitor<? extends T>)visitor).visitEqualLabel(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class CastingLabelContext extends ExpressionContext {
+		public TerminalNode LeftParenthesis() { return getToken(VYPeParserParser.LeftParenthesis, 0); }
+		public Data_typeContext data_type() {
+			return getRuleContext(Data_typeContext.class,0);
+		}
+		public TerminalNode RightParenthesis() { return getToken(VYPeParserParser.RightParenthesis, 0); }
+		public ExpressionContext expression() {
+			return getRuleContext(ExpressionContext.class,0);
+		}
+		public CastingLabelContext(ExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).enterCastingLabel(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).exitCastingLabel(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof VYPeParserVisitor ) return ((VYPeParserVisitor<? extends T>)visitor).visitCastingLabel(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class FunctionCallLabelContext extends ExpressionContext {
+		public Function_callContext function_call() {
+			return getRuleContext(Function_callContext.class,0);
+		}
+		public FunctionCallLabelContext(ExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).enterFunctionCallLabel(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof VYPeParserListener ) ((VYPeParserListener)listener).exitFunctionCallLabel(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof VYPeParserVisitor ) return ((VYPeParserVisitor<? extends T>)visitor).visitFunctionCallLabel(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1576,12 +1762,19 @@ public class VYPeParserParser extends Parser {
 			switch ( getInterpreter().adaptivePredict(_input,15,_ctx) ) {
 			case 1:
 				{
+				_localctx = new AnyValueLabelContext(_localctx);
+				_ctx = _localctx;
+				_prevctx = _localctx;
+
 				setState(175);
 				any_value();
 				}
 				break;
 			case 2:
 				{
+				_localctx = new ExpressionLabelContext(_localctx);
+				_ctx = _localctx;
+				_prevctx = _localctx;
 				setState(176);
 				match(LeftParenthesis);
 				setState(177);
@@ -1592,6 +1785,9 @@ public class VYPeParserParser extends Parser {
 				break;
 			case 3:
 				{
+				_localctx = new CastingLabelContext(_localctx);
+				_ctx = _localctx;
+				_prevctx = _localctx;
 				setState(180);
 				match(LeftParenthesis);
 				setState(181);
@@ -1604,12 +1800,18 @@ public class VYPeParserParser extends Parser {
 				break;
 			case 4:
 				{
+				_localctx = new FunctionCallLabelContext(_localctx);
+				_ctx = _localctx;
+				_prevctx = _localctx;
 				setState(185);
 				function_call();
 				}
 				break;
 			case 5:
 				{
+				_localctx = new NegationLabelContext(_localctx);
+				_ctx = _localctx;
+				_prevctx = _localctx;
 				setState(186);
 				match(ExclamationMark);
 				setState(187);
@@ -1631,15 +1833,15 @@ public class VYPeParserParser extends Parser {
 					switch ( getInterpreter().adaptivePredict(_input,16,_ctx) ) {
 					case 1:
 						{
-						_localctx = new ExpressionContext(_parentctx, _parentState);
+						_localctx = new MulDivModLabelContext(new ExpressionContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
 						setState(190);
 						if (!(precpred(_ctx, 6))) throw new FailedPredicateException(this, "precpred(_ctx, 6)");
 						setState(191);
-						((ExpressionContext)_localctx).op = _input.LT(1);
+						((MulDivModLabelContext)_localctx).op = _input.LT(1);
 						_la = _input.LA(1);
 						if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << MultiplicationSign) | (1L << DivisionSign) | (1L << ModuloSign))) != 0)) ) {
-							((ExpressionContext)_localctx).op = (Token)_errHandler.recoverInline(this);
+							((MulDivModLabelContext)_localctx).op = (Token)_errHandler.recoverInline(this);
 						} else {
 							consume();
 						}
@@ -1649,15 +1851,15 @@ public class VYPeParserParser extends Parser {
 						break;
 					case 2:
 						{
-						_localctx = new ExpressionContext(_parentctx, _parentState);
+						_localctx = new PlusMinusLabelContext(new ExpressionContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
 						setState(193);
 						if (!(precpred(_ctx, 5))) throw new FailedPredicateException(this, "precpred(_ctx, 5)");
 						setState(194);
-						((ExpressionContext)_localctx).op = _input.LT(1);
+						((PlusMinusLabelContext)_localctx).op = _input.LT(1);
 						_la = _input.LA(1);
 						if ( !(_la==PlusSign || _la==MinusSign) ) {
-							((ExpressionContext)_localctx).op = (Token)_errHandler.recoverInline(this);
+							((PlusMinusLabelContext)_localctx).op = (Token)_errHandler.recoverInline(this);
 						} else {
 							consume();
 						}
@@ -1667,15 +1869,15 @@ public class VYPeParserParser extends Parser {
 						break;
 					case 3:
 						{
-						_localctx = new ExpressionContext(_parentctx, _parentState);
+						_localctx = new GreaterLowerLabelContext(new ExpressionContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
 						setState(196);
 						if (!(precpred(_ctx, 4))) throw new FailedPredicateException(this, "precpred(_ctx, 4)");
 						setState(197);
-						((ExpressionContext)_localctx).op = _input.LT(1);
+						((GreaterLowerLabelContext)_localctx).op = _input.LT(1);
 						_la = _input.LA(1);
 						if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << LowerSign) | (1L << GreaterSign) | (1L << LowerEqualSign) | (1L << GreaterEqualSign))) != 0)) ) {
-							((ExpressionContext)_localctx).op = (Token)_errHandler.recoverInline(this);
+							((GreaterLowerLabelContext)_localctx).op = (Token)_errHandler.recoverInline(this);
 						} else {
 							consume();
 						}
@@ -1685,15 +1887,15 @@ public class VYPeParserParser extends Parser {
 						break;
 					case 4:
 						{
-						_localctx = new ExpressionContext(_parentctx, _parentState);
+						_localctx = new EqualLabelContext(new ExpressionContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
 						setState(199);
 						if (!(precpred(_ctx, 3))) throw new FailedPredicateException(this, "precpred(_ctx, 3)");
 						setState(200);
-						((ExpressionContext)_localctx).op = _input.LT(1);
+						((EqualLabelContext)_localctx).op = _input.LT(1);
 						_la = _input.LA(1);
 						if ( !(_la==EqualSign || _la==NotEqualSign) ) {
-							((ExpressionContext)_localctx).op = (Token)_errHandler.recoverInline(this);
+							((EqualLabelContext)_localctx).op = (Token)_errHandler.recoverInline(this);
 						} else {
 							consume();
 						}
@@ -1703,7 +1905,7 @@ public class VYPeParserParser extends Parser {
 						break;
 					case 5:
 						{
-						_localctx = new ExpressionContext(_parentctx, _parentState);
+						_localctx = new AndLabelContext(new ExpressionContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
 						setState(202);
 						if (!(precpred(_ctx, 2))) throw new FailedPredicateException(this, "precpred(_ctx, 2)");
@@ -1715,7 +1917,7 @@ public class VYPeParserParser extends Parser {
 						break;
 					case 6:
 						{
-						_localctx = new ExpressionContext(_parentctx, _parentState);
+						_localctx = new OrLabelContext(new ExpressionContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
 						setState(205);
 						if (!(precpred(_ctx, 1))) throw new FailedPredicateException(this, "precpred(_ctx, 1)");

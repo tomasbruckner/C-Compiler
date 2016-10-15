@@ -92,29 +92,15 @@ public interface VYPeParserListener extends ParseTreeListener {
 	 */
 	void exitStringLabel(VYPeParserParser.StringLabelContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code DataTypeLabel}
-	 * labeled alternative in {@link VYPeParserParser#type}.
+	 * Enter a parse tree produced by {@link VYPeParserParser#type}.
 	 * @param ctx the parse tree
 	 */
-	void enterDataTypeLabel(VYPeParserParser.DataTypeLabelContext ctx);
+	void enterType(VYPeParserParser.TypeContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code DataTypeLabel}
-	 * labeled alternative in {@link VYPeParserParser#type}.
+	 * Exit a parse tree produced by {@link VYPeParserParser#type}.
 	 * @param ctx the parse tree
 	 */
-	void exitDataTypeLabel(VYPeParserParser.DataTypeLabelContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code VoidLabel}
-	 * labeled alternative in {@link VYPeParserParser#type}.
-	 * @param ctx the parse tree
-	 */
-	void enterVoidLabel(VYPeParserParser.VoidLabelContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code VoidLabel}
-	 * labeled alternative in {@link VYPeParserParser#type}.
-	 * @param ctx the parse tree
-	 */
-	void exitVoidLabel(VYPeParserParser.VoidLabelContext ctx);
+	void exitType(VYPeParserParser.TypeContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link VYPeParserParser#parse}.
 	 * @param ctx the parse tree
@@ -276,13 +262,135 @@ public interface VYPeParserListener extends ParseTreeListener {
 	 */
 	void exitCondition_expression(VYPeParserParser.Condition_expressionContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link VYPeParserParser#expression}.
+	 * Enter a parse tree produced by the {@code OrLabel}
+	 * labeled alternative in {@link VYPeParserParser#expression}.
 	 * @param ctx the parse tree
 	 */
-	void enterExpression(VYPeParserParser.ExpressionContext ctx);
+	void enterOrLabel(VYPeParserParser.OrLabelContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link VYPeParserParser#expression}.
+	 * Exit a parse tree produced by the {@code OrLabel}
+	 * labeled alternative in {@link VYPeParserParser#expression}.
 	 * @param ctx the parse tree
 	 */
-	void exitExpression(VYPeParserParser.ExpressionContext ctx);
+	void exitOrLabel(VYPeParserParser.OrLabelContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code PlusMinusLabel}
+	 * labeled alternative in {@link VYPeParserParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterPlusMinusLabel(VYPeParserParser.PlusMinusLabelContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code PlusMinusLabel}
+	 * labeled alternative in {@link VYPeParserParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitPlusMinusLabel(VYPeParserParser.PlusMinusLabelContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code NegationLabel}
+	 * labeled alternative in {@link VYPeParserParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterNegationLabel(VYPeParserParser.NegationLabelContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code NegationLabel}
+	 * labeled alternative in {@link VYPeParserParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitNegationLabel(VYPeParserParser.NegationLabelContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code ExpressionLabel}
+	 * labeled alternative in {@link VYPeParserParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpressionLabel(VYPeParserParser.ExpressionLabelContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code ExpressionLabel}
+	 * labeled alternative in {@link VYPeParserParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpressionLabel(VYPeParserParser.ExpressionLabelContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code AnyValueLabel}
+	 * labeled alternative in {@link VYPeParserParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterAnyValueLabel(VYPeParserParser.AnyValueLabelContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code AnyValueLabel}
+	 * labeled alternative in {@link VYPeParserParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitAnyValueLabel(VYPeParserParser.AnyValueLabelContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code GreaterLowerLabel}
+	 * labeled alternative in {@link VYPeParserParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterGreaterLowerLabel(VYPeParserParser.GreaterLowerLabelContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code GreaterLowerLabel}
+	 * labeled alternative in {@link VYPeParserParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitGreaterLowerLabel(VYPeParserParser.GreaterLowerLabelContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code AndLabel}
+	 * labeled alternative in {@link VYPeParserParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterAndLabel(VYPeParserParser.AndLabelContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code AndLabel}
+	 * labeled alternative in {@link VYPeParserParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitAndLabel(VYPeParserParser.AndLabelContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code MulDivModLabel}
+	 * labeled alternative in {@link VYPeParserParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterMulDivModLabel(VYPeParserParser.MulDivModLabelContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code MulDivModLabel}
+	 * labeled alternative in {@link VYPeParserParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitMulDivModLabel(VYPeParserParser.MulDivModLabelContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code EqualLabel}
+	 * labeled alternative in {@link VYPeParserParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterEqualLabel(VYPeParserParser.EqualLabelContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code EqualLabel}
+	 * labeled alternative in {@link VYPeParserParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitEqualLabel(VYPeParserParser.EqualLabelContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code CastingLabel}
+	 * labeled alternative in {@link VYPeParserParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterCastingLabel(VYPeParserParser.CastingLabelContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code CastingLabel}
+	 * labeled alternative in {@link VYPeParserParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitCastingLabel(VYPeParserParser.CastingLabelContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code FunctionCallLabel}
+	 * labeled alternative in {@link VYPeParserParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterFunctionCallLabel(VYPeParserParser.FunctionCallLabelContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code FunctionCallLabel}
+	 * labeled alternative in {@link VYPeParserParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitFunctionCallLabel(VYPeParserParser.FunctionCallLabelContext ctx);
 }

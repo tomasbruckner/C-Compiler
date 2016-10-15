@@ -2,27 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e39a7fbf-b678-42f0-a6fe-10318098d617" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/util/Utility.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/constants/Constant.java" afterPath="$PROJECT_DIR$/src/util/Constant.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/grammar/custom/VYPeVisitor.java" afterPath="$PROJECT_DIR$/src/grammar/custom/VYPeExpressionVisitor.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main.java" afterPath="$PROJECT_DIR$/src/Main.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/grammar/VYPeParser.g4" afterPath="$PROJECT_DIR$/src/grammar/VYPeParser.g4" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/grammar/custom/VYPeMainListener.java" afterPath="$PROJECT_DIR$/src/grammar/custom/VYPeMainListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/grammar/custom/VYPeTypeListListener.java" afterPath="$PROJECT_DIR$/src/grammar/custom/VYPeTypeListListener.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/grammar/custom/VYPeExpressionVisitor.java" afterPath="$PROJECT_DIR$/src/grammar/custom/VYPeExpressionVisitor.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/grammar/gen/VYPeParserBaseListener.java" afterPath="$PROJECT_DIR$/src/grammar/gen/VYPeParserBaseListener.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/grammar/gen/VYPeParserBaseVisitor.java" afterPath="$PROJECT_DIR$/src/grammar/gen/VYPeParserBaseVisitor.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/grammar/gen/VYPeParserListener.java" afterPath="$PROJECT_DIR$/src/grammar/gen/VYPeParserListener.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/grammar/gen/VYPeParserParser.java" afterPath="$PROJECT_DIR$/src/grammar/gen/VYPeParserParser.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/grammar/gen/VYPeParserVisitor.java" afterPath="$PROJECT_DIR$/src/grammar/gen/VYPeParserVisitor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tables/Function.java" afterPath="$PROJECT_DIR$/src/tables/Function.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tables/FunctionTable.java" afterPath="$PROJECT_DIR$/src/tables/FunctionTable.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tables/SymbolTable.java" afterPath="$PROJECT_DIR$/src/tables/SymbolTable.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/values/CharValue.java" afterPath="$PROJECT_DIR$/src/values/CharValue.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/values/IntValue.java" afterPath="$PROJECT_DIR$/src/values/IntValue.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/values/StringValue.java" afterPath="$PROJECT_DIR$/src/values/StringValue.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/values/Value.java" afterPath="$PROJECT_DIR$/src/values/Value.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/values/VariableValue.java" afterPath="$PROJECT_DIR$/src/values/VariableValue.java" />
     </list>
     <ignored path="vype.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -47,10 +35,20 @@
       <file leaf-file-name="VYPeExpressionVisitor.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/grammar/custom/VYPeExpressionVisitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-284">
-              <caret line="106" column="72" selection-start-line="106" selection-start-column="72" selection-end-line="106" selection-end-column="72" />
+            <state relative-caret-position="686">
+              <caret line="149" column="13" selection-start-line="149" selection-start-column="13" selection-end-line="149" selection-end-column="13" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="docComment;class#VYPeExpressionVisitor#0" expanded="false" />
+                <element signature="method#VYPeExpressionVisitor#0;class#VYPeExpressionVisitor#0" expanded="false" />
+                <element signature="method#visitVariable_definition_statement#0;class#VYPeExpressionVisitor#0" expanded="false" />
+                <element signature="method#visitAssignment_statement#0;class#VYPeExpressionVisitor#0" expanded="false" />
+                <element signature="method#visitConditional_statement#0;class#VYPeExpressionVisitor#0" expanded="false" />
+                <element signature="method#checkConditionExpression#0;class#VYPeExpressionVisitor#0" expanded="false" />
+                <element signature="method#visitReturn_statement#0;class#VYPeExpressionVisitor#0" expanded="false" />
+                <element signature="e#5634#5635#0" expanded="true" />
+                <element signature="e#5685#5686#0" expanded="true" />
+                <element signature="method#toValue#0;class#VYPeExpressionVisitor#0" expanded="false" />
+                <element signature="method#visitIdentifierLabel#0;class#VYPeExpressionVisitor#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -59,8 +57,8 @@
       <file leaf-file-name="VYPeParser.g4" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/grammar/VYPeParser.g4">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="60" column="22" selection-start-line="60" selection-start-column="6" selection-end-line="60" selection-end-column="22" />
+            <state relative-caret-position="351">
+              <caret line="95" column="19" selection-start-line="95" selection-start-column="6" selection-end-line="95" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -69,8 +67,8 @@
       <file leaf-file-name="VYPeParserBaseVisitor.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/grammar/gen/VYPeParserBaseVisitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="325">
-              <caret line="166" column="0" selection-start-line="166" selection-start-column="0" selection-end-line="167" selection-end-column="0" />
+            <state relative-caret-position="189">
+              <caret line="173" column="0" selection-start-line="173" selection-start-column="0" selection-end-line="174" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -96,7 +94,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/antlr/grammer.g" />
         <option value="$PROJECT_DIR$/src/antlr/VYPe.g" />
         <option value="$PROJECT_DIR$/tes.g" />
@@ -137,15 +134,16 @@
         <option value="$PROJECT_DIR$/src/values/CharValue.java" />
         <option value="$PROJECT_DIR$/src/constants/Constant.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
-        <option value="$PROJECT_DIR$/src/grammar/VYPeParser.g4" />
         <option value="$PROJECT_DIR$/src/tables/FunctionTable.java" />
         <option value="$PROJECT_DIR$/src/tables/Function.java" />
         <option value="$PROJECT_DIR$/src/util/constants/Utility.java" />
         <option value="$PROJECT_DIR$/src/util/Constant.java" />
         <option value="$PROJECT_DIR$/src/values/Value.java" />
-        <option value="$PROJECT_DIR$/src/tables/SymbolTable.java" />
         <option value="$PROJECT_DIR$/src/util/Utility.java" />
         <option value="$PROJECT_DIR$/src/grammar/custom/VYPeMainListener.java" />
+        <option value="$PROJECT_DIR$/src/tables/SymbolTable.java" />
+        <option value="$PROJECT_DIR$/src/grammar/VYPeParser.g4" />
+        <option value="$PROJECT_DIR$/src/grammar/gen/VYPeParserBaseVisitor.java" />
         <option value="$PROJECT_DIR$/src/grammar/custom/VYPeExpressionVisitor.java" />
       </list>
     </option>
@@ -820,7 +818,7 @@
       <workItem from="1475867954375" duration="3535000" />
       <workItem from="1476033399732" duration="7135000" />
       <workItem from="1476378548055" duration="8996000" />
-      <workItem from="1476515171710" duration="23465000" />
+      <workItem from="1476515171710" duration="27311000" />
     </task>
     <task id="LOCAL-00001" summary="Init commit, first try of scanner and parser (NEED REVISION). IDEA settings.">
       <created>1475096390815</created>
@@ -871,11 +869,18 @@
       <option name="project" value="LOCAL" />
       <updated>1476532802266</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Visitor for statements.">
+      <created>1476543497189</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1476543497189</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="126201000" />
+    <option name="totallyTimeSpent" value="130047000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1319" height="784" extended-state="6" />
@@ -931,7 +936,8 @@
     <MESSAGE value="Generated Visitor class" />
     <MESSAGE value="Slight refactor, playing with labels" />
     <MESSAGE value="Parsing function parameters and return type. Changed test03." />
-    <option name="LAST_COMMIT_MESSAGE" value="Parsing function parameters and return type. Changed test03." />
+    <MESSAGE value="Visitor for statements." />
+    <option name="LAST_COMMIT_MESSAGE" value="Visitor for statements." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1181,18 +1187,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/tables/SymbolTable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="478">
-          <caret line="51" column="48" selection-start-line="51" selection-start-column="48" selection-end-line="51" selection-end-column="48" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1409#1410#0" expanded="true" />
-            <element signature="e#1464#1465#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/exceptions/SemanticException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -1268,14 +1262,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/grammar/gen/VYPeParserBaseVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="166" column="0" selection-start-line="166" selection-start-column="0" selection-end-line="167" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="461">
@@ -1286,20 +1272,48 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/tables/SymbolTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="512">
+          <caret line="53" column="78" selection-start-line="53" selection-start-column="78" selection-end-line="53" selection-end-column="78" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/grammar/gen/VYPeParserBaseVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="173" column="0" selection-start-line="173" selection-start-column="0" selection-end-line="174" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/grammar/VYPeParser.g4">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="60" column="22" selection-start-line="60" selection-start-column="6" selection-end-line="60" selection-end-column="22" />
+        <state relative-caret-position="351">
+          <caret line="95" column="19" selection-start-line="95" selection-start-column="6" selection-end-line="95" selection-end-column="19" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/grammar/custom/VYPeExpressionVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-284">
-          <caret line="106" column="72" selection-start-line="106" selection-start-column="72" selection-end-line="106" selection-end-column="72" />
+        <state relative-caret-position="686">
+          <caret line="149" column="13" selection-start-line="149" selection-start-column="13" selection-end-line="149" selection-end-column="13" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="docComment;class#VYPeExpressionVisitor#0" expanded="false" />
+            <element signature="method#VYPeExpressionVisitor#0;class#VYPeExpressionVisitor#0" expanded="false" />
+            <element signature="method#visitVariable_definition_statement#0;class#VYPeExpressionVisitor#0" expanded="false" />
+            <element signature="method#visitAssignment_statement#0;class#VYPeExpressionVisitor#0" expanded="false" />
+            <element signature="method#visitConditional_statement#0;class#VYPeExpressionVisitor#0" expanded="false" />
+            <element signature="method#checkConditionExpression#0;class#VYPeExpressionVisitor#0" expanded="false" />
+            <element signature="method#visitReturn_statement#0;class#VYPeExpressionVisitor#0" expanded="false" />
+            <element signature="e#5634#5635#0" expanded="true" />
+            <element signature="e#5685#5686#0" expanded="true" />
+            <element signature="method#toValue#0;class#VYPeExpressionVisitor#0" expanded="false" />
+            <element signature="method#visitIdentifierLabel#0;class#VYPeExpressionVisitor#0" expanded="false" />
           </folding>
         </state>
       </provider>

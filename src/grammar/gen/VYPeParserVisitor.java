@@ -60,19 +60,11 @@ public interface VYPeParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitStringLabel(VYPeParserParser.StringLabelContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code DataTypeLabel}
-	 * labeled alternative in {@link VYPeParserParser#type}.
+	 * Visit a parse tree produced by {@link VYPeParserParser#type}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitDataTypeLabel(VYPeParserParser.DataTypeLabelContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code VoidLabel}
-	 * labeled alternative in {@link VYPeParserParser#type}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitVoidLabel(VYPeParserParser.VoidLabelContext ctx);
+	T visitType(VYPeParserParser.TypeContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link VYPeParserParser#parse}.
 	 * @param ctx the parse tree
@@ -170,9 +162,80 @@ public interface VYPeParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitCondition_expression(VYPeParserParser.Condition_expressionContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link VYPeParserParser#expression}.
+	 * Visit a parse tree produced by the {@code OrLabel}
+	 * labeled alternative in {@link VYPeParserParser#expression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitExpression(VYPeParserParser.ExpressionContext ctx);
+	T visitOrLabel(VYPeParserParser.OrLabelContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code PlusMinusLabel}
+	 * labeled alternative in {@link VYPeParserParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitPlusMinusLabel(VYPeParserParser.PlusMinusLabelContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code NegationLabel}
+	 * labeled alternative in {@link VYPeParserParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitNegationLabel(VYPeParserParser.NegationLabelContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code ExpressionLabel}
+	 * labeled alternative in {@link VYPeParserParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpressionLabel(VYPeParserParser.ExpressionLabelContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code AnyValueLabel}
+	 * labeled alternative in {@link VYPeParserParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAnyValueLabel(VYPeParserParser.AnyValueLabelContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code GreaterLowerLabel}
+	 * labeled alternative in {@link VYPeParserParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitGreaterLowerLabel(VYPeParserParser.GreaterLowerLabelContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code AndLabel}
+	 * labeled alternative in {@link VYPeParserParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAndLabel(VYPeParserParser.AndLabelContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code MulDivModLabel}
+	 * labeled alternative in {@link VYPeParserParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMulDivModLabel(VYPeParserParser.MulDivModLabelContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code EqualLabel}
+	 * labeled alternative in {@link VYPeParserParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitEqualLabel(VYPeParserParser.EqualLabelContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code CastingLabel}
+	 * labeled alternative in {@link VYPeParserParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitCastingLabel(VYPeParserParser.CastingLabelContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code FunctionCallLabel}
+	 * labeled alternative in {@link VYPeParserParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFunctionCallLabel(VYPeParserParser.FunctionCallLabelContext ctx);
 }
