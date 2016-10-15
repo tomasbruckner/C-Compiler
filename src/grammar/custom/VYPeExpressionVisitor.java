@@ -82,28 +82,39 @@ public class VYPeExpressionVisitor extends VYPeParserBaseVisitor {
 
     @Override
     public Type visitConditional_statement(VYPeParserParser.Conditional_statementContext ctx) {
-        VYPeExpressionVisitor visitor = checkConditionExpression(ctx.condition_expression());
+        this.checkConditionExpression(ctx.condition_expression());
 
-        // TODO visit block statements
+        // if true branch
+        VYPeExpressionVisitor visitor = this.getNewVisitor();
+        visitor.visit(ctx.block_statements(0));
+
+        // else branch
+        visitor = this.getNewVisitor();
+        visitor.visit(ctx.block_statements(1));
+
         return Type.VOID;
     }
 
-    private VYPeExpressionVisitor checkConditionExpression(VYPeParserParser.Condition_expressionContext ctx) {
-        Object conditionType = visit(ctx);
-
-        if(!(conditionType instanceof Type && conditionType == Type.INT)){
-            throw new SemanticException("Condition expression is not Integer! Line: " + ctx.start.getLine());
-        }
-
+    private VYPeExpressionVisitor getNewVisitor(){
         SymbolTable table = new SymbolTable(this.symbolTable);
         return new VYPeExpressionVisitor(this.currentFunctionName, this.functionTable, table);
     }
 
+    private void checkConditionExpression(VYPeParserParser.Condition_expressionContext ctx) {
+        Object conditionType = visit(ctx);
+
+        if(!(conditionType instanceof Type && conditionType == Type.INT)){
+            throw new SemanticException("Condition expression is not integer! Line: " + ctx.start.getLine());
+        }
+    }
+
     @Override
     public Type visitWhile_statement(VYPeParserParser.While_statementContext ctx) {
-        VYPeExpressionVisitor visitor = checkConditionExpression(ctx.condition_expression());
+        this.checkConditionExpression(ctx.condition_expression());
 
-        // TODO visit block statements
+        VYPeExpressionVisitor visitor = this.getNewVisitor();
+        visitor.visit(ctx.block_statements());
+
         return Type.VOID;
     }
 

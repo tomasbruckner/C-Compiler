@@ -1,5 +1,6 @@
 package tables;
 
+import grammar.custom.VYPeExpressionVisitor;
 import util.Constant;
 import util.Constant.Type;
 import exceptions.SemanticException;
@@ -75,6 +76,23 @@ public class FunctionTable {
             throw new SemanticException("Function " + name + " is not defined!");
         }
         return f;
+    }
+
+    public void semanticCheckAll() {
+        if(!isMainFunction()) {
+            throw new SemanticException("Missing main function!");
+        }
+
+        for(Function function : this.functionList.values()){
+            if(!isEmbedded(function.getName())){
+                function.invoke(this);
+            }
+        }
+    }
+
+    private boolean isMainFunction(){
+        Function f = this.getFunctionByName("main");
+        return f != null && f.getReturnType() == Type.INT && f.getParameterList().size() == 0;
     }
 
     public boolean isEmbedded(String name){

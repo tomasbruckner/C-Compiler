@@ -63,5 +63,5 @@ Semicolon: ';' ;
 
 /******************************************* SKIP **********************************************************/
 WhiteSpaces: [ \r\t\n]+ -> skip;
-LineComment: '\\' ~[\r\n]* -> skip;
+LineComment: '//' ~[\r\n]* -> skip;
 BlockComment: '/*' .*? '*/' -> skip;

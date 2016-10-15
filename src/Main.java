@@ -17,7 +17,7 @@ import tables.FunctionTable;
 public class Main {
 
     public static void main(String[] args) {
-        args = new String[] {"", "tests/testcase03/input.c"};
+        args = new String[] {"", "tests/lexical_errors/testcase00.c"};
         if(args.length < 2 || args.length > 3){
             System.exit(Constant.INTERNAL_ERROR);
         }
@@ -38,9 +38,9 @@ public class Main {
         // needs to catch exceptions
         ParseTreeWalker.DEFAULT.walk(walker, parseTree);
 
-        FunctionTable table = walker.getFunctionTable();
+        FunctionTable functionTable = walker.getFunctionTable();
 
-        table.getFunctionByName("main").invoke();
+        functionTable.semanticCheckAll();
 
         //System.out.println(parseTree.toStringTree());
         System.exit(Constant.NO_ERROR);

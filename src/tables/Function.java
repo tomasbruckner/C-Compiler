@@ -1,5 +1,6 @@
 package tables;
 
+import grammar.custom.VYPeExpressionVisitor;
 import util.Constant.Type;
 import grammar.gen.VYPeParserParser;
 import values.Value;
@@ -32,8 +33,14 @@ public class Function {
         this.block = block;
     }
 
-    public void invoke() {
-//        VYPeExpressionVisitor walker = new VYPeExpressionVisitor();
+    public void invoke(FunctionTable functionTable) {
+        SymbolTable symbolTable = new SymbolTable(parameterList);
+        VYPeExpressionVisitor walker = new VYPeExpressionVisitor(this.name, functionTable, symbolTable);
+        walker.visit(block);
+    }
+
+    public String getName(){
+        return this.name;
     }
 
     public Type getReturnType() {
@@ -57,7 +64,6 @@ public class Function {
 
         return true;
     }
-
 
     public boolean isDeclaration(){
         return !this.defined;
