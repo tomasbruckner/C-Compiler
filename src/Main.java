@@ -1,9 +1,10 @@
 import exceptions.SemanticException;
+import grammar.custom.VYPeExpressionVisitor;
+import tables.FunctionTable;
+import tables.SymbolTable;
 import util.Constant;
-import grammar.custom.VYPeMainListener;
 import grammar.gen.*;
 import org.antlr.v4.runtime.*;
-import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
 /*************************************************************
  * Filename: Main.java
@@ -15,9 +16,9 @@ import org.antlr.v4.runtime.tree.ParseTreeWalker;
  *************************************************************/
 
 public class Main {
-
+    // TODO check if every function branch has return statement
     public static void main(String[] args) {
-        args = new String[] {"", "tests/valid/testcase03.c"};
+        args = new String[] {"", "tests/semantic_errors/testcase16.c"};
         if(args.length < 2 || args.length > 3){
             System.exit(Constant.INTERNAL_ERROR);
         }
@@ -38,11 +39,10 @@ public class Main {
             System.exit(Constant.SYNTAX_ERROR);
         }
 
-        VYPeMainListener walker = new VYPeMainListener();
+        VYPeExpressionVisitor visitor = new VYPeExpressionVisitor("", new FunctionTable(), new SymbolTable());
 
         try {
-            ParseTreeWalker.DEFAULT.walk(walker, parseTree);
-            walker.getFunctionTable().semanticCheckAll();
+            visitor.doSemanticCheck(parseTree);
         }
         catch(SemanticException e) {
             System.out.println(e.getMessage());

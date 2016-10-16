@@ -3,6 +3,8 @@ package grammar.custom;
 import exceptions.SemanticException;
 import grammar.gen.VYPeParserBaseVisitor;
 import grammar.gen.VYPeParserParser;
+import org.antlr.v4.runtime.tree.ParseTree;
+import org.antlr.v4.runtime.tree.ParseTreeWalker;
 import util.Constant.Type;
 import util.Utility;
 import values.CharValue;
@@ -33,7 +35,66 @@ public class VYPeExpressionVisitor extends VYPeParserBaseVisitor {
         this.symbolTable = symbolTable;
     }
 
-    /************************************ STATEMENTS ********************************************************************/
+    public void doSemanticCheck(ParseTree ctx) throws SemanticException {
+        this.visit(ctx);
+        this.functionTable.semanticCheck();
+    }
+
+    /************************************* FUNCTIONS *******************************************************************/
+    // TODO REFACTORING FUNCTION
+
+    @Override
+    public Type visitFunction_declaration(VYPeParserParser.Function_declarationContext ctx) {
+        Type returnType = Utility.getType(ctx.type().getText());
+        String functionName = ctx.Identifier().getText();
+        Function function = new Function(returnType, functionName, this.getParameters(ctx.param_type_list()), false);
+        this.functionTable.add(functionName, function);
+
+        return Type.VOID;
+    }
+
+    private List<Value> getParameters(VYPeParserParser.Param_type_listContext ctx) {
+        if(ctx.getChildCount() == 0){
+            throw new SemanticException("No parameters in function declaration! Line: " + ctx.start.getLine());
+        }
+        else if(ctx.Void() != null){
+            return new ArrayList<>();
+        }
+        else {
+            VYPeTypeListListener walker = new VYPeTypeListListener();
+            ParseTreeWalker.DEFAULT.walk(walker, ctx);
+
+            return walker.getParameterList();
+        }
+    }
+
+    @Override public Type visitFunction_definition(VYPeParserParser.Function_definitionContext ctx) {
+        Type returnType = Utility.getType(ctx.type().getText());
+        String functionName = ctx.Identifier().getText();
+        this.currentFunctionName = functionName;
+        Function function = new Function(returnType, functionName, this.getParameters(ctx.param_list()), ctx.block_statements(), true);
+        this.functionTable.add(functionName, function);
+
+        this.visit(ctx.block_statements());
+        return Type.VOID;
+    }
+
+    private List<Value> getParameters(VYPeParserParser.Param_listContext ctx) {
+        if(ctx.getChildCount() == 0){
+            throw new SemanticException("No parameters in function definition! Line: " + ctx.start.getLine());
+        }
+        else if(ctx.Void() != null){
+            return new ArrayList<>();
+        }
+        else {
+            VYPeParameterListener walker = new VYPeParameterListener();
+            ParseTreeWalker.DEFAULT.walk(walker, ctx);
+
+            return walker.getParameterList();
+        }
+    }
+
+    /************************************ STATEMENTS *******************************************************************/
 
     @Override
     public Type visitVariable_definition_statement(VYPeParserParser.Variable_definition_statementContext ctx) {

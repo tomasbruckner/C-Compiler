@@ -77,21 +77,28 @@ public class FunctionTable {
         return f;
     }
 
-    public void semanticCheckAll() {
+    public void semanticCheck() {
         if(!isMainFunction()) {
             throw new SemanticException("Missing main function!");
         }
-
-        for(Function function : this.functionList.values()){
-            if(!isEmbedded(function.getName())){
-                function.invoke(this);
-            }
+        else if(!hasAnyDeclaration()){
+            throw new SemanticException("Some function declaration are missing definition!");
         }
     }
 
     private boolean isMainFunction(){
         Function f = this.getFunctionByName("main");
         return f != null && f.getReturnType() == Type.INT && f.getParameterList().size() == 0;
+    }
+
+    private boolean hasAnyDeclaration(){
+        for(Function function : this.functionList.values()){
+            if(function.isDeclaration()){
+               return false;
+            }
+        }
+
+        return true;
     }
 
     public boolean isEmbedded(String name){
