@@ -8,9 +8,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e39a7fbf-b678-42f0-a6fe-10318098d617" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main.java" afterPath="$PROJECT_DIR$/src/Main.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/test_runner.py" afterPath="$PROJECT_DIR$/tests/test_runner.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vype.iml" afterPath="$PROJECT_DIR$/vype.iml" />
     </list>
     <ignored path="vype.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -39,7 +37,7 @@
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="104">
-              <caret line="20" column="11" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
+              <caret line="20" column="8" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -74,10 +72,10 @@
       <file leaf-file-name="test_runner.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tests/test_runner.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-119">
-              <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+            <state relative-caret-position="0">
+              <caret line="0" column="22" selection-start-line="0" selection-start-column="22" selection-end-line="0" selection-end-column="22" />
               <folding>
-                <element signature="e#23#38#0" expanded="true" />
+                <element signature="e#24#39#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -931,7 +929,7 @@
       <workItem from="1476515171710" duration="38462000" />
       <workItem from="1476565447390" duration="1053000" />
       <workItem from="1476601326096" duration="8263000" />
-      <workItem from="1476609724862" duration="4354000" />
+      <workItem from="1476609724862" duration="4541000" />
     </task>
     <task id="LOCAL-00001" summary="Init commit, first try of scanner and parser (NEED REVISION). IDEA settings.">
       <created>1475096390815</created>
@@ -1017,11 +1015,18 @@
       <option name="project" value="LOCAL" />
       <updated>1476610182467</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Test runner. Need to specify right JAR path">
+      <created>1476628863908</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1476628863908</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="154868000" />
+    <option name="totallyTimeSpent" value="155055000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1092,7 +1097,8 @@
     <MESSAGE value="Added tests. Semantic analysis is working now (beta)." />
     <MESSAGE value="Some small bugs. All valid testcases are working now." />
     <MESSAGE value="Every function declaration has to have definition. Cannot call function if not declared.&#10;Tests." />
-    <option name="LAST_COMMIT_MESSAGE" value="Every function declaration has to have definition. Cannot call function if not declared.&#10;Tests." />
+    <MESSAGE value="Test runner. Need to specify right JAR path" />
+    <option name="LAST_COMMIT_MESSAGE" value="Test runner. Need to specify right JAR path" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1504,7 +1510,7 @@
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="104">
-          <caret line="20" column="11" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
+          <caret line="20" column="8" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1513,10 +1519,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/test_runner.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-119">
-          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+        <state relative-caret-position="0">
+          <caret line="0" column="22" selection-start-line="0" selection-start-column="22" selection-end-line="0" selection-end-column="22" />
           <folding>
-            <element signature="e#23#38#0" expanded="true" />
+            <element signature="e#24#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
