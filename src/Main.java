@@ -17,7 +17,7 @@ import org.antlr.v4.runtime.*;
 
 public class Main {
     public static void main(String[] args) {
-        args = new String[] {"", "tests/semantic_errors/testcase16.c"};
+        args = new String[] {"", "tests/valid/testcase00.c"};
         if(args.length < 2 || args.length > 3){
             System.exit(Constant.INTERNAL_ERROR);
         }
@@ -30,10 +30,21 @@ public class Main {
             System.exit(Constant.INTERNAL_ERROR);
         }
 
-        VYPeParserParser parser = new VYPeParserParser(new CommonTokenStream (lexer));
+        CommonTokenStream tokenStream = new CommonTokenStream (lexer);
+
+        tokenStream.fill();
+
+        // must be final in lambda
+        final int errorTokenType = lexer.getTokenType("Error");
+        tokenStream.getTokens().forEach(token -> {
+            if(token.getType() == errorTokenType){
+                System.exit(Constant.LEXICAL_ERROR);
+            }
+        });
+
+        VYPeParserParser parser = new VYPeParserParser(tokenStream);
         VYPeParserParser.StartContext parseTree = parser.start();
 
-        // TODO add lexical error detection
         if(parser.getNumberOfSyntaxErrors() > 0) {
             System.exit(Constant.SYNTAX_ERROR);
         }

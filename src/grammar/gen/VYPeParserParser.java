@@ -21,7 +21,8 @@ public class VYPeParserParser extends Parser {
 		PlusSign=23, MinusSign=24, LowerSign=25, GreaterSign=26, LowerEqualSign=27, 
 		GreaterEqualSign=28, EqualSign=29, NotEqualSign=30, LogicalAndSign=31, 
 		LogicalOrSign=32, IntLiteral=33, CharLiteral=34, StringLiteral=35, AssignSign=36, 
-		Colon=37, Semicolon=38, WhiteSpaces=39, LineComment=40, BlockComment=41;
+		Colon=37, Semicolon=38, WhiteSpaces=39, LineComment=40, BlockComment=41, 
+		Error=42;
 	public static final int
 		RULE_any_value = 0, RULE_data_type = 1, RULE_type = 2, RULE_parse = 3, 
 		RULE_start = 4, RULE_function_declaration = 5, RULE_param_type_list = 6, 
@@ -53,7 +54,7 @@ public class VYPeParserParser extends Parser {
 		"LowerSign", "GreaterSign", "LowerEqualSign", "GreaterEqualSign", "EqualSign", 
 		"NotEqualSign", "LogicalAndSign", "LogicalOrSign", "IntLiteral", "CharLiteral", 
 		"StringLiteral", "AssignSign", "Colon", "Semicolon", "WhiteSpaces", "LineComment", 
-		"BlockComment"
+		"BlockComment", "Error"
 	};
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
@@ -1973,7 +1974,7 @@ public class VYPeParserParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3+\u00d8\4\2\t\2\4"+
+		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3,\u00d8\4\2\t\2\4"+
 		"\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t"+
 		"\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22"+
 		"\4\23\t\23\4\24\t\24\4\25\t\25\3\2\3\2\3\2\3\2\5\2/\n\2\3\3\3\3\3\3\5"+

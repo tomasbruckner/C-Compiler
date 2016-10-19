@@ -39,6 +39,7 @@ Semicolon=38
 WhiteSpaces=39
 LineComment=40
 BlockComment=41
+Error=42
 'char'=1
 'else'=2
 'if'=3
