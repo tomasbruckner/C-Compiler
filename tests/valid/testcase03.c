@@ -1,3 +1,5 @@
+// declaration test
+
 void test(int, string);
 int main(void);
 

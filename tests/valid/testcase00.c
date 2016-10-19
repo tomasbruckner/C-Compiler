@@ -1,3 +1,5 @@
+// specification test 1
+
 /* Program 1: Iterative Factorial Computation */
 int main(void) { // Program Main function
     int a, res;

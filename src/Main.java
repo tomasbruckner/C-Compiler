@@ -16,7 +16,6 @@ import org.antlr.v4.runtime.*;
  *************************************************************/
 
 public class Main {
-    // TODO check if every function branch has return statement
     public static void main(String[] args) {
         args = new String[] {"", "tests/semantic_errors/testcase16.c"};
         if(args.length < 2 || args.length > 3){

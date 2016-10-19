@@ -1,3 +1,5 @@
+// specification test 3
+
 /* Program 3: Program using Strings and Embedded Functions */
 int main(void) {
     string str1, str2;

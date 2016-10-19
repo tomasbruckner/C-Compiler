@@ -1,9 +1,10 @@
-// void function without return
+// void type in arithmetic operation
 
+void foo(void){
 
-void foo(int){
 }
 
 int main(void){
-    return 2;
+    int x;
+    x = 1 + foo();
 }

@@ -1,3 +1,5 @@
+// specification test 2
+
 /* Program 2: Recursive Factorial Computation */
 int factorial (int);
 int main(void) {

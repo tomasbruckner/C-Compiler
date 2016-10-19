@@ -1,5 +1,5 @@
-// missing return
+// missing main, case sensitive
 
-int main(void) {
-    int foo = 4;
+int MAIN(void) {
+    
 }

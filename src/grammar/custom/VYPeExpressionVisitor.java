@@ -237,14 +237,11 @@ public class VYPeExpressionVisitor extends VYPeParserBaseVisitor {
     }
 
     private boolean isValidCasting(Type typeFrom, Type typeTo) {
-        // TODO check response https://wis.fit.vutbr.cz/FIT/st/phorum-msg-show.php?id=45216&mode=single
         switch(typeFrom) {
             case CHAR:
-                return typeTo == Type.INT || typeTo == Type.STRING || typeTo == Type.CHAR;
+                return typeTo == Type.INT || typeTo == Type.STRING;
             case INT:
-                return typeTo == Type.CHAR || typeTo == Type.INT;
-            case STRING:
-                return typeTo == Type.STRING;
+                return typeTo == Type.CHAR;
             default:
                 return false;
         }
