@@ -1,0 +1,59 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Encoding: utf8
+% Project: AIS - Information Systems Analysis and Design
+% Authors:
+%     	Filip Benna, xbenna01
+%		Tomáš Bruckner, xbruck02
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Packages
+\usepackage[czech]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{indentfirst}
+\usepackage{a4wide}
+\usepackage{mdwlist}
+\usepackage{float}
+\usepackage[strict]{changepage}
+\usepackage[plainpages=false,urlcolor=blue]{hyperref}
+\usepackage{epstopdf}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Project part title %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\overalltitle}[1]{
+	\def\@overalltitle{#1}
+}
+\def\@university{Brno University of Technology}
+\def\@faculty{Faculty of Information Technologyí}
+\def\@year{\number\year}
+
+\newcommand\makeprojectparttitle[1]{
+	\clearpage
+	\pagebreak
+	\thispagestyle{empty}
+	\null
+	\begin{center}
+		{\LARGE \bf \sc \MakeUppercase{\@university}} \\[5mm]
+		{\Large \bf \sc \MakeUppercase{\@faculty}} \\[5mm]
+
+		\begin{figure}[h]
+			\begin{center}
+				\includegraphics[width=14cm,keepaspectratio]{include/logo}
+			\end{center}
+		\end{figure}
+
+		\vspace{15mm}
+
+		{\Large  \@overalltitle} \\[20mm]
+		{\Huge \bfseries #1} \\[10mm]
+
+		\vspace{20mm}
+
+		{\Large \@author}
+
+		\vspace{20mm}
+
+		\Large{\bfseries \@year}
+	\end{center}
+	\clearpage
+}
