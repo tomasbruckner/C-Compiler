@@ -31,7 +31,7 @@ type:
 parse: start ;
 
 start:
-    (function_declaration | function_definition)+ EOF;
+    (function_declaration | function_definition)* EOF ;
 
 
 /************************************ FUNCTION DECLARATION ******************************************************/
