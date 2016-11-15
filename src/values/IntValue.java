@@ -14,7 +14,9 @@ import util.Constant.Type;
 public class IntValue extends Value {
     private int value;
 
-    public IntValue() {}
+    public IntValue() {
+        this.value = 0;
+    }
 
     public IntValue(String name, int value){
         this.name = name;

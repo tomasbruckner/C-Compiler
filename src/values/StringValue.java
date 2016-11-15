@@ -13,7 +13,9 @@ import util.Constant.Type;
 public class StringValue extends Value {
     private String value;
 
-    public StringValue(){}
+    public StringValue(){
+        this.value = "";
+    }
 
     public StringValue(String name, String value){
         this.name = name;

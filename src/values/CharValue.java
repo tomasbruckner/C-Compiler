@@ -11,7 +11,9 @@ import util.Constant.Type;
 public class CharValue extends Value {
     private char value;
 
-    public CharValue() {}
+    public CharValue() {
+        this.value = '\0';
+    }
 
     public CharValue(String name, char value){
         this.name = name;
