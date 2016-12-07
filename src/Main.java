@@ -1,10 +1,17 @@
+import asm.ASMProgram;
+import asm.ASMRegister;
+import asm.ASMRegisterAllocator;
 import exceptions.SemanticException;
 import grammar.custom.VYPeExpressionVisitor;
 import tables.FunctionTable;
 import tables.SymbolTable;
+import asm.ASMElement;
+import grammar.custom.VYPeStartLow;
 import util.Constant;
 import grammar.gen.*;
 import org.antlr.v4.runtime.*;
+
+import java.util.ArrayList;
 
 /*************************************************************
  * Filename: Main.java
@@ -16,8 +23,9 @@ import org.antlr.v4.runtime.*;
  *************************************************************/
 
 public class Main {
+
     public static void main(String[] args) {
-        args = new String[] {"", "tests/valid/testcase00.c"};
+        args = new String[] {"", "tests/asmtests/simple_while.c"};
         if(args.length < 2 || args.length > 3){
             System.exit(Constant.INTERNAL_ERROR);
         }
@@ -60,6 +68,19 @@ public class Main {
             System.exit(Constant.SEMANTIC_ERROR);
         }
 
+        // ASM generation
+        System.out.print("***ASMgen started***\n");
+        ASMRegisterAllocator registerAllocator = new ASMRegisterAllocator();
+        ASMProgram program = new ASMProgram(outputFilename, registerAllocator);
+        registerAllocator.setProgram(program);
+
+        VYPeStartLow lowerer = new VYPeStartLow(program, registerAllocator);
+        lowerer.visit(parseTree);
+
+        program.debugPrint();
+        program.printToFile();
+
+        //System.out.println(parseTree.toStringTree());
         System.exit(Constant.NO_ERROR);
     }
 }
