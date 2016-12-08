@@ -349,18 +349,45 @@ public class VYPeExpressionLow extends VYPeParserBaseVisitor<ASMVariable> {
 //        }
 //        return parameterList;
 //    }
-//
-//    @Override
-//    public ASMVariable visitFunction_call(VYPeParserParser.Function_callContext ctx) {
-//        String name = ctx.getChild(0).getText();
+
+    private ASMVariable genReadFunction(String function) {
+        ASMVariable varDst = this.regAlloc.getTempVar();
+        ASMRegister regDst = this.regAlloc.getRegister(varDst);
+
+        if (function.equals(ISA.Function.READ_CHAR)) {
+            this.program.addInstruction(ISA.ASMOpCode.READ_CHAR, regDst);
+        }
+        else if (function.equals(ISA.Function.READ_INT)) {
+            this.program.addInstruction(ISA.ASMOpCode.READ_INT, regDst);
+        }
+        else if (function.equals(ISA.Function.READ_STRING)) {
+            ASMVariable varLength = this.regAlloc.getTempVar();
+            ASMRegister regLength = this.regAlloc.getRegister(varLength);
+            this.program.addInstruction(ISA.ASMOpCode.READ_STRING, regDst, regLength);
+            // TODO store string somehow
+        }
+        else {
+            System.err.print("Unreachable\n");
+            System.exit(Constant.INTERNAL_ERROR);
+        }
+
+        return varDst;
+    }
+
+    @Override
+    public ASMVariable visitFunction_call(VYPeParserParser.Function_callContext ctx) {
+        String name = ctx.getChild(0).getText();
+        ASMVariable varRes = null;
 //        List<ASMVariable> parameters = this.getFunctionCallParameters(ctx);
-//
-//        if (name == "print") {
-//
-//        }
-//        else {
-//            System.err.print("Function call is not supported yet\n");
-//            System.exit(Constant.INTERNAL_ERROR);
-//        }
-//    }
+
+        if (name.equals(ISA.Function.READ_INT)) {
+            varRes = this.genReadFunction(name);
+        }
+        else {
+            System.err.print("Function call is not supported yet\n");
+            System.exit(Constant.INTERNAL_ERROR);
+        }
+
+        return varRes;
+    }
 }

@@ -34,7 +34,8 @@ public class ISA {
         SW, LW,
 
         // special
-        PRINT_CHAR, PRINT_INT
+        PRINT_CHAR, PRINT_INT, PRINT_STRING,
+        READ_CHAR, READ_INT, READ_STRING
     }
 
     public static class ASMOpDetail {
@@ -85,5 +86,20 @@ public class ISA {
 
         ASMOpDetailMap.put(ASMOpCode.PRINT_CHAR, new ASMOpDetail("PRINT_CHAR", 1));
         ASMOpDetailMap.put(ASMOpCode.PRINT_INT, new ASMOpDetail("PRINT_INT", 1));
+        ASMOpDetailMap.put(ASMOpCode.PRINT_STRING, new ASMOpDetail("PRINT_STRING", 1));
+        ASMOpDetailMap.put(ASMOpCode.READ_CHAR, new ASMOpDetail("READ_CHAR", 1));
+        ASMOpDetailMap.put(ASMOpCode.READ_INT, new ASMOpDetail("READ_INT", 1));
+        ASMOpDetailMap.put(ASMOpCode.READ_STRING, new ASMOpDetail("READ_STRING", 2));
+    }
+
+    public final class Function {
+        public static final String READ_CHAR = "read_char";
+        public static final String READ_INT = "read_int";
+        public static final String READ_STRING = "read_string";
+
+        public static final String GET_AT = "get_at";
+        public static final String SET_AT = "set_at";
+
+        public static final String STRCAT = "strcat";
     }
 }
