@@ -25,7 +25,7 @@ import java.util.ArrayList;
 public class Main {
 
     public static void main(String[] args) {
-        args = new String[] {"", "tests/asmtests/simple_while.c"};
+        args = new String[] {"", "tests/asmtests/empty.c"};
         if(args.length < 2 || args.length > 3){
             System.exit(Constant.INTERNAL_ERROR);
         }
@@ -76,6 +76,7 @@ public class Main {
 
         VYPeStartLow lowerer = new VYPeStartLow(program, registerAllocator);
         lowerer.visit(parseTree);
+        program.finalize();
 
         program.debugPrint();
         program.printToFile();

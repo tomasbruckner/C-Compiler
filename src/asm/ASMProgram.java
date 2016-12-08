@@ -12,16 +12,16 @@ import java.util.ArrayList;
  */
 public class ASMProgram {
     private ArrayList<ASMElement> program = new ArrayList<>();
+    private ArrayList<ASMData> data = new ArrayList<>();
 
     private int labelIndex = 0;
+    private int stringIndex = 0;
     private ASMRegisterAllocator regAlloc;
     private String file;
 
     public ASMProgram(String file, ASMRegisterAllocator regAlloc) {
         this.file = file;
         this.regAlloc = regAlloc;
-        // TODO probably add some start up code
-        // TODO pass output file name
         this.addDirective(".text");
         this.addDirective(".org 0");
         ASMRegister regStackPtr = this.regAlloc.getStackPtrReg();
@@ -34,6 +34,8 @@ public class ASMProgram {
         this.addInstruction(ISA.ASMOpCode.BREAK);
     }
 
+
+    //  --- LABEL RELATED ---
     private String getTempLabelname() {
         String name = "$ltemp" + this.labelIndex;
         this.labelIndex++;
@@ -77,6 +79,8 @@ public class ASMProgram {
         this.program.add(label);
     }
 
+
+    //  --- INSTRUCTION RELATED ---
     private ASMInstruction makeInstruction(ISA.ASMOpCode opCode) {
         ISA.ASMOpDetail instrDetail = ISA.ASMOpDetailMap.get(opCode);
         if (instrDetail.getOpCnt() != 0) {
@@ -178,6 +182,31 @@ public class ASMProgram {
         this.program.add(instr);
     }
 
+
+    //  --- DATA RELATED ---
+    public void addString(ASMLabel name, String value) {
+        ASMString string = new ASMString(name, value);
+        this.data.add(string);
+    }
+
+    public ASMLabel getStringLabel() {
+        String name = "str" + this.stringIndex;
+        this.stringIndex++;
+        ASMLabel label = new ASMLabel(name);
+
+        return label;
+    }
+
+
+    public void finalize() {
+        if (this.data.size() > 0) {
+            this.addDirective(".data");
+            this.program.addAll(this.data);
+        }
+    }
+
+
+    //  --- OUTPUT ---
     public void printToFile() {
         try{
             PrintWriter writer = new PrintWriter(this.file, "UTF-8");

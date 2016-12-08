@@ -312,6 +312,21 @@ public class VYPeExpressionLow extends VYPeParserBaseVisitor<ASMVariable> {
     }
 
     @Override
+    public ASMVariable visitStringLiteralLabel(VYPeParserParser.StringLiteralLabelContext ctx) {
+        System.out.print("string literal: " + ctx.getText() + "\n");
+
+        ASMVariable varDst = this.regAlloc.getTempVar();
+        ASMRegister regDst = this.regAlloc.getRegister(varDst);
+        String value = ctx.getText();
+        ASMLabel labString = this.program.getStringLabel();
+        this.program.addString(labString, value);
+
+        this.program.addInstruction(ISA.ASMOpCode.MOVSI, regDst, labString);
+
+        return varDst;
+    }
+
+    @Override
     public ASMVariable visitIdentifierLabel(VYPeParserParser.IdentifierLabelContext ctx) {
         System.out.print("identifier: " + ctx.getText() + "\n");
 
