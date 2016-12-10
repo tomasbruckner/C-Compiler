@@ -27,6 +27,17 @@ public class FunctionTable {
         ArrayList<Value> parameterList = new ArrayList<>();
         parameterList.add(new VariableValue());
         this.functionList.put("print", new Function(Type.VOID, "print", parameterList, null, true));
+        // --- DEBUG ---
+        parameterList = new ArrayList<>();
+        parameterList.add(new CharValue());
+        this.functionList.put("print_char", new Function(Type.VOID, "print_char", parameterList, null, true));
+        parameterList = new ArrayList<>();
+        parameterList.add(new IntValue());
+        this.functionList.put("print_int", new Function(Type.VOID, "print_int", parameterList, null, true));
+        parameterList = new ArrayList<>();
+        parameterList.add(new StringValue());
+        this.functionList.put("print_string", new Function(Type.VOID, "print_string", parameterList, null, true));
+        //--------------
 
         parameterList = new ArrayList<>();
         this.functionList.put("read_char", new Function(Type.CHAR, "read_char", parameterList, null, true));

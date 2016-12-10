@@ -335,20 +335,17 @@ public class VYPeExpressionLow extends VYPeParserBaseVisitor<ASMVariable> {
         return varId;
     }
 
-//    private List<ASMVariable> getFunctionCallParameters(VYPeParserParser.Function_callContext ctx) {
-//        List<Value> parameterList = new ArrayList<>();
-//
-//        for(int i = 2, len = ctx.getChildCount() - 1; i < len; i += 2) {
-//            Object obj = this.visit(ctx.getChild(i));
-//            if(!(obj instanceof Type)){
-//                throw new SemanticException("Invalid expression value! Line: " + ctx.start.getLine());
-//            }
-//
-//            Value value = this.toValue((Type)obj);
-//            parameterList.add(value);
-//        }
-//        return parameterList;
-//    }
+    private List<ASMVariable> getFunctionCallParameters(VYPeParserParser.Function_callContext ctx) {
+        List<ASMVariable> parameterList = new ArrayList<>();
+
+        for(int i = 2, len = ctx.getChildCount() - 1; i < len; i += 2) {
+            VYPeExpressionLow lowParam = new VYPeExpressionLow(this.program, this.regAlloc);
+            ASMVariable varParam = lowParam.visit(ctx.getChild(i));
+            parameterList.add(varParam);
+        }
+
+        return parameterList;
+    }
 
     private ASMVariable genReadFunction(String function) {
         ASMVariable varDst = this.regAlloc.getTempVar();
@@ -374,14 +371,38 @@ public class VYPeExpressionLow extends VYPeParserBaseVisitor<ASMVariable> {
         return varDst;
     }
 
+    private void genPrintFunction(String function, List<ASMVariable> parameters) {
+        ISA.ASMOpCode op = null;
+        if (function.equals(ISA.Function.PRINT_CHAR)) {
+            op = ISA.ASMOpCode.PRINT_CHAR;
+        }
+        else if (function.equals(ISA.Function.PRINT_INT)) {
+            op = ISA.ASMOpCode.PRINT_INT;
+        }
+        else if (function.equals(ISA.Function.PRINT_STRING)) {
+            op = ISA.ASMOpCode.PRINT_STRING;
+        }
+
+        for (ASMVariable varParam : parameters) {
+            ASMRegister regParam = this.regAlloc.getRegister(varParam);
+            this.program.addInstruction(op, regParam);
+        }
+    }
+
     @Override
     public ASMVariable visitFunction_call(VYPeParserParser.Function_callContext ctx) {
         String name = ctx.getChild(0).getText();
+        System.out.print("function call: " + name + "\n");
         ASMVariable varRes = null;
-//        List<ASMVariable> parameters = this.getFunctionCallParameters(ctx);
+        List<ASMVariable> parameters = this.getFunctionCallParameters(ctx);
 
-        if (name.equals(ISA.Function.READ_INT)) {
+        if (name.equals(ISA.Function.READ_CHAR) ||
+                name.equals(ISA.Function.READ_INT)) {
             varRes = this.genReadFunction(name);
+        }
+        else if (name.equals(ISA.Function.PRINT_CHAR) ||
+                name.equals(ISA.Function.PRINT_INT)) {
+            this.genPrintFunction(name, parameters);
         }
         else {
             System.err.print("Function call is not supported yet\n");

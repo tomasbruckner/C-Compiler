@@ -118,4 +118,12 @@ public class VYPeStatementLow extends VYPeParserBaseVisitor<Void> {
 
         return null;
     }
+
+    @Override
+    public Void visitFunction_call_statement(VYPeParserParser.Function_call_statementContext ctx) {
+        VYPeExpressionLow lowFuncCall = new VYPeExpressionLow(this.program, this.regAlloc);
+        lowFuncCall.visitFunction_call(ctx.function_call());
+
+        return null;
+    }
 }

@@ -101,5 +101,10 @@ public class ISA {
         public static final String SET_AT = "set_at";
 
         public static final String STRCAT = "strcat";
+
+        // custom
+        public static final String PRINT_CHAR = "print_char";
+        public static final String PRINT_INT = "print_int";
+        public static final String PRINT_STRING = "print_string";
     }
 }
