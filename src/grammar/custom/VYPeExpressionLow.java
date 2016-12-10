@@ -358,9 +358,16 @@ public class VYPeExpressionLow extends VYPeParserBaseVisitor<ASMVariable> {
             this.program.addInstruction(ISA.ASMOpCode.READ_INT, regDst);
         }
         else if (function.equals(ISA.Function.READ_STRING)) {
+            ASMRegister regGlobalPtr = this.regAlloc.getGlobalPtrReg();
             ASMVariable varLength = this.regAlloc.getTempVar();
             ASMRegister regLength = this.regAlloc.getRegister(varLength);
-            this.program.addInstruction(ISA.ASMOpCode.READ_STRING, regDst, regLength);
+            ASMImmediate immOne = new ASMImmediate(1);
+
+            this.program.addInstruction(ISA.ASMOpCode.READ_STRING, regGlobalPtr, regLength);
+            this.program.addInstruction(ISA.ASMOpCode.MOV, regDst, regGlobalPtr);
+            this.program.addInstruction(ISA.ASMOpCode.ADD, regGlobalPtr, regGlobalPtr, regLength);
+            this.regAlloc.killVariable(varLength);
+            this.program.addInstruction(ISA.ASMOpCode.ADDI, regGlobalPtr, regGlobalPtr, immOne);
             // TODO store string somehow
         }
         else {
@@ -397,11 +404,13 @@ public class VYPeExpressionLow extends VYPeParserBaseVisitor<ASMVariable> {
         List<ASMVariable> parameters = this.getFunctionCallParameters(ctx);
 
         if (name.equals(ISA.Function.READ_CHAR) ||
-                name.equals(ISA.Function.READ_INT)) {
+                name.equals(ISA.Function.READ_INT) ||
+                name.equals(ISA.Function.READ_STRING)) {
             varRes = this.genReadFunction(name);
         }
         else if (name.equals(ISA.Function.PRINT_CHAR) ||
-                name.equals(ISA.Function.PRINT_INT)) {
+                name.equals(ISA.Function.PRINT_INT) ||
+                name.equals(ISA.Function.PRINT_STRING)) {
             this.genPrintFunction(name, parameters);
         }
         else {

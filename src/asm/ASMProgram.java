@@ -22,14 +22,24 @@ public class ASMProgram {
     public ASMProgram(String file, ASMRegisterAllocator regAlloc) {
         this.file = file;
         this.regAlloc = regAlloc;
-        this.addDirective(".text");
-        this.addDirective(".org 0");
+        this.generateStartup();
+    }
+
+    private void generateStartup() {
         ASMRegister regStackPtr = this.regAlloc.getStackPtrReg();
         ASMRegister regFramePtr = this.regAlloc.getFramePtrReg();
-        ASMImmediate imm = new ASMImmediate(0x4000);
-        this.addInstruction(ISA.ASMOpCode.MOVSI, regStackPtr, imm);
-        this.addInstruction(ISA.ASMOpCode.MOV, regFramePtr, regStackPtr);
+        ASMRegister regGlobalPtr = this.regAlloc.getGlobalPtrReg();
+
         ASMLabel labMain = new ASMLabel("main");
+
+        ASMImmediate immStackTop = new ASMImmediate(0x4000);
+        ASMImmediate immGlobalBegin = new ASMImmediate(0x1000);
+
+        this.addDirective(".text");
+        this.addDirective(".org 0");
+        this.addInstruction(ISA.ASMOpCode.MOVSI, regStackPtr, immStackTop);
+        this.addInstruction(ISA.ASMOpCode.MOV, regFramePtr, regStackPtr);
+        this.addInstruction(ISA.ASMOpCode.MOVSI, regGlobalPtr, immGlobalBegin);
         this.addInstruction(ISA.ASMOpCode.JAL, labMain);
         this.addInstruction(ISA.ASMOpCode.BREAK);
     }

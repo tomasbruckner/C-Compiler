@@ -27,6 +27,7 @@ public class ISA {
     public enum ASMOpCode {
         MOV, MOVSI, MOVZ, LI, MFHI, MFLO,
         ADD, SUB, SUBU, MUL, DIV,
+        ADDI,
 //        AND, OR,
         SLT,
         BEQ, BNE, J, JR, JAL,
@@ -67,6 +68,8 @@ public class ISA {
         // TODO maybe replace for MULT
         ASMOpDetailMap.put(ASMOpCode.MUL, new ASMOpDetail("MUL", 3));
         ASMOpDetailMap.put(ASMOpCode.DIV, new ASMOpDetail("DIV", 2));
+
+        ASMOpDetailMap.put(ASMOpCode.ADDI, new ASMOpDetail("ADDI", 3));
 
 //        ASMOpDetailMap.put(ASMOpCode.AND, new ASMOpDetail("AND", 3));
 //        ASMOpDetailMap.put(ASMOpCode.OR, new ASMOpDetail("OR", 3));
