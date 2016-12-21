@@ -16,19 +16,18 @@ public class ASMProgram {
 
     private int labelIndex = 0;
     private int stringIndex = 0;
-    private ASMRegisterAllocator regAlloc;
     private String file;
 
-    public ASMProgram(String file, ASMRegisterAllocator regAlloc) {
+    public ASMProgram(String file) {
         this.file = file;
-        this.regAlloc = regAlloc;
         this.generateStartup();
     }
 
     private void generateStartup() {
-        ASMRegister regStackPtr = this.regAlloc.getStackPtrReg();
-        ASMRegister regFramePtr = this.regAlloc.getFramePtrReg();
-        ASMRegister regGlobalPtr = this.regAlloc.getGlobalPtrReg();
+        // program should be independent on register allocator
+        ASMRegister regStackPtr = new ASMRegister(ISA.Register.STACK_PTR);
+        ASMRegister regFramePtr = new ASMRegister(ISA.Register.FRAME_PTR);
+        ASMRegister regGlobalPtr = new ASMRegister(ISA.Register.GLOBAL_PTR);
 
         ASMLabel labMain = new ASMLabel("main");
 

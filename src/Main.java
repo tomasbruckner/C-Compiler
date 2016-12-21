@@ -25,7 +25,7 @@ import java.util.ArrayList;
 public class Main {
 
     public static void main(String[] args) {
-        args = new String[] {"", "tests/asmtests/simple_string.c"};
+        args = new String[] {"", "tests/asmtests/simple_call.c"};
         if(args.length < 2 || args.length > 3){
             System.exit(Constant.INTERNAL_ERROR);
         }
@@ -70,9 +70,8 @@ public class Main {
 
         // ASM generation
         System.out.print("***ASMgen started***\n");
-        ASMRegisterAllocator registerAllocator = new ASMRegisterAllocator();
-        ASMProgram program = new ASMProgram(outputFilename, registerAllocator);
-        registerAllocator.setProgram(program);
+        ASMProgram program = new ASMProgram(outputFilename);
+        ASMRegisterAllocator registerAllocator = new ASMRegisterAllocator(program);
 
         VYPeStartLow lowerer = new VYPeStartLow(program, registerAllocator);
         lowerer.visit(parseTree);

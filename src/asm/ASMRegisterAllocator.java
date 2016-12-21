@@ -3,10 +3,7 @@ package asm;
 import util.Constant;
 import util.ISA;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by Filip on 09-Nov-16.
@@ -145,7 +142,7 @@ public class ASMRegisterAllocator {
 
     private ASMProgram program;
 
-    private Scope scope; // TODO replace with a stack of scopes
+    private Stack<Scope> scopes = new Stack<Scope>();
 
     private int SPILL_SIZE = 4;
 
@@ -154,7 +151,9 @@ public class ASMRegisterAllocator {
     private List<RFEntry> registerStack = new ArrayList<RFEntry>();
 //    private int RS_LAST = ISA.GPRCNT - 1;
 
-    public ASMRegisterAllocator() {
+    public ASMRegisterAllocator(ASMProgram program) {
+        this.program = program;
+
         // initialize the instances representing the registers
         for (int index = 0; index < ISA.REGCNT; index++) {
             ASMRegister register = new ASMRegister(index);
@@ -168,19 +167,12 @@ public class ASMRegisterAllocator {
             this.registerStack.add(this.registerField[index]);
         }
 
-        this.scope = new Scope();
+        this.scopes.push(new Scope());
     }
-
-    // TODO has to be called, check somehow
-    public void setProgram(ASMProgram program) {
-        this.program = program;
-    }
-
 
     //  --- VARIABLE RELATED ---
     private Scope getCurScope() {
-        // TODO top the scope stack
-        return this.scope;
+        return this.scopes.peek();
     }
 
     public ASMVariable getTempVar() {
@@ -196,6 +188,7 @@ public class ASMRegisterAllocator {
     }
 
     private ASMVariable checkVariable(ASMVariable var) {
+        Scope scope = this.getCurScope();
         ASMVariable found = scope.findVar(var);
 
         if (found == null) {
@@ -360,6 +353,52 @@ public class ASMRegisterAllocator {
         location.change(Location.L_REGISTER);
 
         return register;
+    }
+
+    public void saveRegisters() {
+        ASMRegister regStackPtr = this.getStackPtrReg();
+        ASMImmediate immOffset = new ASMImmediate(this.SPILL_SIZE);
+        ASMImmediate immZero = new ASMImmediate(0);
+
+        // save the frame pointer
+        ASMRegister regFramePtr = this.getFramePtrReg();
+        this.program.addInstruction(ISA.ASMOpCode.SUBU, regStackPtr, immOffset);
+        this.program.addInstruction(ISA.ASMOpCode.SW, regFramePtr, immZero, regStackPtr);
+
+        // save the return address
+        ASMRegister regReturnAddr = this.getReturnAddrReg();
+        this.program.addInstruction(ISA.ASMOpCode.SUBU, regStackPtr, immOffset);
+        this.program.addInstruction(ISA.ASMOpCode.SW, regReturnAddr, immZero, regStackPtr);
+
+        // save all the gpr registers
+        for (RFEntry entry: this.registerStack) {
+            this.program.addInstruction(ISA.ASMOpCode.SUBU, regStackPtr, immOffset);
+            this.program.addInstruction(ISA.ASMOpCode.SW, entry.register, immZero, regStackPtr);
+        }
+    }
+
+    public void restoreRegisters() {
+        ASMRegister regStackPtr = this.getStackPtrReg();
+        ASMImmediate immOffset = new ASMImmediate(this.SPILL_SIZE);
+        ASMImmediate immZero = new ASMImmediate(0);
+
+        // restore all the gpr registers
+        for (int index = (ISA.GPRCNT - 1); index >= 0; index--) {
+            RFEntry entry = this.registerStack.get(index);
+            this.program.addInstruction(ISA.ASMOpCode.LW, entry.register, immZero, regStackPtr);
+            this.program.addInstruction(ISA.ASMOpCode.ADDU, regStackPtr, immOffset);
+        }
+
+        // restore the return address
+        ASMRegister regReturnAddr = this.getReturnAddrReg();
+        this.program.addInstruction(ISA.ASMOpCode.LW, regReturnAddr, immZero, regStackPtr);
+        this.program.addInstruction(ISA.ASMOpCode.ADDU, regStackPtr, immOffset);
+
+        // restore the frame pointer
+        ASMRegister regFramePtr = this.getFramePtrReg();
+        this.program.addInstruction(ISA.ASMOpCode.LW, regFramePtr, immZero, regStackPtr);
+        this.program.addInstruction(ISA.ASMOpCode.ADDU, regStackPtr, immOffset);
+
     }
 
     public ASMRegister getZeroReg() {

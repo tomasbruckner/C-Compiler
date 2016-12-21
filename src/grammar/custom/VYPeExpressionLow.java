@@ -367,8 +367,8 @@ public class VYPeExpressionLow extends VYPeParserBaseVisitor<ASMVariable> {
             this.program.addInstruction(ISA.ASMOpCode.MOV, regDst, regGlobalPtr);
             this.program.addInstruction(ISA.ASMOpCode.ADD, regGlobalPtr, regGlobalPtr, regLength);
             this.regAlloc.killVariable(varLength);
+            // \0
             this.program.addInstruction(ISA.ASMOpCode.ADDI, regGlobalPtr, regGlobalPtr, immOne);
-            // TODO store string somehow
         }
         else {
             System.err.print("Unreachable\n");
@@ -414,8 +414,10 @@ public class VYPeExpressionLow extends VYPeParserBaseVisitor<ASMVariable> {
             this.genPrintFunction(name, parameters);
         }
         else {
-            System.err.print("Function call is not supported yet\n");
-            System.exit(Constant.INTERNAL_ERROR);
+            this.regAlloc.saveRegisters();
+            ASMLabel labFunc = new ASMLabel(name);
+            this.program.addInstruction(ISA.ASMOpCode.JAL, labFunc);
+            this.regAlloc.restoreRegisters();
         }
 
         return varRes;
