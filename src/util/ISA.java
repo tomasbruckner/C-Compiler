@@ -11,6 +11,7 @@ public class ISA {
     public static final int GPRCNT = 25;
     public static final int GPRFIRST = 3;
     public static final int GPRLAST = GPRFIRST + GPRCNT - 1;
+    public static final int REGISTER_SIZE = 4;
 
     public final class Register {
         public static final int PROGRAM_COUNTER = -1;

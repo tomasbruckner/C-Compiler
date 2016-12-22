@@ -27,6 +27,12 @@ public class ASMRegisterAllocator {
             this.spilled = false;
         }
 
+        public Location(int type, long address, boolean spilled) {
+            this.type = type;
+            this.address = address;
+            this.spilled = spilled;
+        }
+
         public void change(int type) {
             this.type = type;
         }
@@ -87,6 +93,17 @@ public class ASMRegisterAllocator {
             return var;
         }
 
+        // add variable with known memory location (parameters)
+        public void addVariable(String name, long offset) {
+            // create a new variable
+            ASMVariable var = new ASMVariable(name);
+            // variable is already on the stack
+            Location loc = new Location(Location.L_MEMORY, offset, true);
+
+            // save the variable in the current scope map
+            this.putVar(var, loc);
+        }
+
         public Location getVarLocation(ASMVariable var) {
             Location location = null;
             if(this.stackMap.containsKey(var)) {
@@ -144,7 +161,7 @@ public class ASMRegisterAllocator {
 
     private Stack<Scope> scopes = new Stack<Scope>();
 
-    private int SPILL_SIZE = 4;
+    private int SPILL_SIZE = ISA.REGISTER_SIZE;
 
     // unique instances of all architecture registers
     private RFEntry[] registerField = new RFEntry[ISA.REGCNT];
@@ -209,6 +226,11 @@ public class ASMRegisterAllocator {
         }
 
         return var;
+    }
+
+    public void addParameter(String name, long offset) {
+        Scope scope = getCurScope();
+        scope.addVariable(name, offset);
     }
 
     public void killVariable(ASMVariable var) {
@@ -299,6 +321,11 @@ public class ASMRegisterAllocator {
         // variable has been spilled before
         if(location.wasSpilled()) {
             offset = location.getAddress();
+
+            ASMRegister regFramePtr = this.getFramePtrReg();
+            ASMImmediate immOffset = new ASMImmediate(offset);
+            String comment = "spill2 " + varVictim.getText();
+            this.program.addInstruction(ISA.ASMOpCode.SW, regVictim, immOffset, regFramePtr, comment);
         }
         // variable spilled for the first time
         else {
@@ -307,15 +334,16 @@ public class ASMRegisterAllocator {
             offset = scope.getOffset();
             location.setAddress(offset);
             location.spilled();
-        }
-        location.change(Location.L_MEMORY);
 
-        ASMRegister regStackPtr = this.getStackPtrReg();
-        ASMImmediate immOffset = new ASMImmediate(this.SPILL_SIZE);
-        ASMImmediate immZero = new ASMImmediate(0);
-        this.program.addInstruction(ISA.ASMOpCode.SUBU, regStackPtr, immOffset);
-        String comment = "spill " + varVictim.getText();
-        this.program.addInstruction(ISA.ASMOpCode.SW, regVictim, immZero, regStackPtr, comment);
+            ASMRegister regStackPtr = this.getStackPtrReg();
+            ASMImmediate immOffset = new ASMImmediate(this.SPILL_SIZE);
+            ASMImmediate immZero = new ASMImmediate(0);
+            this.program.addInstruction(ISA.ASMOpCode.SUBU, regStackPtr, immOffset);
+            String comment = "spill1 " + varVictim.getText();
+            this.program.addInstruction(ISA.ASMOpCode.SW, regVictim, immZero, regStackPtr, comment);
+        }
+
+        location.change(Location.L_MEMORY);
     }
 
     public ASMRegister getRegister(ASMVariable var) {
@@ -355,6 +383,37 @@ public class ASMRegisterAllocator {
         return register;
     }
 
+    // used when spilling can not happen, asm temporary reg used if needed
+    public ASMRegister getRegisterNoSpill(ASMVariable var) {
+        Scope scope = this.getCurScope();
+        Location location = scope.getVarLocation(var);
+        ASMRegister register = null;
+
+        if (location.getType() == Location.L_REGISTER) {
+            register = this.findRegister(var);
+            if (register == null) {
+                System.err.print("Variable '" + var.getText() + "' should have been in register but not found!\n");
+                System.exit(Constant.INTERNAL_ERROR);
+            }
+        }
+        // reload from memory to asm temporary => this does not cause spill
+        else if (location.getType() == Location.L_MEMORY) {
+            register = this.getAsmTempReg();
+            long offset = -location.getAddress();
+
+            ASMImmediate immOffset = new ASMImmediate(offset);
+            ASMRegister regFramePtr = this.getFramePtrReg();
+            String comment = "reload to asm temp " + var.getText();
+            this.program.addInstruction(ISA.ASMOpCode.LW, register, immOffset, regFramePtr, comment);
+        }
+        else {
+            System.err.print("Unreachable\n");
+            System.exit(Constant.INTERNAL_ERROR);
+        }
+
+        return register;
+    }
+
     public List<ASMRegister> saveRegisters() {
         List<ASMRegister> regs = new ArrayList<ASMRegister>();
         // save the reserved registers
@@ -362,7 +421,7 @@ public class ASMRegisterAllocator {
         regs.add(this.getReturnAddrReg());
 
         // save used gprs
-        for (RFEntry entry: this.registerStack) {
+        for (RFEntry entry : this.registerStack) {
             if (! entry.isEmpty()) {
                 regs.add(entry.register);
             }

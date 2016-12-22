@@ -29,14 +29,32 @@ public class VYPeFunctionLow extends VYPeParserBaseVisitor<Void> {
         String functionName = ctx.Identifier().getText();
         this.program.addLabel(functionName);
 
+        ASMRegisterAllocator registerAllocator = new ASMRegisterAllocator(this.program);
+        List<String> params = this.program.getFunctionParams(functionName);
+        int paramsCnt = params.size();
+
+        if (paramsCnt > 0) {
+            // this should be positive, but it is stored the other way round
+            long offset = -1 * ISA.REGISTER_SIZE * (paramsCnt - 1);
+            for (String param : params) {
+                registerAllocator.addParameter(param, offset);
+                offset += ISA.REGISTER_SIZE;
+            }
+        }
+
+        // backup stack pointer to the frame pointer
+        ASMRegister regFramePtr = registerAllocator.getFramePtrReg();
+        ASMRegister regStackPtr = registerAllocator.getStackPtrReg();
+        this.program.addInstruction(ISA.ASMOpCode.MOV, regFramePtr, regStackPtr);
+
 //        TODO only one block per function??? nested blocks?
         VYPeParserParser.Block_statementsContext block = ctx.block_statements();
 
-        ASMRegisterAllocator registerAllocator = new ASMRegisterAllocator(this.program);
         VYPeBlockLow lowBody = new VYPeBlockLow(this.program, registerAllocator);
         lowBody.visit(block);
 
         ASMRegister regRet = registerAllocator.getReturnAddrReg();
+        this.program.addInstruction(ISA.ASMOpCode.MOV, regStackPtr, regFramePtr);
         this.program.addInstruction(ISA.ASMOpCode.JR, regRet);
 
         return null;

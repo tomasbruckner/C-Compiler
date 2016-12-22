@@ -68,9 +68,12 @@ public class Main {
             System.exit(Constant.SEMANTIC_ERROR);
         }
 
+        // function table will be used during the assembly generation
+        FunctionTable functionTable = visitor.getFunctionTable();
+
         // ASM generation
         System.out.print("***ASMgen started***\n");
-        ASMProgram program = new ASMProgram(outputFilename);
+        ASMProgram program = new ASMProgram(outputFilename, functionTable);
 //        ASMRegisterAllocator registerAllocator = new ASMRegisterAllocator(program);
 
         VYPeStartLow lowerer = new VYPeStartLow(program);

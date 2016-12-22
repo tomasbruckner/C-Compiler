@@ -415,9 +415,34 @@ public class VYPeExpressionLow extends VYPeParserBaseVisitor<ASMVariable> {
         }
         else {
             List<ASMRegister> regsSaved;
+            // save used registers on the stack
             regsSaved = this.regAlloc.saveRegisters();
+
+            // allocate space for the arguments on the stack
+            int size = ISA.REGISTER_SIZE * parameters.size();
+            ASMImmediate immSize = new ASMImmediate(size);
+            ASMRegister regStackPtr = this.regAlloc.getStackPtrReg();
+            this.program.addInstruction(ISA.ASMOpCode.SUBU, regStackPtr, immSize);
+
+            // push arguments on the stack
+            int offset = ISA.REGISTER_SIZE * (parameters.size() - 1);
+            for (ASMVariable varParam : parameters) {
+                ASMImmediate immOffset = new ASMImmediate(offset);
+                // spilling would break the call frame
+                ASMRegister regParam = this.regAlloc.getRegisterNoSpill(varParam);
+                String comment = "param " + varParam.getText();
+                this.program.addInstruction(ISA.ASMOpCode.SW, regParam, immOffset, regStackPtr, comment);
+                offset -= ISA.REGISTER_SIZE;
+            }
+
+            // call the function
             ASMLabel labFunc = new ASMLabel(name);
             this.program.addInstruction(ISA.ASMOpCode.JAL, labFunc);
+
+            // free the parameters from the stack
+            this.program.addInstruction(ISA.ASMOpCode.ADDU, regStackPtr, immSize);
+
+            // restore the registers from the stack
             this.regAlloc.restoreRegisters(regsSaved);
         }
 

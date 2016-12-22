@@ -1,11 +1,15 @@
 package asm;
 
+import tables.Function;
+import tables.FunctionTable;
 import util.Constant;
 import util.ISA;
+import values.Value;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Filip on 08-Nov-16.
@@ -14,19 +18,23 @@ public class ASMProgram {
     private ArrayList<ASMElement> program = new ArrayList<>();
     private ArrayList<ASMData> data = new ArrayList<>();
 
+
+    private FunctionTable functionTable;
+
     private int labelIndex = 0;
     private int stringIndex = 0;
     private String file;
 
-    public ASMProgram(String file) {
+    public ASMProgram(String file, FunctionTable functionTable) {
         this.file = file;
+        this.functionTable = functionTable;
         this.generateStartup();
     }
 
     private void generateStartup() {
         // program should be independent on register allocator
         ASMRegister regStackPtr = new ASMRegister(ISA.Register.STACK_PTR);
-        ASMRegister regFramePtr = new ASMRegister(ISA.Register.FRAME_PTR);
+//        ASMRegister regFramePtr = new ASMRegister(ISA.Register.FRAME_PTR);
         ASMRegister regGlobalPtr = new ASMRegister(ISA.Register.GLOBAL_PTR);
 
         ASMLabel labMain = new ASMLabel("main");
@@ -37,7 +45,7 @@ public class ASMProgram {
         this.addDirective(".text");
         this.addDirective(".org 0");
         this.addInstruction(ISA.ASMOpCode.MOVSI, regStackPtr, immStackTop);
-        this.addInstruction(ISA.ASMOpCode.MOV, regFramePtr, regStackPtr);
+//        this.addInstruction(ISA.ASMOpCode.MOV, regFramePtr, regStackPtr);
         this.addInstruction(ISA.ASMOpCode.MOVSI, regGlobalPtr, immGlobalBegin);
         this.addInstruction(ISA.ASMOpCode.JAL, labMain);
         this.addInstruction(ISA.ASMOpCode.BREAK);
@@ -204,6 +212,19 @@ public class ASMProgram {
         ASMLabel label = new ASMLabel(name);
 
         return label;
+    }
+
+
+    // --- FUNCTION RELATED ---
+    public List<String> getFunctionParams(String name) {
+        Function function = this.functionTable.getFunctionByName(name);
+        List<String> params = new ArrayList<>();
+
+        for (Value val : function.getParameterList()) {
+            params.add(val.getName());
+        }
+
+        return params;
     }
 
 

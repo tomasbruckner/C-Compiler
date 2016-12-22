@@ -40,6 +40,10 @@ public class VYPeExpressionVisitor extends VYPeParserBaseVisitor {
         this.functionTable.semanticCheck();
     }
 
+    public FunctionTable getFunctionTable() {
+        return this.functionTable;
+    }
+
     /************************************* FUNCTIONS *******************************************************************/
     // TODO REFACTORING FUNCTION
 
@@ -74,6 +78,12 @@ public class VYPeExpressionVisitor extends VYPeParserBaseVisitor {
         this.currentFunctionName = functionName;
         Function function = new Function(returnType, functionName, this.getParameters(ctx.param_list()), ctx.block_statements(), true);
         this.functionTable.add(functionName, function);
+
+        // *** temporary ***
+        for (Value param : function.getParameterList()) {
+            this.symbolTable.add(param);
+        }
+        // ***
 
         this.visit(ctx.block_statements());
         return Type.VOID;
