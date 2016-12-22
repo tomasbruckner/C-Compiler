@@ -20,11 +20,9 @@ import java.util.List;
 public class VYPeStartLow extends VYPeParserBaseVisitor<Void> {
 
     ASMProgram program;
-    ASMRegisterAllocator regAlloc;
 
-    public VYPeStartLow(ASMProgram program, ASMRegisterAllocator regAlloc) {
+    public VYPeStartLow(ASMProgram program) {
         this.program = program;
-        this.regAlloc = regAlloc;
     }
 
     @Override
@@ -32,7 +30,7 @@ public class VYPeStartLow extends VYPeParserBaseVisitor<Void> {
         List<VYPeParserParser.Function_definitionContext> functions = ctx.function_definition();
 
         for(VYPeParserParser.Function_definitionContext f : functions) {
-            VYPeFunctionLow funcLowerer = new VYPeFunctionLow(this.program, this.regAlloc);
+            VYPeFunctionLow funcLowerer = new VYPeFunctionLow(this.program);
             funcLowerer.visit(f);
         }
 

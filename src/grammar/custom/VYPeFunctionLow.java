@@ -19,11 +19,9 @@ import java.util.List;
 public class VYPeFunctionLow extends VYPeParserBaseVisitor<Void> {
 
     ASMProgram program;
-    ASMRegisterAllocator regAlloc;
 
-    public VYPeFunctionLow(ASMProgram program, ASMRegisterAllocator regAlloc) {
+    public VYPeFunctionLow(ASMProgram program) {
         this.program = program;
-        this.regAlloc = regAlloc;
     }
 
     @Override
@@ -34,25 +32,12 @@ public class VYPeFunctionLow extends VYPeParserBaseVisitor<Void> {
 //        TODO only one block per function??? nested blocks?
         VYPeParserParser.Block_statementsContext block = ctx.block_statements();
 
-        VYPeFunctionLow funcLowerer = new VYPeFunctionLow(this.program, this.regAlloc);
-        funcLowerer.visit(block);
+        ASMRegisterAllocator registerAllocator = new ASMRegisterAllocator(this.program);
+        VYPeBlockLow lowBody = new VYPeBlockLow(this.program, registerAllocator);
+        lowBody.visit(block);
 
-        ASMRegister regRet = this.regAlloc.getReturnAddrReg();
+        ASMRegister regRet = registerAllocator.getReturnAddrReg();
         this.program.addInstruction(ISA.ASMOpCode.JR, regRet);
-
-        return null;
-    }
-
-//    TODO probably move to separate class if blocks can be nested
-    @Override
-    public Void visitBlock_statements(VYPeParserParser.Block_statementsContext ctx) {
-        System.out.print("block\n");
-        List<VYPeParserParser.StatementContext> statements = ctx.statement();
-
-        for(VYPeParserParser.StatementContext s : statements) {
-            VYPeStatementLow statLowerer = new VYPeStatementLow(this.program, this.regAlloc);
-            statLowerer.visit(s.getChild(0));
-        }
 
         return null;
     }

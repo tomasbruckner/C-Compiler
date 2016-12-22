@@ -1,12 +1,12 @@
-int function (void);
+int function (int);
 
-int function (void) {
+int function (int a) {
     return 3;
 }
 
 int main(void) {
     int x;
     x = 3 * 5 - 1 >= 5;
-    function();
+    function(5);
     return x;
 }

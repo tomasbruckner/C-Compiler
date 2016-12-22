@@ -71,9 +71,9 @@ public class Main {
         // ASM generation
         System.out.print("***ASMgen started***\n");
         ASMProgram program = new ASMProgram(outputFilename);
-        ASMRegisterAllocator registerAllocator = new ASMRegisterAllocator(program);
+//        ASMRegisterAllocator registerAllocator = new ASMRegisterAllocator(program);
 
-        VYPeStartLow lowerer = new VYPeStartLow(program, registerAllocator);
+        VYPeStartLow lowerer = new VYPeStartLow(program);
         lowerer.visit(parseTree);
         program.finalize();
 

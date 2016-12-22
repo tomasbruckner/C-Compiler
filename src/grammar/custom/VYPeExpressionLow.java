@@ -414,10 +414,11 @@ public class VYPeExpressionLow extends VYPeParserBaseVisitor<ASMVariable> {
             this.genPrintFunction(name, parameters);
         }
         else {
-            this.regAlloc.saveRegisters();
+            List<ASMRegister> regsSaved;
+            regsSaved = this.regAlloc.saveRegisters();
             ASMLabel labFunc = new ASMLabel(name);
             this.program.addInstruction(ISA.ASMOpCode.JAL, labFunc);
-            this.regAlloc.restoreRegisters();
+            this.regAlloc.restoreRegisters(regsSaved);
         }
 
         return varRes;

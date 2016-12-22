@@ -78,12 +78,12 @@ public class VYPeStatementLow extends VYPeParserBaseVisitor<Void> {
         String comIf = "If statement";
         this.program.addInstruction(ISA.ASMOpCode.BEQ, regCond, regZero, labFalse, comIf);
         this.regAlloc.killVariable(varCond);
-        VYPeFunctionLow lowTrue = new VYPeFunctionLow(this.program, this.regAlloc);
+        VYPeBlockLow lowTrue = new VYPeBlockLow(this.program, this.regAlloc);
         lowTrue.visit(ctx.block_statements(0));
         this.program.addInstruction(ISA.ASMOpCode.J, labTrue);
         String comFalse = "If false";
         this.program.addLabel(labFalse, comFalse);
-        VYPeFunctionLow lowFalse = new VYPeFunctionLow(this.program, this.regAlloc);
+        VYPeBlockLow lowFalse = new VYPeBlockLow(this.program, this.regAlloc);
         lowFalse.visit(ctx.block_statements(1));
         String comTrue = "If true";
         this.program.addLabel(labTrue, comTrue);
@@ -110,7 +110,7 @@ public class VYPeStatementLow extends VYPeParserBaseVisitor<Void> {
         this.program.addInstruction(ISA.ASMOpCode.BEQ, regCond, regZero, labEnd);
         this.regAlloc.killVariable(varCond);
         //compute the body of the loop
-        VYPeFunctionLow lowBody = new VYPeFunctionLow(this.program, this.regAlloc);
+        VYPeBlockLow lowBody = new VYPeBlockLow(this.program, this.regAlloc);
         lowBody.visit(ctx.block_statements());
         // jump back to the beginning of the loop
         this.program.addInstruction(ISA.ASMOpCode.J, labBegin);

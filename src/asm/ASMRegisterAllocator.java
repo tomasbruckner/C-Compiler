@@ -355,50 +355,53 @@ public class ASMRegisterAllocator {
         return register;
     }
 
-    public void saveRegisters() {
-        ASMRegister regStackPtr = this.getStackPtrReg();
-        ASMImmediate immOffset = new ASMImmediate(this.SPILL_SIZE);
-        ASMImmediate immZero = new ASMImmediate(0);
+    public List<ASMRegister> saveRegisters() {
+        List<ASMRegister> regs = new ArrayList<ASMRegister>();
+        // save the reserved registers
+        regs.add(this.getFramePtrReg());
+        regs.add(this.getReturnAddrReg());
 
-        // save the frame pointer
-        ASMRegister regFramePtr = this.getFramePtrReg();
-        this.program.addInstruction(ISA.ASMOpCode.SUBU, regStackPtr, immOffset);
-        this.program.addInstruction(ISA.ASMOpCode.SW, regFramePtr, immZero, regStackPtr);
-
-        // save the return address
-        ASMRegister regReturnAddr = this.getReturnAddrReg();
-        this.program.addInstruction(ISA.ASMOpCode.SUBU, regStackPtr, immOffset);
-        this.program.addInstruction(ISA.ASMOpCode.SW, regReturnAddr, immZero, regStackPtr);
-
-        // save all the gpr registers
+        // save used gprs
         for (RFEntry entry: this.registerStack) {
-            this.program.addInstruction(ISA.ASMOpCode.SUBU, regStackPtr, immOffset);
-            this.program.addInstruction(ISA.ASMOpCode.SW, entry.register, immZero, regStackPtr);
+            if (! entry.isEmpty()) {
+                regs.add(entry.register);
+            }
         }
+
+        ASMRegister regStackPtr = this.getStackPtrReg();
+        ASMImmediate immSize = new ASMImmediate(this.SPILL_SIZE * regs.size());
+
+        // allocate space on the stack
+        this.program.addInstruction(ISA.ASMOpCode.SUBU, regStackPtr, immSize);
+
+        int offset = this.SPILL_SIZE * (regs.size() - 1);
+        for (ASMRegister reg : regs) {
+            ASMImmediate immOffset = new ASMImmediate(offset);
+            this.program.addInstruction(ISA.ASMOpCode.SW, reg, immOffset, regStackPtr);
+            offset -= this.SPILL_SIZE;
+        }
+
+        return regs;
     }
 
-    public void restoreRegisters() {
-        ASMRegister regStackPtr = this.getStackPtrReg();
-        ASMImmediate immOffset = new ASMImmediate(this.SPILL_SIZE);
-        ASMImmediate immZero = new ASMImmediate(0);
+    public void restoreRegisters(List<ASMRegister> regs) {
+        // restoring has to be done in the reverse order
+        List<ASMRegister> regsReverse = regs.subList(0, regs.size());
+        Collections.reverse(regsReverse);
 
-        // restore all the gpr registers
-        for (int index = (ISA.GPRCNT - 1); index >= 0; index--) {
-            RFEntry entry = this.registerStack.get(index);
-            this.program.addInstruction(ISA.ASMOpCode.LW, entry.register, immZero, regStackPtr);
-            this.program.addInstruction(ISA.ASMOpCode.ADDU, regStackPtr, immOffset);
+        ASMRegister regStackPtr = this.getStackPtrReg();
+
+        int offset = 0;
+        // all the saved registers can be found in regs
+        for (ASMRegister reg : regsReverse) {
+            ASMImmediate immOffset = new ASMImmediate(offset);
+            this.program.addInstruction(ISA.ASMOpCode.LW, reg, immOffset, regStackPtr);
+            offset += this.SPILL_SIZE;
         }
 
-        // restore the return address
-        ASMRegister regReturnAddr = this.getReturnAddrReg();
-        this.program.addInstruction(ISA.ASMOpCode.LW, regReturnAddr, immZero, regStackPtr);
-        this.program.addInstruction(ISA.ASMOpCode.ADDU, regStackPtr, immOffset);
-
-        // restore the frame pointer
-        ASMRegister regFramePtr = this.getFramePtrReg();
-        this.program.addInstruction(ISA.ASMOpCode.LW, regFramePtr, immZero, regStackPtr);
-        this.program.addInstruction(ISA.ASMOpCode.ADDU, regStackPtr, immOffset);
-
+        // free the space on the stack
+        ASMImmediate immSize = new ASMImmediate(this.SPILL_SIZE * regs.size());
+        this.program.addInstruction(ISA.ASMOpCode.ADDU, regStackPtr, immSize);
     }
 
     public ASMRegister getZeroReg() {
