@@ -7,7 +7,7 @@ public class ASMString extends ASMData {
     private String value;
 
     public ASMString(ASMLabel name, String value) {
-        super(name, "asciiz");
+        super(name, "asciz");
         this.value = value;
     }
 

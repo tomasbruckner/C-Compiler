@@ -3,13 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e39a7fbf-b678-42f0-a6fe-10318098d617" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main.java" afterPath="$PROJECT_DIR$/src/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/asm/ASMProgram.java" afterPath="$PROJECT_DIR$/src/asm/ASMProgram.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/asm/ASMRegisterAllocator.java" afterPath="$PROJECT_DIR$/src/asm/ASMRegisterAllocator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/grammar/custom/VYPeExpressionLow.java" afterPath="$PROJECT_DIR$/src/grammar/custom/VYPeExpressionLow.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/grammar/custom/VYPeExpressionVisitor.java" afterPath="$PROJECT_DIR$/src/grammar/custom/VYPeExpressionVisitor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/grammar/custom/VYPeFunctionLow.java" afterPath="$PROJECT_DIR$/src/grammar/custom/VYPeFunctionLow.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/util/ISA.java" afterPath="$PROJECT_DIR$/src/util/ISA.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/asm/ASMString.java" afterPath="$PROJECT_DIR$/src/asm/ASMString.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/asmtests/simple_call.c" afterPath="$PROJECT_DIR$/tests/asmtests/simple_call.c" />
     </list>
     <ignored path="vype.iws" />
@@ -55,11 +49,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ASMRegisterAllocator.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ASMRegisterAllocator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/asm/ASMRegisterAllocator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-4843">
-              <caret line="61" column="20" selection-start-line="61" selection-start-column="20" selection-end-line="61" selection-end-column="20" />
+            <state relative-caret-position="274">
+              <caret line="368" column="51" selection-start-line="368" selection-start-column="51" selection-end-line="368" selection-end-column="51" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1658#1659#0" expanded="true" />
@@ -85,11 +79,21 @@
       <file leaf-file-name="ASMProgram.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/asm/ASMProgram.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
+            <state relative-caret-position="-111">
               <caret line="209" column="47" selection-start-line="209" selection-start-column="47" selection-end-line="209" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ASMString.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/asm/ASMString.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" column="25" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -119,16 +123,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="544">
               <caret line="39" column="43" selection-start-line="39" selection-start-column="43" selection-end-line="39" selection-end-column="43" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Function.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/tables/Function.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="49" column="19" selection-start-line="49" selection-start-column="19" selection-end-line="49" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -207,7 +201,6 @@
         <option value="$PROJECT_DIR$/tests/asmtests/simple_char.c" />
         <option value="$PROJECT_DIR$/tests/asmtests/simple_while.c" />
         <option value="$PROJECT_DIR$/src/asm/ASMData.java" />
-        <option value="$PROJECT_DIR$/src/asm/ASMString.java" />
         <option value="$PROJECT_DIR$/tests/asmtests/simple_read_int.c" />
         <option value="$PROJECT_DIR$/src/tables/FunctionTable.java" />
         <option value="$PROJECT_DIR$/tests/asmtests/empty.c" />
@@ -223,6 +216,7 @@
         <option value="$PROJECT_DIR$/src/asm/ASMRegisterAllocator.java" />
         <option value="$PROJECT_DIR$/src/grammar/custom/VYPeFunctionLow.java" />
         <option value="$PROJECT_DIR$/src/grammar/custom/VYPeExpressionVisitor.java" />
+        <option value="$PROJECT_DIR$/src/asm/ASMString.java" />
       </list>
     </option>
   </component>
@@ -942,7 +936,7 @@
       <workItem from="1481145870380" duration="7493000" />
       <workItem from="1481323633865" duration="10689000" />
       <workItem from="1482331900880" duration="426000" />
-      <workItem from="1482348167719" duration="27677000" />
+      <workItem from="1482348167719" duration="29606000" />
     </task>
     <task id="LOCAL-00001" summary="Init commit, first try of scanner and parser (NEED REVISION). IDEA settings.">
       <created>1475096390815</created>
@@ -1168,11 +1162,18 @@
       <option name="project" value="LOCAL" />
       <updated>1482406845471</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="parameters are now used inside the function">
+      <created>1482448889733</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1482448889733</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="298623000" />
+    <option name="totallyTimeSpent" value="300552000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="56" y="-8" width="1318" height="784" extended-state="6" />
@@ -1186,7 +1187,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286004" sideWeight="0.5064655" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.537092" sideWeight="0.49568966" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.537092" sideWeight="0.49568966" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32872504" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32766616" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1221,7 +1222,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="added workspace.xml to gitignore" />
     <MESSAGE value="integer constant handling" />
     <MESSAGE value="new way of handling already created instructions" />
     <MESSAGE value="first bits of work on register allocator" />
@@ -1246,7 +1246,8 @@
     <MESSAGE value="first version of dynamic string allocation" />
     <MESSAGE value="sort of caller-save register saving" />
     <MESSAGE value="improved register saving and restoring" />
-    <option name="LAST_COMMIT_MESSAGE" value="improved register saving and restoring" />
+    <MESSAGE value="parameters are now used inside the function" />
+    <option name="LAST_COMMIT_MESSAGE" value="parameters are now used inside the function" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1430,14 +1431,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/asm/ASMString.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="5" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/asm/ASMLabel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -1606,16 +1599,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/asm/ASMProgram.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="209" column="47" selection-start-line="209" selection-start-column="47" selection-end-line="209" selection-end-column="47" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/grammar/custom/VYPeFunctionLow.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
@@ -1645,8 +1628,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/asm/ASMRegisterAllocator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4843">
-          <caret line="61" column="20" selection-start-line="61" selection-start-column="20" selection-end-line="61" selection-end-column="20" />
+        <state relative-caret-position="274">
+          <caret line="368" column="51" selection-start-line="368" selection-start-column="51" selection-end-line="368" selection-end-column="51" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1658#1659#0" expanded="true" />
@@ -1655,6 +1638,24 @@
             <element signature="e#4978#4987#0" expanded="true" />
             <element signature="e#13739#13752#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/asm/ASMProgram.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-111">
+          <caret line="209" column="47" selection-start-line="209" selection-start-column="47" selection-end-line="209" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/asm/ASMString.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="25" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
+          <folding />
         </state>
       </provider>
     </entry>
