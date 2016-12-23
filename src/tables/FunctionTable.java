@@ -95,6 +95,13 @@ public class FunctionTable {
         else if(!hasAnyDeclaration()){
             throw new SemanticException("Some function declaration are missing definition!");
         }
+        else {
+            functionList.forEach((k,v) -> {
+                if(!isEmbedded(k)){
+                    v.invoke(this);
+                }
+            });
+        }
     }
 
     private boolean isMainFunction(){
