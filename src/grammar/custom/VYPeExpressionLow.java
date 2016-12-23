@@ -444,6 +444,12 @@ public class VYPeExpressionLow extends VYPeParserBaseVisitor<ASMVariable> {
 
             // restore the registers from the stack
             this.regAlloc.restoreRegisters(regsSaved);
+
+            // result is in the R2
+            varRes = this.regAlloc.getTempVar();
+            ASMRegister regRes = this.regAlloc.getRegister(varRes);
+            ASMRegister regReturnVal = this.regAlloc.getReturnValReg();
+            this.program.addInstruction(ISA.ASMOpCode.MOV, regRes, regReturnVal);
         }
 
         return varRes;

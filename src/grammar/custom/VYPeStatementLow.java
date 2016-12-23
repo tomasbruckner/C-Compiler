@@ -18,19 +18,6 @@ public class VYPeStatementLow extends VYPeParserBaseVisitor<Void> {
         this.regAlloc = regAlloc;
     }
 
-//    @Override
-//    public ArrayList<ASMElement> visitStatement(VYPeParserParser.StatementContext ctx) {
-//        System.out.print("statement\n");
-//        int childCnt = ctx.getChildCount();
-//
-//        for(int index = 0; index < childCnt; index++) {
-//            VYPeStatementLow statLowerer = new VYPeStatementLow();
-//            ArrayList<ASMElement> statElements = statLowerer.visit(ctx.getChild(index));
-//            elements.addAll(statElements);
-//        }
-//        return this.elements;
-//    }
-
     @Override
     public Void visitAssignment_statement(VYPeParserParser.Assignment_statementContext ctx) {
         System.out.print("assignment of " + ctx.Identifier().getText() + "\n");
@@ -40,10 +27,9 @@ public class VYPeStatementLow extends VYPeParserBaseVisitor<Void> {
         ASMVariable varNew = this.regAlloc.getVariable(ctx.Identifier().getText());
         ASMRegister regRes = this.regAlloc.getRegister(varRes);
         ASMRegister regNew = this.regAlloc.getRegister(varNew);
-        ASMRegister regZero = this.regAlloc.getZeroReg();
 
         String comment = ctx.Identifier().getText() + "(" + regNew.getText() + ") = " + regRes.getText();
-        this.program.addInstruction(ISA.ASMOpCode.MOVZ, regNew, regRes, regZero, comment);
+        this.program.addInstruction(ISA.ASMOpCode.MOV, regNew, regRes, comment);
         this.regAlloc.killVariable(varRes);
         return null;
     }
