@@ -353,11 +353,17 @@ public class ASMRegisterAllocator {
 
         // variable already in register
         if (location.getType() == Location.L_REGISTER) {
-            register = this.findRegister(var);
-            if (register == null) {
+            RFEntry entry = this.findRFEntry(var);
+            if (entry == null) {
                 System.err.print("Variable '" + var.getText() + "' should have been in register but not found!\n");
                 System.exit(Constant.INTERNAL_ERROR);
             }
+
+            // register was used, move it to the bottom of the stack
+            this.registerStack.remove(entry);
+            this.registerStack.add(entry);
+
+            register = entry.register;
         }
         // reload from memory
         else if (location.getType() == Location.L_MEMORY) {

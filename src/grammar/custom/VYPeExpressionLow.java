@@ -49,9 +49,9 @@ public class VYPeExpressionLow extends VYPeParserBaseVisitor<ASMVariable> {
         ASMVariable varResRight = lowRight.visit(ctx.expression(1));
 
         ASMVariable varDst = this.regAlloc.getTempVar();
-        ASMRegister regDst = this.regAlloc.getRegister(varDst);
         ASMRegister regOp1 = this.regAlloc.getRegister(varResLeft);
         ASMRegister regOp2 = this.regAlloc.getRegister(varResRight);
+        ASMRegister regDst = this.regAlloc.getRegister(varDst);
 
         if (op.equals("+")) {
             this.program.addInstruction(ISA.ASMOpCode.ADD, regDst, regOp1, regOp2);
