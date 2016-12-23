@@ -303,8 +303,20 @@ public class VYPeExpressionLow extends VYPeParserBaseVisitor<ASMVariable> {
 
         ASMVariable varDst = this.regAlloc.getTempVar();
         ASMRegister regDst = this.regAlloc.getRegister(varDst);
-        // TODO does it work for escape sequence?
+
         int value = (int) ctx.getText().charAt(1); // because of ''
+        if (value == '\\' && (ctx.getText().length() > 3)) {
+            value = (int) ctx.getText().charAt(2);
+            if (value == 'n') {
+                value = (int) '\n';
+            } else if (value == 't') {
+                value = (int) '\t';
+            } else if (value == '"') {
+                value = (int) '\"';
+            } else if (value == '\'') {
+                value = (int) '\'';
+            }
+        }
         ASMImmediate imm = new ASMImmediate(value);
         this.program.addInstruction(ISA.ASMOpCode.MOVSI, regDst, imm);
 
@@ -396,6 +408,21 @@ public class VYPeExpressionLow extends VYPeParserBaseVisitor<ASMVariable> {
         }
     }
 
+    private ASMVariable genGetAtFunction(List<ASMVariable> parameters) {
+        ASMVariable varString = parameters.get(0);
+        ASMVariable varIndex = parameters.get(1);
+        ASMVariable varRes = this.regAlloc.getTempVar();
+        ASMRegister regString = this.regAlloc.getRegister(varString);
+        ASMRegister regIndex = this.regAlloc.getRegister(varIndex);
+        ASMRegister regRes = this.regAlloc.getRegister(varRes);
+        ASMImmediate immOffset = new ASMImmediate(0);
+
+        this.program.addInstruction(ISA.ASMOpCode.ADD, regString, regString, regIndex);
+        this.program.addInstruction(ISA.ASMOpCode.LBU, regRes, immOffset, regString);
+
+        return varRes;
+    }
+
     @Override
     public ASMVariable visitFunction_call(VYPeParserParser.Function_callContext ctx) {
         String name = ctx.getChild(0).getText();
@@ -412,6 +439,9 @@ public class VYPeExpressionLow extends VYPeParserBaseVisitor<ASMVariable> {
                 name.equals(ISA.Function.PRINT_INT) ||
                 name.equals(ISA.Function.PRINT_STRING)) {
             this.genPrintFunction(name, parameters);
+        }
+        else if (name.equals(ISA.Function.GET_AT)) {
+            varRes = this.genGetAtFunction(parameters);
         }
         else {
             List<ASMRegister> regsSaved;

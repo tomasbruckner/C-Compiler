@@ -58,7 +58,6 @@ public class ASMRegisterAllocator {
 
         private Map<ASMVariable, Location> stackMap = new HashMap<>();
 
-
         public long getOffset() {
             return this.offset;
         }

@@ -33,7 +33,7 @@ public class ISA {
         SLT,
         BEQ, BNE, J, JR, JAL,
         BREAK,
-        SW, LW,
+        SW, LW, LBU,
 
         // special
         PRINT_CHAR, PRINT_INT, PRINT_STRING,
@@ -88,6 +88,7 @@ public class ISA {
 
         ASMOpDetailMap.put(ASMOpCode.SW, new ASMOpDetail("SW", 3));
         ASMOpDetailMap.put(ASMOpCode.LW, new ASMOpDetail("LW", 3));
+        ASMOpDetailMap.put(ASMOpCode.LBU, new ASMOpDetail("LBU", 3));
 
         ASMOpDetailMap.put(ASMOpCode.PRINT_CHAR, new ASMOpDetail("PRINT_CHAR", 1));
         ASMOpDetailMap.put(ASMOpCode.PRINT_INT, new ASMOpDetail("PRINT_INT", 1));
