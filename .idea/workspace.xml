@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e39a7fbf-b678-42f0-a6fe-10318098d617" name="Default" comment="embeded get_at implemented, fixed escape sequences in char literals">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/asmtests/simple_set_at.c" />
+    <list default="true" id="e39a7fbf-b678-42f0-a6fe-10318098d617" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main.java" afterPath="$PROJECT_DIR$/src/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/asm/ASMInstruction.java" afterPath="$PROJECT_DIR$/src/asm/ASMInstruction.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/grammar/custom/VYPeExpressionLow.java" afterPath="$PROJECT_DIR$/src/grammar/custom/VYPeExpressionLow.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/util/ISA.java" afterPath="$PROJECT_DIR$/src/util/ISA.java" />
     </list>
     <ignored path="vype.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,8 +28,8 @@
       <file leaf-file-name="VYPeExpressionLow.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/grammar/custom/VYPeExpressionLow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="452" column="75" selection-start-line="452" selection-start-column="75" selection-end-line="452" selection-end-column="75" />
+            <state relative-caret-position="586">
+              <caret line="483" column="53" selection-start-line="483" selection-start-column="53" selection-end-line="483" selection-end-column="53" />
               <folding />
             </state>
           </provider>
@@ -926,7 +922,7 @@
       <workItem from="1481145870380" duration="7493000" />
       <workItem from="1481323633865" duration="10689000" />
       <workItem from="1482331900880" duration="426000" />
-      <workItem from="1482348167719" duration="47492000" />
+      <workItem from="1482348167719" duration="47935000" />
     </task>
     <task id="LOCAL-00001" summary="Init commit, first try of scanner and parser (NEED REVISION). IDEA settings.">
       <created>1475096390815</created>
@@ -1187,11 +1183,18 @@
       <option name="project" value="LOCAL" />
       <updated>1482533587140</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="set_at, string is copied">
+      <created>1482538418919</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1482538418919</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="318438000" />
+    <option name="totallyTimeSpent" value="318881000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="56" y="-8" width="1318" height="784" extended-state="6" />
@@ -1240,7 +1243,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Compare operations implemented" />
     <MESSAGE value="Logical operations implemented" />
     <MESSAGE value="Simple variable handling implemented" />
     <MESSAGE value="ASM tests added" />
@@ -1265,7 +1267,8 @@
     <MESSAGE value="returning values from functions" />
     <MESSAGE value="registers are moved to bottom of stack after usage" />
     <MESSAGE value="embeded get_at implemented, fixed escape sequences in char literals" />
-    <option name="LAST_COMMIT_MESSAGE" value="embeded get_at implemented, fixed escape sequences in char literals" />
+    <MESSAGE value="set_at, string is copied" />
+    <option name="LAST_COMMIT_MESSAGE" value="set_at, string is copied" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1671,8 +1674,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/grammar/custom/VYPeExpressionLow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="452" column="75" selection-start-line="452" selection-start-column="75" selection-end-line="452" selection-end-column="75" />
+        <state relative-caret-position="586">
+          <caret line="483" column="53" selection-start-line="483" selection-start-column="53" selection-end-line="483" selection-end-column="53" />
           <folding />
         </state>
       </provider>

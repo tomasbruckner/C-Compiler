@@ -423,27 +423,24 @@ public class VYPeExpressionLow extends VYPeParserBaseVisitor<ASMVariable> {
         return varRes;
     }
 
-    private ASMVariable genSetAtFunction(List<ASMVariable> parameters) {
-        ASMVariable varString = parameters.get(0);
-        ASMRegister regString = this.regAlloc.getRegister(varString);
-
-        // copy the source string
+    private ASMVariable copyString(ASMVariable varSource) {
         ASMVariable varSourceCopy = this.regAlloc.getTempVar();
         ASMVariable varCopyChar = this.regAlloc.getTempVar();
-//        ASMVariable varNull = this.regAlloc.getTempVar();
         ASMVariable varRes = this.regAlloc.getTempVar();
+
+        ASMRegister regSource = this.regAlloc.getRegister(varSource);
         ASMRegister regSourceCopy = this.regAlloc.getRegister(varSourceCopy);
         ASMRegister regCopyChar = this.regAlloc.getRegister(varCopyChar);
         ASMRegister regGlobalPtr = this.regAlloc.getGlobalPtrReg();
-//        ASMRegister regNull = this.regAlloc.getRegister(varNull);
         ASMRegister regRes = this.regAlloc.getRegister(varRes);
         ASMRegister regZero = this.regAlloc.getZeroReg();
+
         ASMLabel labCopy = this.program.getTempLabel();
+
         ASMImmediate immOffset = new ASMImmediate(0);
-//        ASMImmediate immNull = new ASMImmediate((int) '\0');
         ASMImmediate immOne = new ASMImmediate(1);
-        this.program.addInstruction(ISA.ASMOpCode.MOV, regSourceCopy, regString);
-//        this.program.addInstruction(ISA.ASMOpCode.MOVSI, regNull, immNull);
+
+        this.program.addInstruction(ISA.ASMOpCode.MOV, regSourceCopy, regSource);
         this.program.addInstruction(ISA.ASMOpCode.MOV, regRes, regGlobalPtr);
         this.program.addLabel(labCopy);
         this.program.addInstruction(ISA.ASMOpCode.LBU, regCopyChar, immOffset, regSourceCopy);
@@ -453,18 +450,27 @@ public class VYPeExpressionLow extends VYPeParserBaseVisitor<ASMVariable> {
         this.program.addInstruction(ISA.ASMOpCode.BNE, regCopyChar, regZero, labCopy);
         this.regAlloc.killVariable(varSourceCopy);
         this.regAlloc.killVariable(varCopyChar);
-//        this.regAlloc.killVariable(varNull);
 
+        return varRes;
+    }
+
+    private ASMVariable genSetAtFunction(List<ASMVariable> parameters) {
+        ASMVariable varOriginal = parameters.get(0);
+
+        // copy the source string
+        ASMVariable varString = this.copyString(varOriginal);
+
+        ASMRegister regString = this.regAlloc.getRegister(varString);
         ASMVariable varIndex = parameters.get(1);
         ASMVariable varChar = parameters.get(2);
         ASMRegister regIndex = this.regAlloc.getRegister(varIndex);
         ASMRegister regChar = this.regAlloc.getRegister(varChar);
-//        ASMImmediate immOffset = new ASMImmediate(0);
+        ASMImmediate immOffset = new ASMImmediate(0);
 
-        this.program.addInstruction(ISA.ASMOpCode.ADD, regIndex, regRes, regIndex);
+        this.program.addInstruction(ISA.ASMOpCode.ADD, regIndex, regString, regIndex);
         this.program.addInstruction(ISA.ASMOpCode.SB, regChar, immOffset, regIndex);
 
-        return varRes;
+        return varString;
     }
 
     @Override
