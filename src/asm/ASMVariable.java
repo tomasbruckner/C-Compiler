@@ -1,5 +1,7 @@
 package asm;
 
+import util.Constant;
+
 /**
  * Created by Filip on 09-Nov-16.
  */
@@ -9,6 +11,7 @@ public class ASMVariable {
     Integer index;
     String name;
     int scope;
+    Constant.Type type = Constant.Type.UNKNOWN; // data type
 
     // default initialization of the register field
     public ASMVariable() {
@@ -31,6 +34,14 @@ public class ASMVariable {
         this.name = name;
     }
 
+    public ASMVariable(String name, Constant.Type type) {
+        this.empty = false;
+        this.temporary = false;
+        this.index = -1;
+        this.name = name;
+        this.type = type;
+    }
+
     public void setScope(int index) { this.scope = index; }
     public int getScope() { return this.scope; }
 
@@ -38,6 +49,8 @@ public class ASMVariable {
     public int getIndex() { return  this.index; }
     public String getName() { return  this.name; }
     public boolean isEmpty() { return  this.empty; }
+
+    public Constant.Type getType() { return this.type; }
 
     public boolean equals(ASMVariable var) {
         if (this.empty || var.isEmpty()) {

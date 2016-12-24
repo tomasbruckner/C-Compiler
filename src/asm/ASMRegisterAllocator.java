@@ -1,5 +1,6 @@
 package asm;
 
+import com.sun.xml.internal.bind.v2.runtime.reflect.opt.Const;
 import util.Constant;
 import util.ISA;
 
@@ -84,9 +85,9 @@ public class ASMRegisterAllocator {
             return var;
         }
 
-        public ASMVariable addVariable(String name) {
+        public ASMVariable addVariable(String name, Constant.Type type) {
             // create a new variable
-            ASMVariable var = new ASMVariable(name);
+            ASMVariable var = new ASMVariable(name, type);
             // do not assume location of the variable
             Location loc = new Location(Location.L_UNKNOWN, 0);
             var.setScope(this.index);
@@ -99,9 +100,9 @@ public class ASMRegisterAllocator {
         }
 
         // add variable with known memory location (parameters)
-        public void addVariable(String name, long offset) {
+        public void addVariable(String name, Constant.Type type, long offset) {
             // create a new variable
-            ASMVariable var = new ASMVariable(name);
+            ASMVariable var = new ASMVariable(name, type);
             // variable is already on the stack
             Location loc = new Location(Location.L_MEMORY, offset, true);
             var.setScope(this.index);
@@ -274,14 +275,27 @@ public class ASMRegisterAllocator {
         return location;
     }
 
-    public void declareVariable(String name) {
-        Scope scope = getCurScope();
-        scope.addVariable(name);
+    public Constant.Type getVariableDataType(ASMVariable var) {
+        Constant.Type type = null;
+        ASMVariable varTemp = null;
+        Scope scope = this.getVariableScope(var);
+
+        if (scope != null) {
+            varTemp = scope.findVar(var);
+            type = varTemp.getType();
+        }
+
+        return type;
     }
 
-    public void addParameter(String name, long offset) {
+    public void declareVariable(String name, Constant.Type type) {
         Scope scope = getCurScope();
-        scope.addVariable(name, offset);
+        scope.addVariable(name, type);
+    }
+
+    public void addParameter(String name, Constant.Type type, long offset) {
+        Scope scope = getCurScope();
+        scope.addVariable(name, type, offset);
     }
 
     public void killVariable(ASMVariable var) {

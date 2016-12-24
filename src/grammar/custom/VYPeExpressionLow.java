@@ -19,21 +19,6 @@ public class VYPeExpressionLow extends VYPeParserBaseVisitor<ASMVariable> {
     ASMProgram program;
     ASMRegisterAllocator regAlloc;
 
-//    private enum Operation {
-//        Addition,
-//        Subtraction,
-//        Multiplication,
-//        Division,
-//        Modulo,
-//        GreaterThen,
-//        GreaterThenEqual,
-//        LessThen,
-//        LessThenEqual,
-//        Equal,
-//        And,
-//        Or
-//    }
-
     public VYPeExpressionLow(ASMProgram program, ASMRegisterAllocator regAlloc) {
         this.program = program;
         this.regAlloc = regAlloc;
@@ -413,6 +398,7 @@ public class VYPeExpressionLow extends VYPeParserBaseVisitor<ASMVariable> {
 
         for (ASMVariable varParam : parameters) {
             ASMRegister regParam = this.regAlloc.getRegister(varParam);
+            System.out.print("data type: " + this.regAlloc.getVariableDataType(varParam) + "\n");
             this.program.addInstruction(op, regParam);
         }
     }

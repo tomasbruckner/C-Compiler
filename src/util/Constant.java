@@ -29,7 +29,7 @@ public final class Constant {
     public static final int INTERNAL_ERROR = 5;
 
     public enum Type {
-        CHAR, INT, STRING, VOID, VARIABLE
+        CHAR, INT, STRING, VOID, VARIABLE, UNKNOWN
     }
 
     public static final List<String> EMBEDDED = Arrays.asList("print", "read_char", "read_int", "read_string", "get_at", "set_at", "strcat", "print_int", "print_char", "print_string");

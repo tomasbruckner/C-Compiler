@@ -3,7 +3,9 @@ package grammar.custom;
 import asm.*;
 import grammar.gen.VYPeParserBaseVisitor;
 import grammar.gen.VYPeParserParser;
+import util.Constant;
 import util.ISA;
+import util.Utility;
 
 /**
  * Created by Filip on 29-Oct-16.
@@ -20,10 +22,11 @@ public class VYPeStatementLow extends VYPeParserBaseVisitor<Void> {
 
     @Override
     public Void visitVariable_definition_statement(VYPeParserParser.Variable_definition_statementContext ctx) {
+        Constant.Type type = Utility.getType(ctx.getChild(0).getText());
         for(int i = 1, len = ctx.getChildCount() - 1; i < len; i += 2){
             String name = ctx.getChild(i).getText();
             System.out.print("declaration of " + name + "\n");
-            this.regAlloc.declareVariable(name);
+            this.regAlloc.declareVariable(name, type);
         }
         return null;
     }

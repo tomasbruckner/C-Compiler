@@ -228,6 +228,13 @@ public class ASMProgram {
         return params;
     }
 
+    public Constant.Type getParamType(String functionName, int index) {
+        Function function = this.functionTable.getFunctionByName(functionName);
+        Value val = function.getParameterList().get(index);
+
+        return val.getType();
+    }
+
     public boolean isParamString(String functionName, int index) {
         Function function = this.functionTable.getFunctionByName(functionName);
         boolean isString = false;

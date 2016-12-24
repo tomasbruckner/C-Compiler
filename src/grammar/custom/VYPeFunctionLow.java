@@ -3,6 +3,7 @@ package grammar.custom;
 import asm.*;
 import grammar.gen.VYPeParserBaseVisitor;
 import grammar.gen.VYPeParserParser;
+import util.Constant;
 import util.ISA;
 
 import java.util.ArrayList;
@@ -38,9 +39,12 @@ public class VYPeFunctionLow extends VYPeParserBaseVisitor<Void> {
         if (paramsCnt > 0) {
             // this should be positive, but it is stored the other way round
             long offset = -1 * ISA.REGISTER_SIZE * (paramsCnt - 1);
+            int paramIndex = 0;
             for (String param : params) {
-                registerAllocator.addParameter(param, offset);
+                Constant.Type type = this.program.getParamType(functionName, paramIndex);
+                registerAllocator.addParameter(param, type, offset);
                 offset += ISA.REGISTER_SIZE;
+                paramIndex++;
             }
         }
 
