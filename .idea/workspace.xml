@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e39a7fbf-b678-42f0-a6fe-10318098d617" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/asmtests/simple_strcat.c" />
+    <list default="true" id="e39a7fbf-b678-42f0-a6fe-10318098d617" name="Default" comment="strcat">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/asmtests/simple_string_param.c" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main.java" afterPath="$PROJECT_DIR$/src/Main.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/asm/ASMProgram.java" afterPath="$PROJECT_DIR$/src/asm/ASMProgram.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/grammar/custom/VYPeExpressionLow.java" afterPath="$PROJECT_DIR$/src/grammar/custom/VYPeExpressionLow.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/asmtests/simple_call.c" afterPath="$PROJECT_DIR$/tests/asmtests/simple_call.c" />
     </list>
     <ignored path="vype.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,8 +32,8 @@
       <file leaf-file-name="VYPeExpressionLow.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/grammar/custom/VYPeExpressionLow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-264">
-              <caret line="460" column="20" selection-start-line="460" selection-start-column="20" selection-end-line="460" selection-end-column="20" />
+            <state relative-caret-position="-2950">
+              <caret line="358" column="13" selection-start-line="358" selection-start-column="13" selection-end-line="358" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -40,7 +42,7 @@
       <file leaf-file-name="ASMInstruction.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/asm/ASMInstruction.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="331">
+            <state relative-caret-position="629">
               <caret line="41" column="50" selection-start-line="41" selection-start-column="50" selection-end-line="41" selection-end-column="50" />
               <folding />
             </state>
@@ -50,28 +52,18 @@
       <file leaf-file-name="VYPeStatementLow.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/grammar/custom/VYPeStatementLow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="337">
+            <state relative-caret-position="-836">
               <caret line="23" column="49" selection-start-line="23" selection-start-column="49" selection-end-line="23" selection-end-column="49" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="27" column="62" selection-start-line="27" selection-start-column="62" selection-end-line="27" selection-end-column="62" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ISA.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/util/ISA.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="680">
-              <caret line="90" column="60" selection-start-line="90" selection-start-column="60" selection-end-line="90" selection-end-column="60" />
+            <state relative-caret-position="225">
+              <caret line="27" column="68" selection-start-line="27" selection-start-column="68" selection-end-line="27" selection-end-column="68" />
               <folding />
             </state>
           </provider>
@@ -80,8 +72,8 @@
       <file leaf-file-name="ASMRegisterAllocator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/asm/ASMRegisterAllocator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-4396">
-              <caret line="39" column="55" selection-start-line="39" selection-start-column="55" selection-end-line="39" selection-end-column="55" />
+            <state relative-caret-position="-2644">
+              <caret line="319" column="43" selection-start-line="319" selection-start-column="43" selection-end-line="319" selection-end-column="43" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1657#1658#0" expanded="true" />
@@ -94,11 +86,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ASMProgram.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ASMProgram.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/asm/ASMProgram.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1266">
-              <caret line="209" column="47" selection-start-line="209" selection-start-column="47" selection-end-line="209" selection-end-column="47" />
+            <state relative-caret-position="340">
+              <caret line="50" column="54" selection-start-line="50" selection-start-column="54" selection-end-line="50" selection-end-column="54" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -106,21 +98,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="VYPeFunctionLow.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/grammar/custom/VYPeFunctionLow.java">
+      <file leaf-file-name="Function.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/tables/Function.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="422">
-              <caret line="38" column="37" selection-start-line="38" selection-start-column="37" selection-end-line="38" selection-end-column="37" />
+            <state relative-caret-position="476">
+              <caret line="65" column="46" selection-start-line="65" selection-start-column="46" selection-end-line="65" selection-end-column="46" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SymbolTable.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/tables/SymbolTable.java">
+      <file leaf-file-name="Value.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/values/Value.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="31" column="22" selection-start-line="31" selection-start-column="22" selection-end-line="31" selection-end-column="22" />
+            <state relative-caret-position="289">
+              <caret line="17" column="21" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Constant.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/util/Constant.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="30" column="16" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -195,7 +197,6 @@
         <option value="$PROJECT_DIR$/src/grammar/custom/VYPeBlockLow.java" />
         <option value="$PROJECT_DIR$/src/grammar/custom/VYPeStartLow.java" />
         <option value="$PROJECT_DIR$/tests/asmtests/simple_call.c" />
-        <option value="$PROJECT_DIR$/src/asm/ASMProgram.java" />
         <option value="$PROJECT_DIR$/src/grammar/custom/VYPeFunctionLow.java" />
         <option value="$PROJECT_DIR$/src/grammar/custom/VYPeExpressionVisitor.java" />
         <option value="$PROJECT_DIR$/src/asm/ASMString.java" />
@@ -205,6 +206,7 @@
         <option value="$PROJECT_DIR$/src/asm/ASMInstruction.java" />
         <option value="$PROJECT_DIR$/src/grammar/custom/VYPeExpressionLow.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
+        <option value="$PROJECT_DIR$/src/asm/ASMProgram.java" />
       </list>
     </option>
   </component>
@@ -466,6 +468,120 @@
       <recent name="C:\Users\Tom\IdeaProjects\vype\grammer" />
       <recent name="C:\Users\Tom\IdeaProjects\vype" />
     </key>
+  </component>
+  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
+    <UpdatedFiles>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Updated from server" />
+        <option name="myStatusName" value="Changed on server" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="CHANGED_ON_SERVER" />
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated" />
+          <option name="myStatusName" value="Changed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UPDATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/grammar/custom/VYPeExpressionVisitor.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/tables/FunctionTable.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/util/Constant.java</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Created" />
+          <option name="myStatusName" value="Created" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CREATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/tests/semantic_errors/testcase23.c</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/tests/semantic_errors/testcase24.c</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Deleted" />
+          <option name="myStatusName" value="Deleted" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="true" />
+          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Restored" />
+          <option name="myStatusName" value="Will be restored" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="RESTORED" />
+        </FILE-GROUP>
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Modified" />
+        <option name="myStatusName" value="Modified" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MODIFIED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Skipped" />
+        <option name="myStatusName" value="Skipped" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SKIPPED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with conflicts" />
+        <option name="myStatusName" value="Will be merged with conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_CONFLICTS" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with tree conflicts" />
+        <option name="myStatusName" value="Merged with tree conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with property conflicts" />
+        <option name="myStatusName" value="Will be merged with property conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged" />
+        <option name="myStatusName" value="Will be merged" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Not in repository" />
+        <option name="myStatusName" value="Not in repository" />
+        <option name="mySupportsDeletion" value="true" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="UNKNOWN" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally added" />
+        <option name="myStatusName" value="Locally added" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_ADDED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally removed" />
+        <option name="myStatusName" value="Locally removed" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_REMOVED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Switched" />
+        <option name="myStatusName" value="Switched" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SWITCHED" />
+      </FILE-GROUP>
+    </UpdatedFiles>
   </component>
   <component name="RunManager" selected="Application.Main">
     <configuration default="false" name="Main" type="Application" factoryName="Application" temporary="true">
@@ -924,7 +1040,7 @@
       <workItem from="1481145870380" duration="7493000" />
       <workItem from="1481323633865" duration="10689000" />
       <workItem from="1482331900880" duration="426000" />
-      <workItem from="1482348167719" duration="48991000" />
+      <workItem from="1482348167719" duration="52878000" />
     </task>
     <task id="LOCAL-00001" summary="Init commit, first try of scanner and parser (NEED REVISION). IDEA settings.">
       <created>1475096390815</created>
@@ -1199,11 +1315,18 @@
       <option name="project" value="LOCAL" />
       <updated>1482538857933</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="strcat">
+      <created>1482539910557</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1482539910557</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="319937000" />
+    <option name="totallyTimeSpent" value="323824000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="56" y="-8" width="1318" height="784" extended-state="6" />
@@ -1218,7 +1341,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286004" sideWeight="0.5064655" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5356083" sideWeight="0.49568966" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32872504" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32789317" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32766616" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1252,7 +1375,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Simple variable handling implemented" />
     <MESSAGE value="ASM tests added" />
     <MESSAGE value="Comments can be added to instructions" />
     <MESSAGE value="if statement implemented" />
@@ -1277,7 +1399,8 @@
     <MESSAGE value="embeded get_at implemented, fixed escape sequences in char literals" />
     <MESSAGE value="set_at, string is copied" />
     <MESSAGE value="string copy moved to separate function" />
-    <option name="LAST_COMMIT_MESSAGE" value="string copy moved to separate function" />
+    <MESSAGE value="strcat" />
+    <option name="LAST_COMMIT_MESSAGE" value="strcat" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1298,7 +1421,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/grammar/custom/VYPeMainListener.java" />
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -1307,16 +1429,6 @@
       </provider>
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_102/src.zip!/java/util/function/Consumer.java" />
-    <entry file="file://$PROJECT_DIR$/src/util/Constant.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="34" column="141" selection-start-line="34" selection-start-column="141" selection-end-line="34" selection-end-column="141" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/javalib/antlr-4.5.3-complete.jar!/org/antlr/v4/runtime/tree/TerminalNode.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -1517,22 +1629,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/tables/Function.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="49" column="19" selection-start-line="49" selection-start-column="19" selection-end-line="49" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/values/Value.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="22" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/grammar/custom/VYPeStartLow.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -1591,28 +1687,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/asm/ASMProgram.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1266">
-          <caret line="209" column="47" selection-start-line="209" selection-start-column="47" selection-end-line="209" selection-end-column="47" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/grammar/custom/VYPeFunctionLow.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="422">
           <caret line="38" column="37" selection-start-line="38" selection-start-column="37" selection-end-line="38" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/grammar/custom/VYPeStatementLow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="23" column="49" selection-start-line="23" selection-start-column="49" selection-end-line="23" selection-end-column="49" />
           <folding />
         </state>
       </provider>
@@ -1633,33 +1711,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/asm/ASMRegisterAllocator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4396">
-          <caret line="39" column="55" selection-start-line="39" selection-start-column="55" selection-end-line="39" selection-end-column="55" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1657#1658#0" expanded="true" />
-            <element signature="e#1699#1700#0" expanded="true" />
-            <element signature="e#4744#4751#0" expanded="true" />
-            <element signature="e#4977#4986#0" expanded="true" />
-            <element signature="e#13938#13951#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/asmtests/simple_set_at.c">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/asm/ASMInstruction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="331">
-          <caret line="41" column="50" selection-start-line="41" selection-start-column="50" selection-end-line="41" selection-end-column="50" />
           <folding />
         </state>
       </provider>
@@ -1680,19 +1735,92 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/grammar/custom/VYPeExpressionLow.java">
+    <entry file="file://$PROJECT_DIR$/src/asm/ASMRegisterAllocator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-264">
-          <caret line="460" column="20" selection-start-line="460" selection-start-column="20" selection-end-line="460" selection-end-column="20" />
+        <state relative-caret-position="-2644">
+          <caret line="319" column="43" selection-start-line="319" selection-start-column="43" selection-end-line="319" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1657#1658#0" expanded="true" />
+            <element signature="e#1699#1700#0" expanded="true" />
+            <element signature="e#4744#4751#0" expanded="true" />
+            <element signature="e#4977#4986#0" expanded="true" />
+            <element signature="e#13938#13951#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/grammar/custom/VYPeStatementLow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-836">
+          <caret line="23" column="49" selection-start-line="23" selection-start-column="49" selection-end-line="23" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/asm/ASMInstruction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="41" column="50" selection-start-line="41" selection-start-column="50" selection-end-line="41" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tables/Function.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="65" column="46" selection-start-line="65" selection-start-column="46" selection-end-line="65" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/values/Value.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="21" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/util/Constant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="30" column="16" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/asmtests/simple_string_param.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="27" column="62" selection-start-line="27" selection-start-column="62" selection-end-line="27" selection-end-column="62" />
+        <state relative-caret-position="225">
+          <caret line="27" column="68" selection-start-line="27" selection-start-column="68" selection-end-line="27" selection-end-column="68" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/grammar/custom/VYPeExpressionLow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2950">
+          <caret line="358" column="13" selection-start-line="358" selection-start-column="13" selection-end-line="358" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/asm/ASMProgram.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="50" column="54" selection-start-line="50" selection-start-column="54" selection-end-line="50" selection-end-column="54" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

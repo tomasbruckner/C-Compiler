@@ -347,13 +347,22 @@ public class VYPeExpressionLow extends VYPeParserBaseVisitor<ASMVariable> {
         return varId;
     }
 
-    private List<ASMVariable> getFunctionCallParameters(VYPeParserParser.Function_callContext ctx) {
+    private List<ASMVariable> getFunctionCallParameters(String functionName, VYPeParserParser.Function_callContext ctx) {
         List<ASMVariable> parameterList = new ArrayList<>();
 
+        int paramIndex = 0;
         for(int i = 2, len = ctx.getChildCount() - 1; i < len; i += 2) {
             VYPeExpressionLow lowParam = new VYPeExpressionLow(this.program, this.regAlloc);
             ASMVariable varParam = lowParam.visit(ctx.getChild(i));
             parameterList.add(varParam);
+
+//            // if param is string it has to be copied to a new destination
+//            if (this.program.isParamString(functionName, paramIndex)) {
+//                ASMVariable varCopy = this.copyString(varParam);
+//                parameterList.add(varCopy);
+//            }
+
+            paramIndex++;
         }
 
         return parameterList;
@@ -498,7 +507,7 @@ public class VYPeExpressionLow extends VYPeParserBaseVisitor<ASMVariable> {
         String name = ctx.getChild(0).getText();
         System.out.print("function call: " + name + "\n");
         ASMVariable varRes = null;
-        List<ASMVariable> parameters = this.getFunctionCallParameters(ctx);
+        List<ASMVariable> parameters = this.getFunctionCallParameters(name, ctx);
 
         if (name.equals(ISA.Function.READ_CHAR) ||
                 name.equals(ISA.Function.READ_INT) ||

@@ -34,19 +34,20 @@ public class ASMProgram {
     private void generateStartup() {
         // program should be independent on register allocator
         ASMRegister regStackPtr = new ASMRegister(ISA.Register.STACK_PTR);
-//        ASMRegister regFramePtr = new ASMRegister(ISA.Register.FRAME_PTR);
         ASMRegister regGlobalPtr = new ASMRegister(ISA.Register.GLOBAL_PTR);
+        ASMRegister regReturnVal = new ASMRegister(ISA.Register.RETURN_VALUE);
 
         ASMLabel labMain = new ASMLabel("main");
 
         ASMImmediate immStackTop = new ASMImmediate(0x4000);
         ASMImmediate immGlobalBegin = new ASMImmediate(0x1000);
+        ASMImmediate immZero = new ASMImmediate(0);
 
         this.addDirective(".text");
         this.addDirective(".org 0");
         this.addInstruction(ISA.ASMOpCode.MOVSI, regStackPtr, immStackTop);
-//        this.addInstruction(ISA.ASMOpCode.MOV, regFramePtr, regStackPtr);
         this.addInstruction(ISA.ASMOpCode.MOVSI, regGlobalPtr, immGlobalBegin);
+        this.addInstruction(ISA.ASMOpCode.MOVSI, regReturnVal, immZero);
         this.addInstruction(ISA.ASMOpCode.JAL, labMain);
         this.addInstruction(ISA.ASMOpCode.BREAK);
     }
@@ -225,6 +226,27 @@ public class ASMProgram {
         }
 
         return params;
+    }
+
+    public boolean isParamString(String functionName, int index) {
+        Function function = this.functionTable.getFunctionByName(functionName);
+        boolean isString = false;
+
+//        for (Value val : function.getParameterList()) {
+//            if (val.getName().equals(paramName)) {
+//                if (val.getType() == Constant.Type.STRING) {
+//                    isString = true;
+//                }
+//                break;
+//            }
+//        }
+
+        Value param = function.getParameterList().get(index);
+        if (param.getType() == Constant.Type.STRING) {
+            isString = true;
+        }
+
+        return isString;
     }
 
 

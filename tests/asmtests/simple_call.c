@@ -20,4 +20,3 @@ int main(void) {
     print_string("\n");
     return a;
 }
-	
