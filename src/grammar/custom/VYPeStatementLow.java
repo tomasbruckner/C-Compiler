@@ -20,9 +20,7 @@ public class VYPeStatementLow extends VYPeParserBaseVisitor<Void> {
 
     @Override
     public Void visitVariable_definition_statement(VYPeParserParser.Variable_definition_statementContext ctx) {
-//        Type type = Utility.getType(ctx.getChild(0).getText());
         for(int i = 1, len = ctx.getChildCount() - 1; i < len; i += 2){
-//            Value value = this.toValue(type);
             String name = ctx.getChild(i).getText();
             System.out.print("declaration of " + name + "\n");
             this.regAlloc.declareVariable(name);
@@ -36,7 +34,6 @@ public class VYPeStatementLow extends VYPeParserBaseVisitor<Void> {
         VYPeExpressionLow exprLow = new VYPeExpressionLow(this.program, this.regAlloc);
         ASMVariable varRes = exprLow.visit(ctx.expression());
 
-//        ASMVariable varNew = this.regAlloc.getVariable(ctx.Identifier().getText());
         ASMVariable varNew = this.regAlloc.checkVariable(ctx.Identifier().getText());
         ASMRegister regRes = this.regAlloc.getRegister(varRes);
         ASMRegister regNew = this.regAlloc.getRegister(varNew);
@@ -84,7 +81,7 @@ public class VYPeStatementLow extends VYPeParserBaseVisitor<Void> {
         this.program.addLabel(labFalse, comFalse);
         VYPeBlockLow lowFalse = new VYPeBlockLow(this.program, this.regAlloc);
         lowFalse.visit(ctx.block_statements(1));
-        String comTrue = "If true";
+        String comTrue = "If end";
         this.program.addLabel(labTrue, comTrue);
 
         return null;

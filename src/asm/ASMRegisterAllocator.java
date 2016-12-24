@@ -168,7 +168,6 @@ public class ASMRegisterAllocator {
 
     private ASMProgram program;
 
-//    private Stack<Scope> scopes = new Stack<Scope>();
     private List<Scope> scopes = new ArrayList<>();
     private int scopeIndex;
 
@@ -196,12 +195,9 @@ public class ASMRegisterAllocator {
         }
 
         this.scopeIndex = 0;
-//        this.scopes.push(new Scope(this.scopeIndex));
-//        this.scopeIndex++;
     }
 
     //  --- VARIABLE RELATED ---
-//    private Scope getCurScope() { return this.scopes.peek(); }
     private Scope getCurScope() { return this.scopes.get(0); }
 
     private Scope getVariableScope(ASMVariable var) {
@@ -220,24 +216,27 @@ public class ASMRegisterAllocator {
     }
 
     public void newScope() {
-//        this.scopes.push(new Scope(this.scopeIndex));
         this.scopes.add(0, new Scope(this.scopeIndex));
         System.out.print("Scope: " + this.scopeIndex + " added\n");
         this.scopeIndex++;
     }
 
     public void killScope() {
-//        Scope scope = this.getCurScope();
-//        Map<ASMVariable, Location> varMap = scope.getVarMap();
-//
-//        // variables are not valid after end of the scope
-//        for (Map.Entry<ASMVariable, Location> entry : varMap.entrySet()) {
-//            ASMVariable curVar = entry.getKey();
-//            this.killVariable(curVar);
-//        }
+        Scope scope = this.getCurScope();
+        Map<ASMVariable, Location> varMap = scope.getVarMap();
+        List<ASMVariable> vars = new ArrayList<>();
+
+        // variables are not valid after end of the scope
+        for (Map.Entry<ASMVariable, Location> entry : varMap.entrySet()) {
+            ASMVariable curVar = entry.getKey();
+            vars.add(curVar);
+        }
+
+        for (ASMVariable var : vars) {
+            this.killVariable(var, true);
+        }
 
         // destroy the current scope
-//        this.scopes.pop();
         this.scopes.remove(0);
     }
 
@@ -248,10 +247,9 @@ public class ASMRegisterAllocator {
 
     // should not be called from inside of the register allocator
     public ASMVariable checkVariable(String name) {
-//        ASMVariable var = this.checkVariable(new ASMVariable(name));
         ASMVariable var = null;
 
-        // try to find if variable exists in the topmost scope
+        // try to find if the variable exists in the topmost scope
         for (Scope scope : this.scopes) {
             ASMVariable varTest = new ASMVariable(name);
             varTest.setScope(scope.index);
@@ -265,28 +263,6 @@ public class ASMRegisterAllocator {
         return var;
     }
 
-//    private ASMVariable checkVariable(ASMVariable var) {
-//        // --- old ---
-////        Scope scope = this.getCurScope();
-////        ASMVariable found = scope.findVar(var);
-////
-////        if (found == null) {
-////            System.err.print("Variable '" + var.getName() + "' not found!\n");
-////            this.program.debugPrint();
-////            System.exit(Constant.INTERNAL_ERROR);
-////        }
-////        //----
-//
-//        ASMVariable found = null;
-//        Scope scope = this.getVariableScope(var);
-//
-//        if (scope != null) {
-//            found = scope.findVar(var);
-//        }
-//
-//        return found;
-//    }
-
     private Location getVariableLocation(ASMVariable var) {
         Location location = null;
         Scope scope = this.getVariableScope(var);
@@ -297,18 +273,6 @@ public class ASMRegisterAllocator {
 
         return location;
     }
-
-//    public ASMVariable getVariable(String name) {
-////        ASMVariable var = scope.findVar(new ASMVariable(name));
-//        ASMVariable var = this.checkVariable(new ASMVariable(name));
-//
-//        if (var == null) {
-//            Scope scope = getCurScope();
-//            var = scope.addVariable(name);
-//        }
-//
-//        return var;
-//    }
 
     public void declareVariable(String name) {
         Scope scope = getCurScope();
@@ -321,8 +285,13 @@ public class ASMRegisterAllocator {
     }
 
     public void killVariable(ASMVariable var) {
+        this.killVariable(var, false);
+    }
+
+    public void killVariable(ASMVariable var, boolean force) {
         // program variables can not be safely killed
-        if (var.isTemporary()) {
+        // after end of a block, even user variables are forced to be deleted
+        if (var.isTemporary() || force) {
             System.out.print("Kill var: " + var.getName());
 
             Scope scope = this.getVariableScope(var);
@@ -331,9 +300,6 @@ public class ASMRegisterAllocator {
                 System.exit(Constant.INTERNAL_ERROR);
             }
 
-//            var = this.checkVariable(var);
-//            Scope scope = getCurScope();
-//            Location location = scope.getVarLocation(var);
             var = scope.findVar(var);
             Location location = scope.getVarLocation(var);
 
@@ -401,7 +367,6 @@ public class ASMRegisterAllocator {
         Location location = scope.getVarLocation(varVictim);
         long offset = 0;
 
-        // TODO maybe not an error once using more scopes
         if(location == null) {
             System.err.print("Variable '" + varVictim.getText() + "' not found in the scope!\n");
             System.exit(Constant.INTERNAL_ERROR);
@@ -442,8 +407,6 @@ public class ASMRegisterAllocator {
     }
 
     public ASMRegister getRegister(ASMVariable var) {
-//        Scope scope = this.getCurScope();
-//        Location location = scope.getVarLocation(var);
         Location location = this.getVariableLocation(var);
         ASMRegister register = null;
 

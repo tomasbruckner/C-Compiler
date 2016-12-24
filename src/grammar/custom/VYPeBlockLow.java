@@ -15,19 +15,29 @@ import java.util.List;
 public class VYPeBlockLow extends VYPeParserBaseVisitor<Void> {
     ASMProgram program;
     ASMRegisterAllocator regAlloc;
+    boolean isFunctionBody;
 
     public VYPeBlockLow(ASMProgram program, ASMRegisterAllocator regAlloc) {
         this.program = program;
         this.regAlloc = regAlloc;
+        this.isFunctionBody = false;
     }
 
-    //    TODO probably move to separate class if blocks can be nested
+    public VYPeBlockLow(ASMProgram program, ASMRegisterAllocator regAlloc, boolean isBody) {
+        this.program = program;
+        this.regAlloc = regAlloc;
+        this.isFunctionBody = isBody;
+    }
+
     @Override
     public Void visitBlock_statements(VYPeParserParser.Block_statementsContext ctx) {
         System.out.print("block\n");
         List<VYPeParserParser.StatementContext> statements = ctx.statement();
 
-        this.regAlloc.newScope();
+        // if the block is function body, the scope has already been initialized
+        if (!this.isFunctionBody) {
+            this.regAlloc.newScope();
+        }
 
         for(VYPeParserParser.StatementContext s : statements) {
             VYPeStatementLow statLowerer = new VYPeStatementLow(this.program, this.regAlloc);

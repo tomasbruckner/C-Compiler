@@ -30,6 +30,8 @@ public class VYPeFunctionLow extends VYPeParserBaseVisitor<Void> {
         this.program.addLabel(functionName);
 
         ASMRegisterAllocator registerAllocator = new ASMRegisterAllocator(this.program);
+        // new scope has to initialized for the parameters
+        registerAllocator.newScope();
         List<String> params = this.program.getFunctionParams(functionName);
         int paramsCnt = params.size();
 
@@ -47,10 +49,10 @@ public class VYPeFunctionLow extends VYPeParserBaseVisitor<Void> {
         ASMRegister regStackPtr = registerAllocator.getStackPtrReg();
         this.program.addInstruction(ISA.ASMOpCode.MOV, regFramePtr, regStackPtr);
 
-//        TODO only one block per function??? nested blocks?
         VYPeParserParser.Block_statementsContext block = ctx.block_statements();
 
-        VYPeBlockLow lowBody = new VYPeBlockLow(this.program, registerAllocator);
+        // true = block id function body, do not set the new scope in the block lowerer
+        VYPeBlockLow lowBody = new VYPeBlockLow(this.program, registerAllocator, true);
         lowBody.visit(block);
 
         ASMRegister regRet = registerAllocator.getReturnAddrReg();
