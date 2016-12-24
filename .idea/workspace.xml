@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e39a7fbf-b678-42f0-a6fe-10318098d617" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/asmtests/simple_strcat.c" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main.java" afterPath="$PROJECT_DIR$/src/Main.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/grammar/custom/VYPeExpressionLow.java" afterPath="$PROJECT_DIR$/src/grammar/custom/VYPeExpressionLow.java" />
     </list>
     <ignored path="vype.iws" />
@@ -25,11 +27,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="VYPeExpressionLow.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="VYPeExpressionLow.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/grammar/custom/VYPeExpressionLow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="586">
-              <caret line="483" column="53" selection-start-line="483" selection-start-column="53" selection-end-line="483" selection-end-column="53" />
+            <state relative-caret-position="-264">
+              <caret line="460" column="20" selection-start-line="460" selection-start-column="20" selection-end-line="460" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -55,11 +57,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="184">
-              <caret line="27" column="57" selection-start-line="27" selection-start-column="57" selection-end-line="27" selection-end-column="57" />
+              <caret line="27" column="62" selection-start-line="27" selection-start-column="62" selection-end-line="27" selection-end-column="62" />
               <folding />
             </state>
           </provider>
@@ -200,9 +202,9 @@
         <option value="$PROJECT_DIR$/src/grammar/custom/VYPeStatementLow.java" />
         <option value="$PROJECT_DIR$/src/asm/ASMRegisterAllocator.java" />
         <option value="$PROJECT_DIR$/src/util/ISA.java" />
-        <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/asm/ASMInstruction.java" />
         <option value="$PROJECT_DIR$/src/grammar/custom/VYPeExpressionLow.java" />
+        <option value="$PROJECT_DIR$/src/Main.java" />
       </list>
     </option>
   </component>
@@ -922,7 +924,7 @@
       <workItem from="1481145870380" duration="7493000" />
       <workItem from="1481323633865" duration="10689000" />
       <workItem from="1482331900880" duration="426000" />
-      <workItem from="1482348167719" duration="47935000" />
+      <workItem from="1482348167719" duration="48991000" />
     </task>
     <task id="LOCAL-00001" summary="Init commit, first try of scanner and parser (NEED REVISION). IDEA settings.">
       <created>1475096390815</created>
@@ -1190,11 +1192,18 @@
       <option name="project" value="LOCAL" />
       <updated>1482538418919</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="string copy moved to separate function">
+      <created>1482538857933</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1482538857933</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="318881000" />
+    <option name="totallyTimeSpent" value="319937000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="56" y="-8" width="1318" height="784" extended-state="6" />
@@ -1243,7 +1252,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Logical operations implemented" />
     <MESSAGE value="Simple variable handling implemented" />
     <MESSAGE value="ASM tests added" />
     <MESSAGE value="Comments can be added to instructions" />
@@ -1268,7 +1276,8 @@
     <MESSAGE value="registers are moved to bottom of stack after usage" />
     <MESSAGE value="embeded get_at implemented, fixed escape sequences in char literals" />
     <MESSAGE value="set_at, string is copied" />
-    <option name="LAST_COMMIT_MESSAGE" value="set_at, string is copied" />
+    <MESSAGE value="string copy moved to separate function" />
+    <option name="LAST_COMMIT_MESSAGE" value="string copy moved to separate function" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1289,7 +1298,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/tests/testcase03/input.c" />
     <entry file="file://$PROJECT_DIR$/src/grammar/custom/VYPeMainListener.java" />
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
@@ -1648,14 +1656,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="27" column="57" selection-start-line="27" selection-start-column="57" selection-end-line="27" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/asm/ASMInstruction.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="331">
@@ -1672,10 +1672,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/tests/asmtests/simple_strcat.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/grammar/custom/VYPeExpressionLow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="586">
-          <caret line="483" column="53" selection-start-line="483" selection-start-column="53" selection-end-line="483" selection-end-column="53" />
+        <state relative-caret-position="-264">
+          <caret line="460" column="20" selection-start-line="460" selection-start-column="20" selection-end-line="460" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="27" column="62" selection-start-line="27" selection-start-column="62" selection-end-line="27" selection-end-column="62" />
           <folding />
         </state>
       </provider>

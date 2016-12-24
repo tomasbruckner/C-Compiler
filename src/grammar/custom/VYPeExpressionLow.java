@@ -473,6 +473,26 @@ public class VYPeExpressionLow extends VYPeParserBaseVisitor<ASMVariable> {
         return varString;
     }
 
+    private ASMVariable genStrcatFunction(List<ASMVariable> parameters) {
+        ASMVariable varString1 = parameters.get(0);
+        ASMVariable varString2 = parameters.get(1);
+        ASMVariable varRes, varAux;
+
+        // copy the first string
+        varRes = this.copyString(varString1);
+
+        // hack - delete the null char at the end
+        ASMRegister regGlobalPtr = this.regAlloc.getGlobalPtrReg();
+        ASMImmediate immOne = new ASMImmediate(1);
+        this.program.addInstruction(ISA.ASMOpCode.SUBU, regGlobalPtr, immOne);
+
+        // copy the second string
+        varAux = this.copyString(varString2);
+        this.regAlloc.killVariable(varAux);
+
+        return varRes;
+    }
+
     @Override
     public ASMVariable visitFunction_call(VYPeParserParser.Function_callContext ctx) {
         String name = ctx.getChild(0).getText();
@@ -495,6 +515,9 @@ public class VYPeExpressionLow extends VYPeParserBaseVisitor<ASMVariable> {
         }
         else if (name.equals(ISA.Function.SET_AT)) {
             varRes = this.genSetAtFunction(parameters);
+        }
+        else if (name.equals(ISA.Function.STRCAT)) {
+            varRes = this.genStrcatFunction(parameters);
         }
         else {
             List<ASMRegister> regsSaved;
