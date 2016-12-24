@@ -233,7 +233,7 @@ public class VYPeExpressionVisitor extends VYPeParserBaseVisitor {
         Type castType = Utility.getType(ctx.getChild(1).getText());
         Type expressionType = (Type) visit(ctx.expression());
 
-        if(!isValidCasting(castType, expressionType)){
+        if(!isValidCasting(expressionType, castType)){
             throw new SemanticException("Invalid casting! Line: " + ctx.start.getLine());
         }
 
