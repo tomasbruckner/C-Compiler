@@ -25,7 +25,7 @@ import java.util.ArrayList;
 public class Main {
 
     public static void main(String[] args) {
-        args = new String[] {"", "tests/asmtests/empty.c"};
+        args = new String[] {"", "tests/asmtests/simple_cast.c"};
         if(args.length < 2 || args.length > 3){
             System.exit(Constant.INTERNAL_ERROR);
         }

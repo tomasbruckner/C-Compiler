@@ -17,7 +17,6 @@ public class ISA {
         public static final int PROGRAM_COUNTER = -1;
         public static final int ZERO = 0;
         public static final int ASM_TEMPORARY = 1;
-        // TODO try to use this register as gpr as well
         public static final int RETURN_VALUE = 2;
         public static final int GLOBAL_PTR = GPRLAST + 1;   // 28
         public static final int STACK_PTR = GPRLAST + 2;    // 29
@@ -30,6 +29,7 @@ public class ISA {
         ADD, ADDU, SUB, SUBU, MUL, DIV,
         ADDI,
 //        AND, OR,
+        ANDI,
         SLT,
         BEQ, BNE, J, JR, JAL,
         BREAK,
@@ -75,6 +75,7 @@ public class ISA {
 
 //        ASMOpDetailMap.put(ASMOpCode.AND, new ASMOpDetail("AND", 3));
 //        ASMOpDetailMap.put(ASMOpCode.OR, new ASMOpDetail("OR", 3));
+        ASMOpDetailMap.put(ASMOpCode.ANDI, new ASMOpDetail("ANDI", 3));
 
         ASMOpDetailMap.put(ASMOpCode.SLT, new ASMOpDetail("SLT", 3));
 

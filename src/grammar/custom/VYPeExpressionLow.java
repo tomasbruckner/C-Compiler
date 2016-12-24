@@ -1,11 +1,13 @@
 package grammar.custom;
 
 import asm.*;
+import com.sun.xml.internal.bind.v2.runtime.reflect.opt.Const;
 import grammar.gen.VYPeParserBaseVisitor;
 import grammar.gen.VYPeParserParser;
 import org.antlr.v4.runtime.Token;
 import util.Constant;
 import util.ISA;
+import util.Utility;
 import values.Value;
 
 import java.util.ArrayList;
@@ -551,6 +553,44 @@ public class VYPeExpressionLow extends VYPeParserBaseVisitor<ASMVariable> {
             ASMRegister regRes = this.regAlloc.getRegister(varRes);
             ASMRegister regReturnVal = this.regAlloc.getReturnValReg();
             this.program.addInstruction(ISA.ASMOpCode.MOV, regRes, regReturnVal);
+        }
+
+        return varRes;
+    }
+
+    @Override
+    public ASMVariable visitCastingLabel(VYPeParserParser.CastingLabelContext ctx) {
+        Constant.Type castType = Utility.getType(ctx.getChild(1).getText());
+
+        VYPeExpressionLow lowOp = new VYPeExpressionLow(this.program, this.regAlloc);
+        ASMVariable varOp = lowOp.visit(ctx.expression());
+        ASMVariable varRes = this.regAlloc.getTempVar();
+
+        ASMRegister regOp = this.regAlloc.getRegister(varOp);
+        ASMRegister regRes = this.regAlloc.getRegister(varRes);
+
+        // int -> char
+        if (castType == Constant.Type.CHAR) {
+            ASMImmediate immMask = new ASMImmediate(0xff);
+            this.program.addInstruction(ISA.ASMOpCode.ANDI, regRes, regOp, immMask);
+        }
+        // char -> int can be ignored
+        else if (castType == Constant.Type.INT) {
+            ;
+        }
+        // char -> string
+        else if (castType == Constant.Type.STRING) {
+            ASMRegister regGlobalPtr = this.regAlloc.getGlobalPtrReg();
+            ASMImmediate immOffset = new ASMImmediate(0);
+            ASMImmediate immTwo = new ASMImmediate(2);
+
+            this.program.addInstruction(ISA.ASMOpCode.MOV, regRes, regGlobalPtr);
+            this.program.addInstruction(ISA.ASMOpCode.SB, regOp, immOffset, regGlobalPtr);
+            // char + \0
+            this.program.addInstruction(ISA.ASMOpCode.ADDU, regGlobalPtr, immTwo);
+        } else {
+            System.err.print("Unreachable\n");
+            System.exit(Constant.INTERNAL_ERROR);
         }
 
         return varRes;
