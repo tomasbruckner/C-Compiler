@@ -27,10 +27,14 @@ public class VYPeBlockLow extends VYPeParserBaseVisitor<Void> {
         System.out.print("block\n");
         List<VYPeParserParser.StatementContext> statements = ctx.statement();
 
+        this.regAlloc.newScope();
+
         for(VYPeParserParser.StatementContext s : statements) {
             VYPeStatementLow statLowerer = new VYPeStatementLow(this.program, this.regAlloc);
             statLowerer.visit(s.getChild(0));
         }
+
+        this.regAlloc.killScope();
 
         return null;
     }

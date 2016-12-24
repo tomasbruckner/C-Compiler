@@ -19,12 +19,25 @@ public class VYPeStatementLow extends VYPeParserBaseVisitor<Void> {
     }
 
     @Override
+    public Void visitVariable_definition_statement(VYPeParserParser.Variable_definition_statementContext ctx) {
+//        Type type = Utility.getType(ctx.getChild(0).getText());
+        for(int i = 1, len = ctx.getChildCount() - 1; i < len; i += 2){
+//            Value value = this.toValue(type);
+            String name = ctx.getChild(i).getText();
+            System.out.print("declaration of " + name + "\n");
+            this.regAlloc.declareVariable(name);
+        }
+        return null;
+    }
+
+    @Override
     public Void visitAssignment_statement(VYPeParserParser.Assignment_statementContext ctx) {
         System.out.print("assignment of " + ctx.Identifier().getText() + "\n");
         VYPeExpressionLow exprLow = new VYPeExpressionLow(this.program, this.regAlloc);
         ASMVariable varRes = exprLow.visit(ctx.expression());
 
-        ASMVariable varNew = this.regAlloc.getVariable(ctx.Identifier().getText());
+//        ASMVariable varNew = this.regAlloc.getVariable(ctx.Identifier().getText());
+        ASMVariable varNew = this.regAlloc.checkVariable(ctx.Identifier().getText());
         ASMRegister regRes = this.regAlloc.getRegister(varRes);
         ASMRegister regNew = this.regAlloc.getRegister(varNew);
 

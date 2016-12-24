@@ -18,7 +18,10 @@ int main(void) {
 		print_string("unreachable\n");
 	}
 
+	x = x + 1;
 	print_string("x: ");
 	print_int(x);
 	print_char('\n');
+
+	return x;
 }

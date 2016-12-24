@@ -8,6 +8,7 @@ public class ASMVariable {
     boolean temporary;
     Integer index;
     String name;
+    int scope;
 
     // default initialization of the register field
     public ASMVariable() {
@@ -30,21 +31,28 @@ public class ASMVariable {
         this.name = name;
     }
 
+    public void setScope(int index) { this.scope = index; }
+    public int getScope() { return this.scope; }
+
     public boolean isTemporary() { return this.temporary; }
     public int getIndex() { return  this.index; }
     public String getName() { return  this.name; }
     public boolean isEmpty() { return  this.empty; }
 
     public boolean equals(ASMVariable var) {
-        if(this.empty || var.isEmpty()) {
+        if (this.empty || var.isEmpty()) {
+            return false;
+        }
+
+        if (this.scope != var.getScope()) {
             return false;
         }
 
         boolean equal = false;
 
-        if(this.temporary) {
-            if(var.isTemporary()) {
-                if(this.index == var.getIndex()) {
+        if (this.temporary) {
+            if (var.isTemporary()) {
+                if (this.index == var.getIndex()) {
                     equal = true;
                 }
             }
