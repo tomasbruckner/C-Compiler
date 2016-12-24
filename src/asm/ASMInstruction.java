@@ -28,7 +28,7 @@ public class ASMInstruction extends ASMElement  {
         String text = "  " +  detail.getText();
 
         if (this.opCode == ISA.ASMOpCode.SW || this.opCode == ISA.ASMOpCode.LW ||
-                this.opCode == ISA.ASMOpCode.LBU) {
+                this.opCode == ISA.ASMOpCode.SB || this.opCode == ISA.ASMOpCode.LBU) {
             text += " " + this.operands.get(0).getTextOperand() + ",";
             text += " " + this.operands.get(1).getTextOperand();
             text += "(" + this.operands.get(2).getTextOperand() + ")";
