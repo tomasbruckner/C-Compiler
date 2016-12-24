@@ -79,13 +79,7 @@ public class VYPeExpressionVisitor extends VYPeParserBaseVisitor {
         Function function = new Function(returnType, functionName, this.getParameters(ctx.param_list()), ctx.block_statements(), true);
         this.functionTable.add(functionName, function);
 
-        // *** temporary ***
-        for (Value param : function.getParameterList()) {
-            this.symbolTable.add(param);
-        }
-        // ***
-
-        this.visit(ctx.block_statements());
+        //this.visit(ctx.block_statements());
         return Type.VOID;
     }
 

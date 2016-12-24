@@ -32,7 +32,7 @@ public final class Constant {
         CHAR, INT, STRING, VOID, VARIABLE
     }
 
-    public static final List<String> EMBEDDED = Arrays.asList("print", "read_char", "read_int", "read_string", "get_at", "set_at", "strcat");
+    public static final List<String> EMBEDDED = Arrays.asList("print", "read_char", "read_int", "read_string", "get_at", "set_at", "strcat", "print_int", "print_char", "print_string");
 
     private Constant(){
         throw new AssertionError();
