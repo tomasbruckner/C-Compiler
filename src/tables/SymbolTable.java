@@ -34,7 +34,7 @@ public class SymbolTable {
 
     public void add(Value value){
         String name = value.getName();
-        if(this.getValueByName(name) != null) {
+        if(this.variableList.containsKey(name)) {
             throw new SemanticException("Variable " + name + " already defined!");
         }
         this.variableList.put(name, value);
