@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e39a7fbf-b678-42f0-a6fe-10318098d617" name="Default" comment="strcat">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/asmtests/simple_string_param.c" />
+    <list default="true" id="e39a7fbf-b678-42f0-a6fe-10318098d617" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main.java" afterPath="$PROJECT_DIR$/src/Main.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/asm/ASMProgram.java" afterPath="$PROJECT_DIR$/src/asm/ASMProgram.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/grammar/custom/VYPeExpressionLow.java" afterPath="$PROJECT_DIR$/src/grammar/custom/VYPeExpressionLow.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/asmtests/simple_call.c" afterPath="$PROJECT_DIR$/tests/asmtests/simple_call.c" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/asmtests/simple_scope.c" afterPath="$PROJECT_DIR$/tests/asmtests/simple_scope.c" />
     </list>
     <ignored path="vype.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -59,11 +57,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="225">
-              <caret line="27" column="68" selection-start-line="27" selection-start-column="68" selection-end-line="27" selection-end-column="68" />
+              <caret line="27" column="61" selection-start-line="27" selection-start-column="61" selection-end-line="27" selection-end-column="61" />
               <folding />
             </state>
           </provider>
@@ -86,11 +84,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ASMProgram.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ASMProgram.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/asm/ASMProgram.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="50" column="54" selection-start-line="50" selection-start-column="54" selection-end-line="50" selection-end-column="54" />
+            <state relative-caret-position="943">
+              <caret line="268" column="5" selection-start-line="268" selection-start-column="5" selection-end-line="268" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -205,8 +203,8 @@
         <option value="$PROJECT_DIR$/src/util/ISA.java" />
         <option value="$PROJECT_DIR$/src/asm/ASMInstruction.java" />
         <option value="$PROJECT_DIR$/src/grammar/custom/VYPeExpressionLow.java" />
-        <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/asm/ASMProgram.java" />
+        <option value="$PROJECT_DIR$/src/Main.java" />
       </list>
     </option>
   </component>
@@ -1040,7 +1038,7 @@
       <workItem from="1481145870380" duration="7493000" />
       <workItem from="1481323633865" duration="10689000" />
       <workItem from="1482331900880" duration="426000" />
-      <workItem from="1482348167719" duration="52878000" />
+      <workItem from="1482348167719" duration="55801000" />
     </task>
     <task id="LOCAL-00001" summary="Init commit, first try of scanner and parser (NEED REVISION). IDEA settings.">
       <created>1475096390815</created>
@@ -1322,11 +1320,18 @@
       <option name="project" value="LOCAL" />
       <updated>1482539910557</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="R2 initialization">
+      <created>1482574914580</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1482574914580</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="323824000" />
+    <option name="totallyTimeSpent" value="326747000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="56" y="-8" width="1318" height="784" extended-state="6" />
@@ -1375,7 +1380,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="ASM tests added" />
     <MESSAGE value="Comments can be added to instructions" />
     <MESSAGE value="if statement implemented" />
     <MESSAGE value="while loop implemented" />
@@ -1400,7 +1404,8 @@
     <MESSAGE value="set_at, string is copied" />
     <MESSAGE value="string copy moved to separate function" />
     <MESSAGE value="strcat" />
-    <option name="LAST_COMMIT_MESSAGE" value="strcat" />
+    <MESSAGE value="R2 initialization" />
+    <option name="LAST_COMMIT_MESSAGE" value="R2 initialization" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1679,14 +1684,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/tables/SymbolTable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="31" column="22" selection-start-line="31" selection-start-column="22" selection-end-line="31" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/grammar/custom/VYPeFunctionLow.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="422">
@@ -1798,11 +1795,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/asm/ASMProgram.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="27" column="68" selection-start-line="27" selection-start-column="68" selection-end-line="27" selection-end-column="68" />
-          <folding />
+        <state relative-caret-position="943">
+          <caret line="268" column="5" selection-start-line="268" selection-start-column="5" selection-end-line="268" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1814,13 +1813,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/asm/ASMProgram.java">
+    <entry file="file://$PROJECT_DIR$/src/tables/SymbolTable.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="50" column="54" selection-start-line="50" selection-start-column="54" selection-end-line="50" selection-end-column="54" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="391">
+          <caret line="42" column="17" selection-start-line="42" selection-start-column="17" selection-end-line="42" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="27" column="61" selection-start-line="27" selection-start-column="61" selection-end-line="27" selection-end-column="61" />
+          <folding />
         </state>
       </provider>
     </entry>

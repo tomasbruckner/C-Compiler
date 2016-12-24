@@ -232,15 +232,6 @@ public class ASMProgram {
         Function function = this.functionTable.getFunctionByName(functionName);
         boolean isString = false;
 
-//        for (Value val : function.getParameterList()) {
-//            if (val.getName().equals(paramName)) {
-//                if (val.getType() == Constant.Type.STRING) {
-//                    isString = true;
-//                }
-//                break;
-//            }
-//        }
-
         Value param = function.getParameterList().get(index);
         if (param.getType() == Constant.Type.STRING) {
             isString = true;
@@ -276,6 +267,4 @@ public class ASMProgram {
             System.out.print(e.getText() + "\n");
         }
     }
-
-    // TODO add method to print into file
 }
