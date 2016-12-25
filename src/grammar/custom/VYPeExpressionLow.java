@@ -416,7 +416,6 @@ public class VYPeExpressionLow extends VYPeParserBaseVisitor<ASMVariable> {
         ISA.ASMOpCode op = null;
         int i = 0;
 
-        // TODO kill the parameter variables
         for (Value varType : parameterTypes) {
             ASMVariable varParam = parameters.get(i++);
             ASMRegister regParam = this.regAlloc.getRegister(varParam);
@@ -424,6 +423,8 @@ public class VYPeExpressionLow extends VYPeParserBaseVisitor<ASMVariable> {
 
             op = this.getPrintOpCode(varType.getType());
             this.program.addInstruction(op, regParam);
+
+            this.regAlloc.killVariable(varParam);
         }
     }
 
