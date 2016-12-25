@@ -8,6 +8,6 @@ int main(void) {
 
 void foo(string, int);
 
-void foo(string, string) {
+void foo(string x, string y) {
     return;
 }
