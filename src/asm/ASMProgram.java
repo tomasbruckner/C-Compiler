@@ -228,6 +228,10 @@ public class ASMProgram {
         return params;
     }
 
+    public FunctionTable getFunctionTable() {
+        return this.functionTable;
+    }
+
     public Constant.Type getParamType(String functionName, int index) {
         Function function = this.functionTable.getFunctionByName(functionName);
         Value val = function.getParameterList().get(index);

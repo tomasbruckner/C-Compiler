@@ -2,6 +2,7 @@ package grammar.custom;
 
 import asm.*;
 import com.sun.xml.internal.bind.v2.runtime.reflect.opt.Const;
+import exceptions.SemanticException;
 import grammar.gen.VYPeParserBaseVisitor;
 import grammar.gen.VYPeParserParser;
 import org.antlr.v4.runtime.Token;
@@ -411,24 +412,39 @@ public class VYPeExpressionLow extends VYPeParserBaseVisitor<ASMVariable> {
         return varDst;
     }
 
-    private void genPrintFunction(String function, List<ASMVariable> parameters) {
+    private void genPrintFunction(String function, List<ASMVariable> parameters, List<Value> parameterTypes) {
         ISA.ASMOpCode op = null;
-        if (function.equals(ISA.Function.PRINT_CHAR)) {
-            op = ISA.ASMOpCode.PRINT_CHAR;
-        }
-        else if (function.equals(ISA.Function.PRINT_INT)) {
-            op = ISA.ASMOpCode.PRINT_INT;
-        }
-        else if (function.equals(ISA.Function.PRINT_STRING)) {
-            op = ISA.ASMOpCode.PRINT_STRING;
-        }
+        int i = 0;
 
         // TODO kill the parameter variables
-        for (ASMVariable varParam : parameters) {
+        for (Value varType : parameterTypes) {
+            ASMVariable varParam = parameters.get(i++);
             ASMRegister regParam = this.regAlloc.getRegister(varParam);
             System.out.print("data type: " + this.regAlloc.getVariableDataType(varParam) + "\n");
+
+            op = this.getPrintOpCode(varType.getType());
             this.program.addInstruction(op, regParam);
         }
+    }
+
+    private ISA.ASMOpCode getPrintOpCode (Constant.Type varType) {
+        ISA.ASMOpCode op = null;
+
+        switch(varType) {
+            case CHAR:
+                op = ISA.ASMOpCode.PRINT_CHAR;
+                break;
+            case INT:
+                op = ISA.ASMOpCode.PRINT_INT;
+                break;
+            case STRING:
+                op = ISA.ASMOpCode.PRINT_STRING;
+                break;
+            default:
+                throw new SemanticException("Invalid var type in print function!");
+        }
+
+        return op;
     }
 
     private ASMVariable genGetAtFunction(List<ASMVariable> parameters) {
@@ -538,10 +554,10 @@ public class VYPeExpressionLow extends VYPeParserBaseVisitor<ASMVariable> {
                 name.equals(ISA.Function.READ_STRING)) {
             varRes = this.genReadFunction(name);
         }
-        else if (name.equals(ISA.Function.PRINT_CHAR) ||
-                name.equals(ISA.Function.PRINT_INT) ||
-                name.equals(ISA.Function.PRINT_STRING)) {
-            this.genPrintFunction(name, parameters);
+        else if (name.equals(ISA.Function.PRINT)) {
+            VYPePrintVisitor visitor = new VYPePrintVisitor(this.program.getFunctionTable(), regAlloc);
+            List<Value> parameterTypes = visitor.getFunctionCallParameters(ctx);
+            this.genPrintFunction(name, parameters, parameterTypes);
         }
         else if (name.equals(ISA.Function.GET_AT)) {
             varRes = this.genGetAtFunction(parameters);
