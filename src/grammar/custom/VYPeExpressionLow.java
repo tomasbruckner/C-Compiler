@@ -331,6 +331,31 @@ public class VYPeExpressionLow extends VYPeParserBaseVisitor<ASMVariable> {
 
         ASMVariable varId = this.regAlloc.checkVariable(ctx.getText());
 
+        // set the default value if needed
+        if (!this.regAlloc.varIsDefined(varId)) {
+            Constant.Type type = this.regAlloc.getVariableDataType(varId);
+            ASMRegister regId = this.regAlloc.getRegister(varId);
+            ASMRegister regZero = this.regAlloc.getZeroReg();
+            String comment = ctx.Identifier().getText() + "(" + regId.getText() + ") = default value";
+
+            if (type == Constant.Type.INT || type == Constant.Type.CHAR) {
+                this.program.addInstruction(ISA.ASMOpCode.MOV, regId, regZero, comment);
+            }
+            else if (type == Constant.Type.STRING) {
+                ASMRegister regGlobalPtr = this.regAlloc.getGlobalPtrReg();
+                ASMImmediate immOne = new ASMImmediate(1);
+                ASMImmediate immOffset = new ASMImmediate(0);
+                this.program.addInstruction(ISA.ASMOpCode.MOV, regId, regGlobalPtr, comment);
+                // store zero so that simulator does not print warnings
+                this.program.addInstruction(ISA.ASMOpCode.SB, regZero, immOffset, regGlobalPtr);
+                this.program.addInstruction(ISA.ASMOpCode.ADDU, regGlobalPtr, immOne);
+            }
+            else {
+                System.err.print("Unreachable\n");
+                System.exit(Constant.INTERNAL_ERROR);
+            }
+        }
+
         return varId;
     }
 

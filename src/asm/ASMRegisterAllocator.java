@@ -331,6 +331,16 @@ public class ASMRegisterAllocator {
         }
     }
 
+    public boolean varIsDefined(ASMVariable var) {
+        boolean hasVal = true;
+
+        if (this.getVariableLocation(var).getType() == Location.L_UNKNOWN) {
+            hasVal = false;
+        }
+
+        return hasVal;
+    }
+
 
     //  --- REGISTER RELATED ---
     private ASMRegister assignRegister(ASMVariable var) {
