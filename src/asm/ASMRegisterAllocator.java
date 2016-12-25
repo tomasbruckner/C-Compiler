@@ -1,6 +1,5 @@
 package asm;
 
-import com.sun.xml.internal.bind.v2.runtime.reflect.opt.Const;
 import util.Constant;
 import util.ISA;
 
