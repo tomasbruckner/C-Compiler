@@ -4,10 +4,12 @@ import argparse
 import glob
 import re
 import subprocess
+import sys
 
 # Path to the JAR file
 # TODO VALID PATH
 JAR_PATH='../out/artifacts/vype_jar/vype.jar'
+
 
 parser = argparse.ArgumentParser(description="Runs all tests if no parameter is provided.")
 parser.add_argument("-s", "--semantic", help="Runs semantic tests", action="store_true")
@@ -31,20 +33,24 @@ def run_tests(type, folder, returnCode):
     for file in files:
         testcase = re.search("\\\\(.+)\.c$", file).group(1)
         fileHandler = open(file, 'r')
+
+        sys.stdout.write("\033[0;0m")
         print(testcase + ": " + fileHandler.readline())
+
         fileHandler.close()
 
+        message = "FAILED"
+        sys.stdout.write("\033[1;31m")
+
         try:
-            subprocess.check_output(['java', '-jar', JAR_PATH, file])
+            subprocess.check_output(['java', '-jar', JAR_PATH, file], stderr=subprocess.DEVNULL)
         except subprocess.CalledProcessError as e:
             if e.returncode == returnCode:
                 message = "PASSED"
-            else:
-                message = "FAILED"
-                # STACK TRACE
-                # print(e.output)
+                sys.stdout.write("\033[0;32m")
 
-            print(message)
+        print(message)
+        sys.stdout.write("\033[0;0m")
 
 
 def run_valid_tests(folder):
