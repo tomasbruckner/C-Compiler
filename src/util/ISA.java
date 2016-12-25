@@ -114,5 +114,6 @@ public class ISA {
         public static final String PRINT_CHAR = "print_char";
         public static final String PRINT_INT = "print_int";
         public static final String PRINT_STRING = "print_string";
+        public static final String PRINT = "print";
     }
 }
