@@ -25,7 +25,7 @@ import java.util.ArrayList;
 public class Main {
 
     public static void main(String[] args) {
-        args = new String[] {"tests/asmtests/simple_string.c"};
+        args = new String[] {"tests/semantic_errors/testcase00.c"};
         if(args.length < 1 || args.length > 2){
             System.exit(Constant.INTERNAL_ERROR);
         }
@@ -61,7 +61,7 @@ public class Main {
             visitor.doSemanticCheck(parseTree);
         }
         catch(SemanticException e) {
-            System.out.println(e.getMessage());
+            System.err.println(e.getMessage());
             e.printStackTrace();
             System.exit(Constant.SEMANTIC_ERROR);
         }
