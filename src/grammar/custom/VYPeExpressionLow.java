@@ -423,6 +423,7 @@ public class VYPeExpressionLow extends VYPeParserBaseVisitor<ASMVariable> {
             op = ISA.ASMOpCode.PRINT_STRING;
         }
 
+        // TODO kill the parameter variables
         for (ASMVariable varParam : parameters) {
             ASMRegister regParam = this.regAlloc.getRegister(varParam);
             System.out.print("data type: " + this.regAlloc.getVariableDataType(varParam) + "\n");
@@ -441,6 +442,9 @@ public class VYPeExpressionLow extends VYPeParserBaseVisitor<ASMVariable> {
 
         this.program.addInstruction(ISA.ASMOpCode.ADD, regString, regString, regIndex);
         this.program.addInstruction(ISA.ASMOpCode.LBU, regRes, immOffset, regString);
+
+        this.regAlloc.killVariable(varString);
+        this.regAlloc.killVariable(varIndex);
 
         return varRes;
     }
@@ -470,6 +474,7 @@ public class VYPeExpressionLow extends VYPeParserBaseVisitor<ASMVariable> {
         this.program.addInstruction(ISA.ASMOpCode.ADDU, regGlobalPtr, immOne);
         this.program.addInstruction(ISA.ASMOpCode.ADDU, regSourceCopy, immOne);
         this.program.addInstruction(ISA.ASMOpCode.BNE, regCopyChar, regZero, labCopy);
+
         this.regAlloc.killVariable(varSourceCopy);
         this.regAlloc.killVariable(varCopyChar);
 
@@ -492,6 +497,9 @@ public class VYPeExpressionLow extends VYPeParserBaseVisitor<ASMVariable> {
         this.program.addInstruction(ISA.ASMOpCode.ADD, regIndex, regString, regIndex);
         this.program.addInstruction(ISA.ASMOpCode.SB, regChar, immOffset, regIndex);
 
+        this.regAlloc.killVariable(varIndex);
+        this.regAlloc.killVariable(varChar);
+
         return varString;
     }
 
@@ -502,6 +510,7 @@ public class VYPeExpressionLow extends VYPeParserBaseVisitor<ASMVariable> {
 
         // copy the first string
         varRes = this.copyString(varString1);
+        this.regAlloc.killVariable(varString1);
 
         // hack - delete the null char at the end
         ASMRegister regGlobalPtr = this.regAlloc.getGlobalPtrReg();
@@ -510,6 +519,8 @@ public class VYPeExpressionLow extends VYPeParserBaseVisitor<ASMVariable> {
 
         // copy the second string
         varAux = this.copyString(varString2);
+        this.regAlloc.killVariable(varString2);
+
         this.regAlloc.killVariable(varAux);
 
         return varRes;
@@ -561,6 +572,7 @@ public class VYPeExpressionLow extends VYPeParserBaseVisitor<ASMVariable> {
                 String comment = "param " + varParam.getText();
                 this.program.addInstruction(ISA.ASMOpCode.SW, regParam, immOffset, regStackPtr, comment);
                 offset -= ISA.REGISTER_SIZE;
+                this.regAlloc.killVariable(varParam);
             }
 
             // call the function
