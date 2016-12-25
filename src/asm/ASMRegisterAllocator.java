@@ -516,40 +516,48 @@ public class ASMRegisterAllocator {
             }
         }
 
-        ASMRegister regStackPtr = this.getStackPtrReg();
-        ASMImmediate immSize = new ASMImmediate(this.SPILL_SIZE * regs.size());
+        int regCnt = regs.size();
 
-        // allocate space on the stack
-        this.program.addInstruction(ISA.ASMOpCode.SUBU, regStackPtr, immSize);
+        if (regCnt > 0) {
+            ASMRegister regStackPtr = this.getStackPtrReg();
+            ASMImmediate immSize = new ASMImmediate(this.SPILL_SIZE * regCnt);
 
-        int offset = this.SPILL_SIZE * (regs.size() - 1);
-        for (ASMRegister reg : regs) {
-            ASMImmediate immOffset = new ASMImmediate(offset);
-            this.program.addInstruction(ISA.ASMOpCode.SW, reg, immOffset, regStackPtr);
-            offset -= this.SPILL_SIZE;
+            // allocate space on the stack
+            this.program.addInstruction(ISA.ASMOpCode.SUBU, regStackPtr, immSize);
+
+            int offset = this.SPILL_SIZE * (regs.size() - 1);
+            for (ASMRegister reg : regs) {
+                ASMImmediate immOffset = new ASMImmediate(offset);
+                this.program.addInstruction(ISA.ASMOpCode.SW, reg, immOffset, regStackPtr);
+                offset -= this.SPILL_SIZE;
+            }
         }
 
         return regs;
     }
 
     public void restoreRegisters(List<ASMRegister> regs) {
-        // restoring has to be done in the reverse order
-        List<ASMRegister> regsReverse = regs.subList(0, regs.size());
-        Collections.reverse(regsReverse);
+        int regCnt = regs.size();
 
-        ASMRegister regStackPtr = this.getStackPtrReg();
+        if (regCnt > 0) {
+            // restoring has to be done in the reverse order
+            List<ASMRegister> regsReverse = regs.subList(0, regCnt);
+            Collections.reverse(regsReverse);
 
-        int offset = 0;
-        // all the saved registers can be found in regs
-        for (ASMRegister reg : regsReverse) {
-            ASMImmediate immOffset = new ASMImmediate(offset);
-            this.program.addInstruction(ISA.ASMOpCode.LW, reg, immOffset, regStackPtr);
-            offset += this.SPILL_SIZE;
+            ASMRegister regStackPtr = this.getStackPtrReg();
+
+            int offset = 0;
+            // all the saved registers can be found in regs
+            for (ASMRegister reg : regsReverse) {
+                ASMImmediate immOffset = new ASMImmediate(offset);
+                this.program.addInstruction(ISA.ASMOpCode.LW, reg, immOffset, regStackPtr);
+                offset += this.SPILL_SIZE;
+            }
+
+            // free the space on the stack
+            ASMImmediate immSize = new ASMImmediate(this.SPILL_SIZE * regCnt);
+            this.program.addInstruction(ISA.ASMOpCode.ADDU, regStackPtr, immSize);
         }
-
-        // free the space on the stack
-        ASMImmediate immSize = new ASMImmediate(this.SPILL_SIZE * regs.size());
-        this.program.addInstruction(ISA.ASMOpCode.ADDU, regStackPtr, immSize);
     }
 
     public ASMRegister getZeroReg() {

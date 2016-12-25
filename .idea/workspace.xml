@@ -1,17 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e39a7fbf-b678-42f0-a6fe-10318098d617" name="Default" comment="">
+    <list default="true" id="e39a7fbf-b678-42f0-a6fe-10318098d617" name="Default" comment="casting">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main.java" afterPath="$PROJECT_DIR$/src/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/asm/ASMProgram.java" afterPath="$PROJECT_DIR$/src/asm/ASMProgram.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/asm/ASMRegisterAllocator.java" afterPath="$PROJECT_DIR$/src/asm/ASMRegisterAllocator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/asm/ASMVariable.java" afterPath="$PROJECT_DIR$/src/asm/ASMVariable.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/grammar/custom/VYPeExpressionLow.java" afterPath="$PROJECT_DIR$/src/grammar/custom/VYPeExpressionLow.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/grammar/custom/VYPeFunctionLow.java" afterPath="$PROJECT_DIR$/src/grammar/custom/VYPeFunctionLow.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/grammar/custom/VYPeStatementLow.java" afterPath="$PROJECT_DIR$/src/grammar/custom/VYPeStatementLow.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/util/Constant.java" afterPath="$PROJECT_DIR$/src/util/Constant.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/asmtests/empty.c" afterPath="$PROJECT_DIR$/tests/asmtests/empty.c" />
     </list>
     <ignored path="vype.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,11 +31,11 @@
     <splitter split-orientation="horizontal" split-proportion="0.58876115">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="VYPeExpressionLow.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="VYPeExpressionLow.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/grammar/custom/VYPeExpressionLow.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="918">
-                  <caret line="428" column="37" selection-start-line="428" selection-start-column="37" selection-end-line="428" selection-end-column="37" />
+                <state relative-caret-position="425">
+                  <caret line="574" column="43" selection-start-line="574" selection-start-column="43" selection-end-line="574" selection-end-column="43" />
                   <folding />
                 </state>
               </provider>
@@ -51,9 +44,11 @@
           <file leaf-file-name="ASMInstruction.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/asm/ASMInstruction.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="626">
+                <state relative-caret-position="629">
                   <caret line="41" column="50" selection-start-line="41" selection-start-column="50" selection-end-line="41" selection-end-column="50" />
-                  <folding />
+                  <folding>
+                    <element signature="imports" expanded="false" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -61,34 +56,20 @@
           <file leaf-file-name="VYPeStatementLow.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/grammar/custom/VYPeStatementLow.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="323">
-                  <caret line="24" column="8" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="21" />
+                <state relative-caret-position="561">
+                  <caret line="56" column="38" selection-start-line="56" selection-start-column="38" selection-end-line="56" selection-end-column="38" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="VYPeExpressionVisitor.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/grammar/custom/VYPeExpressionVisitor.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="969">
-                  <caret line="112" column="0" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="ASMRegisterAllocator.java" pinned="false" current-in-tab="false">
+          <file leaf-file-name="ASMRegisterAllocator.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/asm/ASMRegisterAllocator.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="680">
-                  <caret line="283" column="41" selection-start-line="283" selection-start-column="41" selection-end-line="283" selection-end-column="41" />
+                <state relative-caret-position="616">
+                  <caret line="553" column="42" selection-start-line="553" selection-start-column="42" selection-end-line="553" selection-end-column="42" />
                   <folding>
                     <element signature="imports" expanded="true" />
-                    <element signature="e#985#986#0" expanded="true" />
-                    <element signature="e#1025#1026#0" expanded="true" />
-                    <element signature="e#9290#9291#0" expanded="true" />
-                    <element signature="e#9335#9336#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -97,8 +78,8 @@
           <file leaf-file-name="VYPeFunctionLow.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/grammar/custom/VYPeFunctionLow.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="68">
-                  <caret line="11" column="57" selection-start-line="11" selection-start-column="57" selection-end-line="11" selection-end-column="57" />
+                <state relative-caret-position="612">
+                  <caret line="45" column="32" selection-start-line="45" selection-start-column="32" selection-end-line="45" selection-end-column="32" />
                   <folding />
                 </state>
               </provider>
@@ -109,7 +90,9 @@
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="493">
                   <caret line="36" column="41" selection-start-line="36" selection-start-column="41" selection-end-line="36" selection-end-column="41" />
-                  <folding />
+                  <folding>
+                    <element signature="imports" expanded="false" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -117,9 +100,12 @@
           <file leaf-file-name="ASMVariable.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/asm/ASMVariable.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="850">
-                  <caret line="52" column="25" selection-start-line="52" selection-start-column="25" selection-end-line="52" selection-end-column="25" />
-                  <folding />
+                <state relative-caret-position="119">
+                  <caret line="7" column="26" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
+                  <folding>
+                    <element signature="e#338#339#0" expanded="false" />
+                    <element signature="e#371#372#0" expanded="false" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -127,10 +113,11 @@
           <file leaf-file-name="ASMProgram.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/asm/ASMProgram.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="531">
-                  <caret line="232" column="30" selection-start-line="232" selection-start-column="30" selection-end-line="232" selection-end-column="30" />
+                <state relative-caret-position="898">
+                  <caret line="237" column="0" selection-start-line="237" selection-start-column="0" selection-end-line="237" selection-end-column="0" />
                   <folding>
                     <element signature="imports" expanded="true" />
+                    <element signature="e#2851#2852#0" expanded="false" />
                   </folding>
                 </state>
               </provider>
@@ -139,12 +126,12 @@
         </leaf>
       </split-first>
       <split-second>
-        <leaf>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="ISA.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/util/ISA.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1326">
-                  <caret line="79" column="0" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
+                <state relative-caret-position="510">
+                  <caret line="42" column="5" selection-start-line="42" selection-start-column="5" selection-end-line="42" selection-end-column="5" />
                   <folding />
                 </state>
               </provider>
@@ -155,7 +142,12 @@
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="357">
                   <caret line="31" column="50" selection-start-line="31" selection-start-column="43" selection-end-line="31" selection-end-column="50" />
-                  <folding />
+                  <folding>
+                    <element signature="n#!!doc" expanded="false" />
+                    <element signature="imports" expanded="false" />
+                    <element signature="e#1045#1046#0" expanded="false" />
+                    <element signature="e#1087#1088#0" expanded="false" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -164,7 +156,7 @@
             <entry file="file://$PROJECT_DIR$/src/Main.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="238">
-                  <caret line="27" column="54" selection-start-line="27" selection-start-column="54" selection-end-line="27" selection-end-column="54" />
+                  <caret line="27" column="62" selection-start-line="27" selection-start-column="62" selection-end-line="27" selection-end-column="62" />
                   <folding />
                 </state>
               </provider>
@@ -173,7 +165,7 @@
           <file leaf-file-name="VYPeParser.g4" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/grammar/VYPeParser.g4">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="85">
+                <state relative-caret-position="391">
                   <caret line="30" column="10" selection-start-line="30" selection-start-column="10" selection-end-line="30" selection-end-column="10" />
                   <folding />
                 </state>
@@ -250,7 +242,6 @@
         <option value="$PROJECT_DIR$/tests/asmtests/simple_call.c" />
         <option value="$PROJECT_DIR$/src/grammar/custom/VYPeExpressionVisitor.java" />
         <option value="$PROJECT_DIR$/src/asm/ASMString.java" />
-        <option value="$PROJECT_DIR$/src/util/ISA.java" />
         <option value="$PROJECT_DIR$/src/asm/ASMInstruction.java" />
         <option value="$PROJECT_DIR$/src/grammar/custom/VYPeBlockLow.java" />
         <option value="$PROJECT_DIR$/src/grammar/custom/VYPeStatementLow.java" />
@@ -258,9 +249,10 @@
         <option value="$PROJECT_DIR$/src/grammar/custom/VYPeFunctionLow.java" />
         <option value="$PROJECT_DIR$/src/util/Constant.java" />
         <option value="$PROJECT_DIR$/src/asm/ASMVariable.java" />
-        <option value="$PROJECT_DIR$/src/asm/ASMRegisterAllocator.java" />
-        <option value="$PROJECT_DIR$/src/grammar/custom/VYPeExpressionLow.java" />
+        <option value="$PROJECT_DIR$/src/util/ISA.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
+        <option value="$PROJECT_DIR$/src/grammar/custom/VYPeExpressionLow.java" />
+        <option value="$PROJECT_DIR$/src/asm/ASMRegisterAllocator.java" />
       </list>
     </option>
   </component>
@@ -483,10 +475,78 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vype-compiler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vype-compiler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="documentation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vype-compiler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vype-compiler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="documentation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tex" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vype-compiler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vype-compiler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="documentation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tex" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="include" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vype-compiler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vype-compiler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value=".idea" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -537,7 +597,10 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/tables/SymbolTable.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/Main.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/asm/ASMProgram.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/grammar/custom/VYPeExpressionLow.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/util/ISA.java</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Created" />
@@ -545,6 +608,8 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="CREATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/grammar/custom/VYPePrintVisitor.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/tests/asmtests/print.c</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Deleted" />
@@ -1091,14 +1156,9 @@
       <workItem from="1481323633865" duration="10689000" />
       <workItem from="1482331900880" duration="426000" />
       <workItem from="1482348167719" duration="57668000" />
-      <workItem from="1482587265840" duration="16935000" />
-    </task>
-    <task id="LOCAL-00001" summary="Init commit, first try of scanner and parser (NEED REVISION). IDEA settings.">
-      <created>1475096390815</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1475096390815</updated>
+      <workItem from="1482587265840" duration="17385000" />
+      <workItem from="1482620369680" duration="4773000" />
+      <workItem from="1482660086712" duration="10628000" />
     </task>
     <task id="LOCAL-00002" summary="Add folder for generated file from ANTLR, changed naming convention to be Java specific. Add start rule. Tests.">
       <created>1475106451239</created>
@@ -1408,11 +1468,46 @@
       <option name="project" value="LOCAL" />
       <updated>1482617686071</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="data types added to user variables">
+      <created>1482619906383</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1482619906383</updated>
+    </task>
+    <task id="LOCAL-00047" summary="casting">
+      <created>1482623791105</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1482623791105</updated>
+    </task>
+    <task id="LOCAL-00048" summary="default values">
+      <created>1482665605833</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1482665605833</updated>
+    </task>
+    <task id="LOCAL-00049" summary="variable killing in function calls">
+      <created>1482668598226</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1482668598226</updated>
+    </task>
+    <task id="LOCAL-00050" summary="print function variable killing">
+      <created>1482670207592</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1482670207593</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="345549000" />
+    <option name="totallyTimeSpent" value="361400000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="56" y="-8" width="1872" height="1096" extended-state="6" />
@@ -1426,9 +1521,8 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286004" sideWeight="0.5064655" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.53549695" sideWeight="0.49568966" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3275862" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297414" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.53549695" sideWeight="0.49568966" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32766616" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1445,6 +1539,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297414" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286004" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -1462,11 +1557,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="assignment fixed" />
-    <MESSAGE value="better locality of spilling" />
-    <MESSAGE value="fixed spill offset, still unnecessary spills of temporary variables" />
-    <MESSAGE value="first version of temporary variable killing" />
-    <MESSAGE value="variable killing only for temp variables" />
     <MESSAGE value="asmgen merged into master" />
     <MESSAGE value="first implementation of strings" />
     <MESSAGE value="added read_int" />
@@ -1487,7 +1577,12 @@
     <MESSAGE value="scope testing" />
     <MESSAGE value="scoping implemented" />
     <MESSAGE value="simple_string test changed" />
-    <option name="LAST_COMMIT_MESSAGE" value="simple_string test changed" />
+    <MESSAGE value="data types added to user variables" />
+    <MESSAGE value="casting" />
+    <MESSAGE value="default values" />
+    <MESSAGE value="variable killing in function calls" />
+    <MESSAGE value="print function variable killing" />
+    <option name="LAST_COMMIT_MESSAGE" value="print function variable killing" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1508,57 +1603,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_102/src.zip!/java/util/function/Consumer.java" />
-    <entry file="jar://C:/javalib/antlr-4.5.3-complete.jar!/org/antlr/v4/runtime/tree/TerminalNode.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/javalib/antlr-4.5.3-complete.jar!/org/antlr/v4/runtime/tree/AbstractParseTreeVisitor.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/javalib/antlr-4.5.3-complete.jar!/org/antlr/v4/runtime/ParserRuleContext.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="173" column="0" selection-start-line="173" selection-start-column="0" selection-end-line="173" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_102/src.zip!/java/util/Map.java" />
-    <entry file="file://$PROJECT_DIR$/src/exceptions/SemanticException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="19" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/grammar/gen/VYPeParserBaseVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3655">
-          <caret line="215" column="86" selection-start-line="215" selection-start-column="86" selection-end-line="215" selection-end-column="86" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/asmtests/simple_if.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="8" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/asmtests/simple_var.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="1" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/asmtests/simple_char.c">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -1734,7 +1778,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1750,7 +1793,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="17" column="21" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1762,17 +1804,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/util/ISA.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1326">
-          <caret line="79" column="0" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/grammar/VYPeParser.g4">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
+        <state relative-caret-position="391">
           <caret line="30" column="10" selection-start-line="30" selection-start-column="10" selection-end-line="30" selection-end-column="10" />
           <folding />
         </state>
@@ -1782,17 +1816,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="578">
           <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
-          <folding>
-            <element signature="e#1369#1370#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/grammar/custom/VYPeBlockLow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="36" column="41" selection-start-line="36" selection-start-column="41" selection-end-line="36" selection-end-column="41" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1806,45 +1829,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/asm/ASMInstruction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="626">
-          <caret line="41" column="50" selection-start-line="41" selection-start-column="50" selection-end-line="41" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/asmtests/simple_string.c">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="20" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/grammar/custom/VYPeStatementLow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="24" column="8" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/grammar/custom/VYPeExpressionVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="969">
-          <caret line="112" column="0" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/asm/ASMProgram.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="531">
-          <caret line="232" column="30" selection-start-line="232" selection-start-column="30" selection-end-line="232" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1852,36 +1840,135 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="31" column="50" selection-start-line="31" selection-start-column="43" selection-end-line="31" selection-end-column="50" />
-          <folding />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#1045#1046#0" expanded="false" />
+            <element signature="e#1087#1088#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/asm/ASMVariable.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="850">
-          <caret line="52" column="25" selection-start-line="52" selection-start-column="25" selection-end-line="52" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/asm/ASMRegisterAllocator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="283" column="41" selection-start-line="283" selection-start-column="41" selection-end-line="283" selection-end-column="41" />
+        <state relative-caret-position="119">
+          <caret line="7" column="26" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#985#986#0" expanded="true" />
-            <element signature="e#1025#1026#0" expanded="true" />
-            <element signature="e#9290#9291#0" expanded="true" />
-            <element signature="e#9335#9336#0" expanded="true" />
+            <element signature="e#338#339#0" expanded="false" />
+            <element signature="e#371#372#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/grammar/custom/VYPeFunctionLow.java">
+    <entry file="file://$PROJECT_DIR$/src/grammar/custom/VYPeBlockLow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="11" column="57" selection-start-line="11" selection-start-column="57" selection-end-line="11" selection-end-column="57" />
+        <state relative-caret-position="493">
+          <caret line="36" column="41" selection-start-line="36" selection-start-column="41" selection-end-line="36" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/documentation/tex/vype.tex">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/documentation/tex/body.tex">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/documentation/tex/include/grammar.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/documentation/tex/include/simple_cast.c" />
+    <entry file="file://$PROJECT_DIR$/tests/asmtests/simple_cast.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_runner.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-38">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/grammar/custom/VYPeExpressionVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="233" column="60" selection-start-line="233" selection-start-column="60" selection-end-line="233" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/asm/ASMInstruction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="41" column="50" selection-start-line="41" selection-start-column="50" selection-end-line="41" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/asmtests/simple_default_val.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/util/ISA.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="42" column="5" selection-start-line="42" selection-start-column="5" selection-end-line="42" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/asm/ASMProgram.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="898">
+          <caret line="237" column="0" selection-start-line="237" selection-start-column="0" selection-end-line="237" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2851#2852#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/asmtests/print.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="1" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/grammar/custom/VYPeStatementLow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="56" column="38" selection-start-line="56" selection-start-column="38" selection-end-line="56" selection-end-column="38" />
           <folding />
         </state>
       </provider>
@@ -1889,16 +1976,34 @@
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
-          <caret line="27" column="54" selection-start-line="27" selection-start-column="54" selection-end-line="27" selection-end-column="54" />
+          <caret line="27" column="62" selection-start-line="27" selection-start-column="62" selection-end-line="27" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/grammar/custom/VYPeFunctionLow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="45" column="32" selection-start-line="45" selection-start-column="32" selection-end-line="45" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/grammar/custom/VYPeExpressionLow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="918">
-          <caret line="428" column="37" selection-start-line="428" selection-start-column="37" selection-end-line="428" selection-end-column="37" />
+        <state relative-caret-position="425">
+          <caret line="574" column="43" selection-start-line="574" selection-start-column="43" selection-end-line="574" selection-end-column="43" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/asm/ASMRegisterAllocator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="616">
+          <caret line="553" column="42" selection-start-line="553" selection-start-column="42" selection-end-line="553" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
