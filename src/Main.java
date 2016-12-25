@@ -25,15 +25,15 @@ import java.util.ArrayList;
 public class Main {
 
     public static void main(String[] args) {
-        args = new String[] {"", "tests/asmtests/simple_string.c"};
-        if(args.length < 2 || args.length > 3){
+        args = new String[] {"tests/asmtests/simple_string.c"};
+        if(args.length < 1 || args.length > 2){
             System.exit(Constant.INTERNAL_ERROR);
         }
 
-        String outputFilename = (args.length == 3) ? args[2] : "out.asm";
+        String outputFilename = (args.length == 2) ? args[1] : "out.asm";
         VYPeLexer lexer = null;
         try{
-            lexer = new VYPeLexer(new ANTLRFileStream(args[1]));
+            lexer = new VYPeLexer(new ANTLRFileStream(args[0]));
         }catch(java.io.IOException e){
             System.exit(Constant.INTERNAL_ERROR);
         }
