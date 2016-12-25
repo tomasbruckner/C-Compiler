@@ -18,8 +18,8 @@ public class ASMProgram {
     private ArrayList<ASMElement> program = new ArrayList<>();
     private ArrayList<ASMData> data = new ArrayList<>();
 
-
     private FunctionTable functionTable;
+    private String curFunction = new String();
 
     private int labelIndex = 0;
     private int stringIndex = 0;
@@ -95,6 +95,10 @@ public class ASMProgram {
     public void addLabel(ASMLabel label, String comment) {
         label.addComment(comment);
         this.program.add(label);
+    }
+
+    public void setCurrentFunction(String name) {
+        this.curFunction = name;
     }
 
 
@@ -249,6 +253,12 @@ public class ASMProgram {
         }
 
         return isString;
+    }
+
+    public Constant.Type getFunctionReturnType(String name) {
+        Function function = this.functionTable.getFunctionByName(name);
+
+        return function.getReturnType();
     }
 
 

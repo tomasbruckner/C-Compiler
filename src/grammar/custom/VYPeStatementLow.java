@@ -56,9 +56,14 @@ public class VYPeStatementLow extends VYPeParserBaseVisitor<Void> {
         ASMRegister regReturn = this.regAlloc.getReturnValReg();
         ASMRegister regZero = this.regAlloc.getZeroReg();
         ASMRegister regRes = this.regAlloc.getRegister(varRes);
+        ASMRegister regRet = this.regAlloc.getReturnAddrReg();
+        ASMRegister regStackPtr = this.regAlloc.getStackPtrReg();
+        ASMRegister regFramePtr = this.regAlloc.getFramePtrReg();
 
         this.program.addInstruction(ISA.ASMOpCode.MOVZ, regReturn, regRes, regZero);
         this.regAlloc.killVariable(varRes);
+        this.program.addInstruction(ISA.ASMOpCode.MOV, regStackPtr, regFramePtr);
+        this.program.addInstruction(ISA.ASMOpCode.JR, regRet);
 
         return null;
     }

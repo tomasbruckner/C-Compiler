@@ -28,6 +28,7 @@ public class VYPeFunctionLow extends VYPeParserBaseVisitor<Void> {
     @Override
     public Void visitFunction_definition(VYPeParserParser.Function_definitionContext ctx) {
         String functionName = ctx.Identifier().getText();
+        this.program.setCurrentFunction(functionName);
         this.program.addLabel(functionName);
 
         ASMRegisterAllocator registerAllocator = new ASMRegisterAllocator(this.program);
@@ -60,6 +61,29 @@ public class VYPeFunctionLow extends VYPeParserBaseVisitor<Void> {
         lowBody.visit(block);
 
         ASMRegister regRet = registerAllocator.getReturnAddrReg();
+        ASMRegister regRetVal = registerAllocator.getReturnValReg();
+
+        // default return value
+        Constant.Type type = this.program.getFunctionReturnType(functionName);
+        String comment = "default return val";
+
+        if (type == Constant.Type.INT || type == Constant.Type.CHAR) {
+            ASMImmediate immZero = new ASMImmediate(0);
+
+            this.program.addInstruction(ISA.ASMOpCode.MOVSI, regRetVal, immZero, comment);
+        }
+        else if (type == Constant.Type.STRING) {
+            ASMRegister regGlobalPtr = registerAllocator.getGlobalPtrReg();
+            ASMRegister regZero = registerAllocator.getZeroReg();
+            ASMImmediate immOffset = new ASMImmediate(0);
+            ASMImmediate immOne = new ASMImmediate(1);
+
+            this.program.addInstruction(ISA.ASMOpCode.MOV, regRetVal, regGlobalPtr, comment);
+            // suppress simulator warning
+            this.program.addInstruction(ISA.ASMOpCode.SB, regZero, immOffset, regGlobalPtr);
+            this.program.addInstruction(ISA.ASMOpCode.ADDU, regGlobalPtr, immOne);
+        }
+
         this.program.addInstruction(ISA.ASMOpCode.MOV, regStackPtr, regFramePtr);
         this.program.addInstruction(ISA.ASMOpCode.JR, regRet);
 
