@@ -489,8 +489,7 @@ public class ASMRegisterAllocator {
 
     // used when spilling can not happen, asm temporary reg used if needed
     public ASMRegister getRegisterNoSpill(ASMVariable var) {
-        Scope scope = this.getCurScope();
-        Location location = scope.getVarLocation(var);
+        Location location = getVariableLocation(var);
         ASMRegister register = null;
 
         if (location.getType() == Location.L_REGISTER) {
