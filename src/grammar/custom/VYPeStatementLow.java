@@ -51,19 +51,27 @@ public class VYPeStatementLow extends VYPeParserBaseVisitor<Void> {
     public Void visitReturn_statement(VYPeParserParser.Return_statementContext ctx) {
 //        System.out.print("return\n");
         VYPeExpressionLow exprLow = new VYPeExpressionLow(this.program, this.regAlloc);
-        ASMVariable varRes = exprLow.visit(ctx.expression());
+        boolean returnsVal = (ctx.expression() == null) ? false : true;
 
-        ASMRegister regReturn = this.regAlloc.getReturnValReg();
-        ASMRegister regZero = this.regAlloc.getZeroReg();
-        ASMRegister regRes = this.regAlloc.getRegister(varRes);
+        if (returnsVal) {
+            ASMVariable varRes = exprLow.visit(ctx.expression());
+
+            ASMRegister regReturn = this.regAlloc.getReturnValReg();
+            ASMRegister regZero = this.regAlloc.getZeroReg();
+            ASMRegister regRes = this.regAlloc.getRegister(varRes);
+
+            this.program.addInstruction(ISA.ASMOpCode.MOVZ, regReturn, regRes, regZero);
+            this.regAlloc.killVariable(varRes);
+        }
+
         ASMRegister regRet = this.regAlloc.getReturnAddrReg();
         ASMRegister regStackPtr = this.regAlloc.getStackPtrReg();
         ASMRegister regFramePtr = this.regAlloc.getFramePtrReg();
 
-        this.program.addInstruction(ISA.ASMOpCode.MOVZ, regReturn, regRes, regZero);
-        this.regAlloc.killVariable(varRes);
         this.program.addInstruction(ISA.ASMOpCode.MOV, regStackPtr, regFramePtr);
         this.program.addInstruction(ISA.ASMOpCode.JR, regRet);
+
+        this.regAlloc.setReturn();
 
         return null;
     }

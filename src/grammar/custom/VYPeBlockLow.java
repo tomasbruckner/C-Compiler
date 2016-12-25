@@ -44,7 +44,9 @@ public class VYPeBlockLow extends VYPeParserBaseVisitor<Void> {
             statLowerer.visit(s.getChild(0));
         }
 
-        this.regAlloc.killScope();
+        if (!this.isFunctionBody) {
+            this.regAlloc.killScope();
+        }
 
         return null;
     }

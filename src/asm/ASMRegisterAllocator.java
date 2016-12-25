@@ -57,6 +57,7 @@ public class ASMRegisterAllocator {
         private long offset = 0;
         private int tempVarIndex = 0;
         public int index;
+        private boolean wasReturn = false;
 
         private Map<ASMVariable, Location> stackMap = new HashMap<>();
 
@@ -147,6 +148,10 @@ public class ASMRegisterAllocator {
 
         // TODO should be implemented using iterator
         public Map<ASMVariable, Location> getVarMap() { return this.stackMap; }
+
+        public void setWasReturn() { this.wasReturn = true; }
+
+        public boolean getWasReturn() { return this.wasReturn; }
     }
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -196,6 +201,17 @@ public class ASMRegisterAllocator {
         }
 
         this.scopeIndex = 0;
+    }
+
+    public boolean wasReturn() {
+        Scope scope = this.getCurScope();
+
+        return scope.getWasReturn();
+    }
+
+    public void setReturn() {
+        Scope scope = this.getCurScope();
+        scope.setWasReturn();
     }
 
     //  --- VARIABLE RELATED ---

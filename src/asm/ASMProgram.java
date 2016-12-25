@@ -55,7 +55,7 @@ public class ASMProgram {
 
     //  --- LABEL RELATED ---
     private String getTempLabelname() {
-        String name = "$ltemp" + this.labelIndex;
+        String name = "$lt_" + this.curFunction + "_" + this.labelIndex;
         this.labelIndex++;
 
         return name;
@@ -99,6 +99,7 @@ public class ASMProgram {
 
     public void setCurrentFunction(String name) {
         this.curFunction = name;
+        this.labelIndex = 0;
     }
 
 
@@ -260,7 +261,6 @@ public class ASMProgram {
 
         return function.getReturnType();
     }
-
 
     public void finalize() {
         if (this.data.size() > 0) {
