@@ -110,6 +110,10 @@ public class VYPeExpressionLow extends VYPeParserBaseVisitor<ASMVariable> {
 //        System.out.print("op: " + op + "\n");
         VYPeExpressionLow lowLeft = new VYPeExpressionLow(this.program, this.regAlloc);
         ASMVariable varResLeft = lowLeft.visit(ctx.expression(0));
+
+        VYPePrintVisitor visitor = new VYPePrintVisitor(this.program.getFunctionTable(), this.regAlloc);
+        Constant.Type expressionType =  visitor.getExpressionType(ctx.expression(0));
+
         VYPeExpressionLow lowRight = new VYPeExpressionLow(this.program, this.regAlloc);
         ASMVariable varResRight = lowRight.visit(ctx.expression(1));
 

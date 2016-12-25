@@ -52,6 +52,10 @@ public class VYPePrintVisitor extends VYPeParserBaseVisitor {
         return parameterList;
     }
 
+    public Type getExpressionType(VYPeParserParser.ExpressionContext ctx) {
+        return (Type) this.visit(ctx);
+    }
+
     /****************************************** EXPRESSION *************************************************************/
 
     @Override
