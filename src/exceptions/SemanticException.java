@@ -5,6 +5,7 @@ package exceptions;
  */
 public class SemanticException extends RuntimeException {
     public SemanticException(String msg){
-        super(msg);
+        super("");
+        System.err.println(msg);
     }
 }
