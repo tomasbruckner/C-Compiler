@@ -25,7 +25,6 @@ import java.util.ArrayList;
 public class Main {
 
     public static void main(String[] args) {
-        args = new String[] {"tests/asmtests/simple_set_at.c"};
         if(args.length < 1 || args.length > 2){
             System.exit(Constant.INTERNAL_ERROR);
         }
