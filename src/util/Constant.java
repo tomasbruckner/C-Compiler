@@ -28,6 +28,8 @@ public final class Constant {
 
     public static final int INTERNAL_ERROR = 5;
 
+    public static final int ERROR_TYPE = 42;
+
     public enum Type {
         CHAR, INT, STRING, VOID, VARIABLE, UNKNOWN
     }

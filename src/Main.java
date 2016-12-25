@@ -42,10 +42,8 @@ public class Main {
 
         tokenStream.fill();
 
-        // must be final in lambda
-        final int errorTokenType = lexer.getTokenType("Error");
         tokenStream.getTokens().forEach(token -> {
-            if(token.getType() == errorTokenType){
+            if(token.getType() == Constant.ERROR_TYPE){
                 System.exit(Constant.LEXICAL_ERROR);
             }
         });
