@@ -74,7 +74,7 @@ public class FunctionTable {
 
     public Function getFunctionByName(String name){
         Function f = this.functionList.get(name);
-        if(f == null || f.isDeclaration()){
+        if(f == null){
             throw new SemanticException("Function " + name + " is not defined!");
         }
         return f;
