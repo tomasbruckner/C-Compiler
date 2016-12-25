@@ -22,5 +22,5 @@ int factorial (int n){
         decremented_n = n - 1;
         temp_result = factorial(decremented_n);
     }
-    return (int)n * temp_result;
+    return n * temp_result;
 } // end of factorial
