@@ -28,6 +28,11 @@ public class VYPeExpressionLow extends VYPeParserBaseVisitor<ASMVariable> {
     }
 
     @Override
+    public ASMVariable visitExpressionLabel(VYPeParserParser.ExpressionLabelContext ctx) {
+        return visit(ctx.expression());
+    }
+
+    @Override
     public ASMVariable visitPlusMinusLabel(VYPeParserParser.PlusMinusLabelContext ctx) {
         String op = ctx.op.getText();
 //        System.out.print("op: " + op + "\n");
@@ -169,7 +174,16 @@ public class VYPeExpressionLow extends VYPeParserBaseVisitor<ASMVariable> {
         ASMImmediate immFalse = new ASMImmediate(0);
         ASMImmediate immTrue = new ASMImmediate(1);
 
-        this.program.addInstruction(ISA.ASMOpCode.BEQ, regOp1, regOp2, labEqual);
+        if (op.equals("==")) {
+            this.program.addInstruction(ISA.ASMOpCode.BEQ, regOp1, regOp2, labEqual);
+        }
+        else if (op.equals("!=")) {
+            this.program.addInstruction(ISA.ASMOpCode.BNE, regOp1, regOp2, labEqual);
+        }
+        else {
+            System.err.print("Unreachable\n");
+            System.exit(Constant.INTERNAL_ERROR);
+        }
         this.regAlloc.killVariable(varResLeft);
         this.regAlloc.killVariable(varResRight);
         regDst = this.regAlloc.getRegister(varDst);
@@ -333,29 +347,29 @@ public class VYPeExpressionLow extends VYPeParserBaseVisitor<ASMVariable> {
         ASMVariable varId = this.regAlloc.checkVariable(ctx.getText());
 
         // set the default value if needed
-        if (!this.regAlloc.varIsDefined(varId)) {
-            Constant.Type type = this.regAlloc.getVariableDataType(varId);
-            ASMRegister regId = this.regAlloc.getRegister(varId);
-            ASMRegister regZero = this.regAlloc.getZeroReg();
-            String comment = ctx.Identifier().getText() + "(" + regId.getText() + ") = default value";
-
-            if (type == Constant.Type.INT || type == Constant.Type.CHAR) {
-                this.program.addInstruction(ISA.ASMOpCode.MOV, regId, regZero, comment);
-            }
-            else if (type == Constant.Type.STRING) {
-                ASMRegister regGlobalPtr = this.regAlloc.getGlobalPtrReg();
-                ASMImmediate immOne = new ASMImmediate(1);
-                ASMImmediate immOffset = new ASMImmediate(0);
-                this.program.addInstruction(ISA.ASMOpCode.MOV, regId, regGlobalPtr, comment);
-                // store zero so that simulator does not print warnings
-                this.program.addInstruction(ISA.ASMOpCode.SB, regZero, immOffset, regGlobalPtr);
-                this.program.addInstruction(ISA.ASMOpCode.ADDU, regGlobalPtr, immOne);
-            }
-            else {
-                System.err.print("Unreachable\n");
-                System.exit(Constant.INTERNAL_ERROR);
-            }
-        }
+//        if (!this.regAlloc.varIsDefined(varId)) {
+//            Constant.Type type = this.regAlloc.getVariableDataType(varId);
+//            ASMRegister regId = this.regAlloc.getRegister(varId);
+//            ASMRegister regZero = this.regAlloc.getZeroReg();
+//            String comment = ctx.Identifier().getText() + "(" + regId.getText() + ") = default value";
+//
+//            if (type == Constant.Type.INT || type == Constant.Type.CHAR) {
+//                this.program.addInstruction(ISA.ASMOpCode.MOV, regId, regZero, comment);
+//            }
+//            else if (type == Constant.Type.STRING) {
+//                ASMRegister regGlobalPtr = this.regAlloc.getGlobalPtrReg();
+//                ASMImmediate immOne = new ASMImmediate(1);
+//                ASMImmediate immOffset = new ASMImmediate(0);
+//                this.program.addInstruction(ISA.ASMOpCode.MOV, regId, regGlobalPtr, comment);
+//                // store zero so that simulator does not print warnings
+//                this.program.addInstruction(ISA.ASMOpCode.SB, regZero, immOffset, regGlobalPtr);
+//                this.program.addInstruction(ISA.ASMOpCode.ADDU, regGlobalPtr, immOne);
+//            }
+//            else {
+//                System.err.print("Unreachable\n");
+//                System.exit(Constant.INTERNAL_ERROR);
+//            }
+//        }
 
         return varId;
     }
@@ -457,8 +471,8 @@ public class VYPeExpressionLow extends VYPeParserBaseVisitor<ASMVariable> {
         ASMRegister regRes = this.regAlloc.getRegister(varRes);
         ASMImmediate immOffset = new ASMImmediate(0);
 
-        this.program.addInstruction(ISA.ASMOpCode.ADD, regString, regString, regIndex);
-        this.program.addInstruction(ISA.ASMOpCode.LBU, regRes, immOffset, regString);
+        this.program.addInstruction(ISA.ASMOpCode.ADD, regRes, regString, regIndex);
+        this.program.addInstruction(ISA.ASMOpCode.LBU, regRes, immOffset, regRes);
 
         this.regAlloc.killVariable(varString);
         this.regAlloc.killVariable(varIndex);
@@ -507,12 +521,14 @@ public class VYPeExpressionLow extends VYPeParserBaseVisitor<ASMVariable> {
         ASMRegister regString = this.regAlloc.getRegister(varString);
         ASMVariable varIndex = parameters.get(1);
         ASMVariable varChar = parameters.get(2);
+        ASMVariable varPtr = this.regAlloc.getTempVar();
         ASMRegister regIndex = this.regAlloc.getRegister(varIndex);
         ASMRegister regChar = this.regAlloc.getRegister(varChar);
+        ASMRegister regPtr = this.regAlloc.getRegister(varPtr);
         ASMImmediate immOffset = new ASMImmediate(0);
 
-        this.program.addInstruction(ISA.ASMOpCode.ADD, regIndex, regString, regIndex);
-        this.program.addInstruction(ISA.ASMOpCode.SB, regChar, immOffset, regIndex);
+        this.program.addInstruction(ISA.ASMOpCode.ADD, regPtr, regString, regIndex);
+        this.program.addInstruction(ISA.ASMOpCode.SB, regChar, immOffset, regPtr);
 
         this.regAlloc.killVariable(varIndex);
         this.regAlloc.killVariable(varChar);
@@ -634,9 +650,9 @@ public class VYPeExpressionLow extends VYPeParserBaseVisitor<ASMVariable> {
             ASMImmediate immMask = new ASMImmediate(0xff);
             this.program.addInstruction(ISA.ASMOpCode.ANDI, regRes, regOp, immMask);
         }
-        // char -> int can be ignored
+        // char -> int
         else if (castType == Constant.Type.INT) {
-            ;
+            this.program.addInstruction(ISA.ASMOpCode.MOV, regRes, regOp);
         }
         // char -> string
         else if (castType == Constant.Type.STRING) {

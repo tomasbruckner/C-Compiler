@@ -27,6 +27,28 @@ public class VYPeStatementLow extends VYPeParserBaseVisitor<Void> {
             String name = ctx.getChild(i).getText();
 //            System.out.print("declaration of " + name + "\n");
             this.regAlloc.declareVariable(name, type);
+
+            ASMVariable varNew = this.regAlloc.checkVariable(name);
+            ASMRegister regNew = this.regAlloc.getRegister(varNew);
+            ASMRegister regZero = this.regAlloc.getZeroReg();
+            String comment = name + "(" + regNew.getText() + ") = default value";
+
+            if (type == Constant.Type.INT || type == Constant.Type.CHAR) {
+                this.program.addInstruction(ISA.ASMOpCode.MOV, regNew, regZero, comment);
+            }
+            else if (type == Constant.Type.STRING) {
+                ASMRegister regGlobalPtr = this.regAlloc.getGlobalPtrReg();
+                ASMImmediate immOne = new ASMImmediate(1);
+                ASMImmediate immOffset = new ASMImmediate(0);
+                this.program.addInstruction(ISA.ASMOpCode.MOV, regNew, regGlobalPtr, comment);
+                // store zero so that simulator does not print warnings
+                this.program.addInstruction(ISA.ASMOpCode.SB, regZero, immOffset, regGlobalPtr);
+                this.program.addInstruction(ISA.ASMOpCode.ADDU, regGlobalPtr, immOne);
+            }
+            else {
+                System.err.print("Unreachable\n");
+                System.exit(Constant.INTERNAL_ERROR);
+            }
         }
         return null;
     }
