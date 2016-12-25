@@ -31,7 +31,7 @@ public class ISA {
 //        AND, OR,
         ANDI,
         SLT,
-        BEQ, BNE, J, JR, JAL,
+        BEQ, BNE, BGTZ, BLTZ, J, JR, JAL,
         BREAK,
         SW, LW, SB, LBU,
 
@@ -81,6 +81,8 @@ public class ISA {
 
         ASMOpDetailMap.put(ASMOpCode.BEQ, new ASMOpDetail("BEQ", 3));
         ASMOpDetailMap.put(ASMOpCode.BNE, new ASMOpDetail("BNE", 3));
+        ASMOpDetailMap.put(ASMOpCode.BGTZ, new ASMOpDetail("BGTZ", 2));
+        ASMOpDetailMap.put(ASMOpCode.BLTZ, new ASMOpDetail("BLTZ", 2));
         ASMOpDetailMap.put(ASMOpCode.J, new ASMOpDetail("J", 1));
         ASMOpDetailMap.put(ASMOpCode.JR, new ASMOpDetail("JR", 1));
         ASMOpDetailMap.put(ASMOpCode.JAL, new ASMOpDetail("JAL", 1));

@@ -112,42 +112,65 @@ public class VYPeExpressionLow extends VYPeParserBaseVisitor<ASMVariable> {
         ASMVariable varResLeft = lowLeft.visit(ctx.expression(0));
 
         VYPePrintVisitor visitor = new VYPePrintVisitor(this.program.getFunctionTable(), this.regAlloc);
-        Constant.Type expressionType =  visitor.getExpressionType(ctx.expression(0));
+        Constant.Type type =  visitor.getExpressionType(ctx.expression(0));
 
         VYPeExpressionLow lowRight = new VYPeExpressionLow(this.program, this.regAlloc);
         ASMVariable varResRight = lowRight.visit(ctx.expression(1));
 
         ASMVariable varDst = this.regAlloc.getTempVar();
-        ASMRegister regDst; // better locality of spilling
-        ASMRegister regOp1 = this.regAlloc.getRegister(varResLeft);
-        ASMRegister regOp2 = this.regAlloc.getRegister(varResRight);
 
         if (op.equals(">") || op.equals(">=")) {
-            ASMRegister temp = regOp1;
-            regOp1 = regOp2;
-            regOp2 = temp;
+            ASMVariable temp = varResLeft;
+            varResLeft = varResRight;
+            varResRight = temp;
         }
 
-        if (op.equals(">") ||  op.equals("<")) {
-            regDst = this.regAlloc.getRegister(varDst);
-            this.program.addInstruction(ISA.ASMOpCode.SLT, regDst, regOp1, regOp2);
-            this.regAlloc.killVariable(varResLeft);
-            this.regAlloc.killVariable(varResRight);
-        }
-        else if (op.equals(">=") ||  op.equals("<=")) {
-            ASMLabel labEqual = this.program.getTempLabel();
-            ASMLabel labNotEqual = this.program.getTempLabel();
-            ASMImmediate imm = new ASMImmediate(1);
+        if (type == Constant.Type.INT || type == Constant.Type.CHAR) {
+            ASMRegister regDst; // better locality of spilling
+            ASMRegister regOp1 = this.regAlloc.getRegister(varResLeft);
+            ASMRegister regOp2 = this.regAlloc.getRegister(varResRight);
 
-            this.program.addInstruction(ISA.ASMOpCode.BEQ, regOp1, regOp2, labEqual);
-            regDst = this.regAlloc.getRegister(varDst);
-            this.program.addInstruction(ISA.ASMOpCode.SLT, regDst, regOp1, regOp2);
-            this.regAlloc.killVariable(varResLeft);
-            this.regAlloc.killVariable(varResRight);
-            this.program.addInstruction(ISA.ASMOpCode.J, labNotEqual);
-            this.program.addLabel(labEqual);
-            this.program.addInstruction(ISA.ASMOpCode.MOVSI, regDst, imm);
-            this.program.addLabel(labNotEqual);
+//            if (op.equals(">") || op.equals(">=")) {
+//                ASMRegister temp = regOp1;
+//                regOp1 = regOp2;
+//                regOp2 = temp;
+//            }
+
+            if (op.equals(">") || op.equals("<")) {
+                regDst = this.regAlloc.getRegister(varDst);
+                this.program.addInstruction(ISA.ASMOpCode.SLT, regDst, regOp1, regOp2);
+                this.regAlloc.killVariable(varResLeft);
+                this.regAlloc.killVariable(varResRight);
+            } else if (op.equals(">=") || op.equals("<=")) {
+                ASMLabel labEqual = this.program.getTempLabel();
+                ASMLabel labNotEqual = this.program.getTempLabel();
+                ASMImmediate imm = new ASMImmediate(1);
+
+                this.program.addInstruction(ISA.ASMOpCode.BEQ, regOp1, regOp2, labEqual);
+                regDst = this.regAlloc.getRegister(varDst);
+                this.program.addInstruction(ISA.ASMOpCode.SLT, regDst, regOp1, regOp2);
+                this.regAlloc.killVariable(varResLeft);
+                this.regAlloc.killVariable(varResRight);
+                this.program.addInstruction(ISA.ASMOpCode.J, labNotEqual);
+                this.program.addLabel(labEqual);
+                this.program.addInstruction(ISA.ASMOpCode.MOVSI, regDst, imm);
+                this.program.addLabel(labNotEqual);
+            } else {
+                System.err.print("Unreachable\n");
+                System.exit(Constant.INTERNAL_ERROR);
+            }
+        }
+        else if (type == Constant.Type.STRING) {
+            if (op.equals(">") || op.equals("<")) {
+                varDst = this.compareStrings(varResLeft, varResRight, 0, 1, 0);
+            }
+            else if (op.equals(">=") || op.equals("<=")) {
+                varDst = this.compareStrings(varResLeft, varResRight, 0, 1, 1);
+            }
+            else {
+                System.err.print("Unreachable\n");
+                System.exit(Constant.INTERNAL_ERROR);
+            }
         }
         else {
             System.err.print("Unreachable\n");
@@ -155,6 +178,75 @@ public class VYPeExpressionLow extends VYPeParserBaseVisitor<ASMVariable> {
         }
 
         return varDst;
+    }
+
+    private ASMVariable compareStrings(ASMVariable varOp1, ASMVariable varOp2, int op1Gr, int op2Gr, int opEq) {
+        ASMVariable varPtr1 = this.regAlloc.getTempVar();
+        ASMVariable varPtr2 = this.regAlloc.getTempVar();
+        ASMVariable varChar1 = this.regAlloc.getTempVar();
+        ASMVariable varChar2 = this.regAlloc.getTempVar();
+        ASMVariable varRes = this.regAlloc.getTempVar();
+
+        ASMRegister regOp1 = this.regAlloc.getRegister(varOp1);
+        ASMRegister regOp2 = this.regAlloc.getRegister(varOp2);
+        ASMRegister regPtr1 = this.regAlloc.getRegister(varPtr1);
+        ASMRegister regPtr2 = this.regAlloc.getRegister(varPtr2);
+        ASMRegister regChar1 = this.regAlloc.getRegister(varChar1);
+        ASMRegister regChar2 = this.regAlloc.getRegister(varChar2);
+        ASMRegister regZero = this.regAlloc.getZeroReg();
+        ASMRegister regRes;
+
+        ASMImmediate immZero = new ASMImmediate(0);
+        ASMImmediate immOne = new ASMImmediate(1);
+        ASMImmediate immOp1Gr = new ASMImmediate(op1Gr);
+        ASMImmediate immOp2Gr = new ASMImmediate(op2Gr);
+        ASMImmediate immOpEq = new ASMImmediate(opEq);
+
+        ASMLabel labStart = this.program.getTempLabel();
+        ASMLabel labOp1Gr = this.program.getTempLabel();
+        ASMLabel labOp2Gr = this.program.getTempLabel();
+        ASMLabel labEqual = this.program.getTempLabel();
+        ASMLabel labEnd = this.program.getTempLabel();
+
+        // backup the string pointers
+        this.program.addInstruction(ISA.ASMOpCode.MOV, regPtr1, regOp1);
+        this.program.addInstruction(ISA.ASMOpCode.MOV, regPtr2, regOp2);
+        // start the comparison
+        String comment = "string compare start";
+        this.program.addLabel(labStart, comment);
+        this.program.addInstruction(ISA.ASMOpCode.LBU, regChar1, immZero, regPtr1);
+        this.program.addInstruction(ISA.ASMOpCode.LBU, regChar2, immZero, regPtr2);
+        this.program.addInstruction(ISA.ASMOpCode.SUB, regChar1, regChar1, regChar2);
+        // op1 is greater
+        this.program.addInstruction(ISA.ASMOpCode.BGTZ, regChar1, labOp1Gr);
+        // op2 is greater
+        this.program.addInstruction(ISA.ASMOpCode.BLTZ, regChar1, labOp2Gr);
+        this.regAlloc.killVariable(varChar1);
+        // is it end of the strings
+        this.program.addInstruction(ISA.ASMOpCode.BEQ, regChar2, regZero, labEqual); // char1 is diff, char2 is the value
+        this.regAlloc.killVariable(varChar2);
+        this.program.addInstruction(ISA.ASMOpCode.ADDU, regPtr1, immOne);
+        this.program.addInstruction(ISA.ASMOpCode.ADDU, regPtr2, immOne);
+        this.regAlloc.killVariable(varPtr1);
+        this.regAlloc.killVariable(varPtr2);
+        this.program.addInstruction(ISA.ASMOpCode.J, labStart);
+        // store the result
+        regRes = this.regAlloc.getRegister(varRes);
+        comment = "string 1 greater";
+        this.program.addLabel(labOp1Gr, comment);
+        this.program.addInstruction(ISA.ASMOpCode.MOVSI, regRes, immOp1Gr);
+        this.program.addInstruction(ISA.ASMOpCode.J, labEnd);
+        comment = "string 2 greater";
+        this.program.addLabel(labOp2Gr, comment);
+        this.program.addInstruction(ISA.ASMOpCode.MOVSI, regRes, immOp2Gr);
+        this.program.addInstruction(ISA.ASMOpCode.J, labEnd);
+        comment = "strings equal";
+        this.program.addLabel(labEqual, comment);
+        this.program.addInstruction(ISA.ASMOpCode.MOVSI, regRes, immOpEq);
+        comment = "string compare end";
+        this.program.addLabel(labEnd, comment);
+
+        return varRes;
     }
 
     @Override
@@ -166,34 +258,56 @@ public class VYPeExpressionLow extends VYPeParserBaseVisitor<ASMVariable> {
         VYPeExpressionLow lowRight = new VYPeExpressionLow(this.program, this.regAlloc);
         ASMVariable varResRight = lowRight.visit(ctx.expression(1));
 
+        VYPePrintVisitor visitor = new VYPePrintVisitor(this.program.getFunctionTable(), this.regAlloc);
+        Constant.Type type =  visitor.getExpressionType(ctx.expression(0));
+
         ASMVariable varDst = this.regAlloc.getTempVar();
-        ASMRegister regDst; //better locality of spilling
-        ASMRegister regOp1 = this.regAlloc.getRegister(varResLeft);
-        ASMRegister regOp2 = this.regAlloc.getRegister(varResRight);
 
-        ASMLabel labEqual = this.program.getTempLabel();
-        ASMLabel labNotEqual = this.program.getTempLabel();
-        ASMImmediate immFalse = new ASMImmediate(0);
-        ASMImmediate immTrue = new ASMImmediate(1);
+        if (type == Constant.Type.INT || type == Constant.Type.CHAR) {
+            ASMRegister regDst; //better locality of spilling
+            ASMRegister regOp1 = this.regAlloc.getRegister(varResLeft);
+            ASMRegister regOp2 = this.regAlloc.getRegister(varResRight);
 
-        if (op.equals("==")) {
-            this.program.addInstruction(ISA.ASMOpCode.BEQ, regOp1, regOp2, labEqual);
+            ASMLabel labEqual = this.program.getTempLabel();
+            ASMLabel labNotEqual = this.program.getTempLabel();
+            ASMImmediate immFalse = new ASMImmediate(0);
+            ASMImmediate immTrue = new ASMImmediate(1);
+
+            if (op.equals("==")) {
+                this.program.addInstruction(ISA.ASMOpCode.BEQ, regOp1, regOp2, labEqual);
+            }
+            else if (op.equals("!=")) {
+                this.program.addInstruction(ISA.ASMOpCode.BNE, regOp1, regOp2, labEqual);
+            }
+            else {
+                System.err.print("Unreachable\n");
+                System.exit(Constant.INTERNAL_ERROR);
+            }
+            this.regAlloc.killVariable(varResLeft);
+            this.regAlloc.killVariable(varResRight);
+            regDst = this.regAlloc.getRegister(varDst);
+            this.program.addInstruction(ISA.ASMOpCode.MOVSI, regDst, immFalse);
+            this.program.addInstruction(ISA.ASMOpCode.J, labNotEqual);
+            this.program.addLabel(labEqual);
+            this.program.addInstruction(ISA.ASMOpCode.MOVSI, regDst, immTrue);
+            this.program.addLabel(labNotEqual);
         }
-        else if (op.equals("!=")) {
-            this.program.addInstruction(ISA.ASMOpCode.BNE, regOp1, regOp2, labEqual);
+        else if (type == Constant.Type.STRING) {
+            if (op.equals("==")) {
+                varDst = this.compareStrings(varResLeft, varResRight, 0, 0, 1);
+            }
+            else if (op.equals("!=")) {
+                varDst = this.compareStrings(varResLeft, varResRight, 1, 1, 0);
+            }
+            else {
+                System.err.print("Unreachable\n");
+                System.exit(Constant.INTERNAL_ERROR);
+            }
         }
         else {
             System.err.print("Unreachable\n");
             System.exit(Constant.INTERNAL_ERROR);
         }
-        this.regAlloc.killVariable(varResLeft);
-        this.regAlloc.killVariable(varResRight);
-        regDst = this.regAlloc.getRegister(varDst);
-        this.program.addInstruction(ISA.ASMOpCode.MOVSI, regDst, immFalse);
-        this.program.addInstruction(ISA.ASMOpCode.J, labNotEqual);
-        this.program.addLabel(labEqual);
-        this.program.addInstruction(ISA.ASMOpCode.MOVSI, regDst, immTrue);
-        this.program.addLabel(labNotEqual);
 
         return varDst;
     }
