@@ -71,6 +71,10 @@ public class Function {
         return true;
     }
 
+    public boolean isReturnTypeValid(Type returnType) {
+        return this.returnType == returnType;
+    }
+
     public boolean isDeclaration(){
         return !this.defined;
     }

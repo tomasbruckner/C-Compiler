@@ -4,6 +4,6 @@ int main(void){
     return 2;
 }
 
-void foo(){
+void foo(void){
     return 2;
 }

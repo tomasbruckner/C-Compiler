@@ -1,6 +1,6 @@
 // declaration after definition non main function
 
-void foo(int) {
+void foo(int x) {
     return;
 }
 
