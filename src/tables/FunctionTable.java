@@ -27,17 +27,6 @@ public class FunctionTable {
         ArrayList<Value> parameterList = new ArrayList<>();
         parameterList.add(new VariableValue());
         this.functionList.put("print", new Function(Type.VOID, "print", parameterList, null, true));
-        // --- DEBUG ---
-        parameterList = new ArrayList<>();
-        parameterList.add(new CharValue());
-        this.functionList.put("print_char", new Function(Type.VOID, "print_char", parameterList, null, true));
-        parameterList = new ArrayList<>();
-        parameterList.add(new IntValue());
-        this.functionList.put("print_int", new Function(Type.VOID, "print_int", parameterList, null, true));
-        parameterList = new ArrayList<>();
-        parameterList.add(new StringValue());
-        this.functionList.put("print_string", new Function(Type.VOID, "print_string", parameterList, null, true));
-        //--------------
 
         parameterList = new ArrayList<>();
         this.functionList.put("read_char", new Function(Type.CHAR, "read_char", parameterList, null, true));
@@ -71,13 +60,16 @@ public class FunctionTable {
             throw new SemanticException("Function " + functionName + " already defined!");
         }
         else if(f != null && f.isDeclaration()) {
-            if(!f.isParameterListValid(function.getParameterList())){
+            if(!f.isParameterListValid(function.getParameterList()) || !f.isReturnTypeValid(function.getReturnType())){
                 String errorMessage = "Different types of parameters in function declaration: " + functionName;
                 throw new SemanticException(errorMessage);
             }
         }
 
         this.functionList.put(functionName, function);
+        if(function.isDefinition()) {
+            function.invoke(this);
+        }
     }
 
     public Function getFunctionByName(String name){
@@ -94,13 +86,6 @@ public class FunctionTable {
         }
         else if(!hasAnyDeclaration()){
             throw new SemanticException("Some function declaration are missing definition!");
-        }
-        else {
-            functionList.forEach((k,v) -> {
-                if(!isEmbedded(k)){
-                    v.invoke(this);
-                }
-            });
         }
     }
 
