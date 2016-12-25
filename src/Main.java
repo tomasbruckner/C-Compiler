@@ -72,9 +72,7 @@ public class Main {
         FunctionTable functionTable = visitor.getFunctionTable();
 
         // ASM generation
-        System.out.print("***ASMgen started***\n");
         ASMProgram program = new ASMProgram(outputFilename, functionTable);
-//        ASMRegisterAllocator registerAllocator = new ASMRegisterAllocator(program);
 
         VYPeStartLow lowerer = new VYPeStartLow(program);
         lowerer.visit(parseTree);
@@ -83,7 +81,6 @@ public class Main {
         program.debugPrint();
         program.printToFile();
 
-        //System.out.println(parseTree.toStringTree());
         System.exit(Constant.NO_ERROR);
     }
 }

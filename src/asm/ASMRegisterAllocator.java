@@ -91,7 +91,7 @@ public class ASMRegisterAllocator {
             // do not assume location of the variable
             Location loc = new Location(Location.L_UNKNOWN, 0);
             var.setScope(this.index);
-            System.out.print("Var: " + name + " added into scope: " + this.index + "\n");
+//            System.out.print("Var: " + name + " added into scope: " + this.index + "\n");
 
             // save the variable in the current scope map
             this.putVar(var, loc);
@@ -205,10 +205,10 @@ public class ASMRegisterAllocator {
         Scope found = null;
 
         for (Scope scope : this.scopes) {
-            System.out.print("Searching scope: " + scope.index + "\n");
+//            System.out.print("Searching scope: " + scope.index + "\n");
             if (scope.findVar(var) != null) {
                 found = scope;
-                System.out.print("Var: " + var.getName() + " found in scope: " + scope.index + "\n");
+//                System.out.print("Var: " + var.getName() + " found in scope: " + scope.index + "\n");
                 break;
             }
         }
@@ -218,7 +218,7 @@ public class ASMRegisterAllocator {
 
     public void newScope() {
         this.scopes.add(0, new Scope(this.scopeIndex));
-        System.out.print("Scope: " + this.scopeIndex + " added\n");
+//        System.out.print("Scope: " + this.scopeIndex + " added\n");
         this.scopeIndex++;
     }
 
@@ -256,7 +256,7 @@ public class ASMRegisterAllocator {
             varTest.setScope(scope.index);
             var = scope.findVar(varTest);
             if (var != null) {
-                System.out.print("Variable '" + name + "' found in scope " + scope.index + "\n");
+//                System.out.print("Variable '" + name + "' found in scope " + scope.index + "\n");
                 break;
             }
         }
@@ -306,7 +306,7 @@ public class ASMRegisterAllocator {
         // program variables can not be safely killed
         // after end of a block, even user variables are forced to be deleted
         if (var.isTemporary() || force) {
-            System.out.print("Kill var: " + var.getName());
+//            System.out.print("Kill var: " + var.getName());
 
             Scope scope = this.getVariableScope(var);
             if (scope == null) {
@@ -320,7 +320,7 @@ public class ASMRegisterAllocator {
             // set the register free
             if (location.getType() == Location.L_REGISTER) {
                 RFEntry entry = this.findRFEntry(var);
-                System.out.print(" from register: " + entry.register.getText() + "\n");
+//                System.out.print(" from register: " + entry.register.getText() + "\n");
                 entry.variable = null;
                 // move the empty register to the top of the stack
                 this.registerStack.remove(entry);

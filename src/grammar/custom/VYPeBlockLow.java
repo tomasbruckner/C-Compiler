@@ -31,7 +31,7 @@ public class VYPeBlockLow extends VYPeParserBaseVisitor<Void> {
 
     @Override
     public Void visitBlock_statements(VYPeParserParser.Block_statementsContext ctx) {
-        System.out.print("block\n");
+//        System.out.print("block\n");
         List<VYPeParserParser.StatementContext> statements = ctx.statement();
 
         // if the block is function body, the scope has already been initialized

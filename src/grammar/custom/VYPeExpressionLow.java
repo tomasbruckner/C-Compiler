@@ -30,7 +30,7 @@ public class VYPeExpressionLow extends VYPeParserBaseVisitor<ASMVariable> {
     @Override
     public ASMVariable visitPlusMinusLabel(VYPeParserParser.PlusMinusLabelContext ctx) {
         String op = ctx.op.getText();
-        System.out.print("op: " + op + "\n");
+//        System.out.print("op: " + op + "\n");
         VYPeExpressionLow lowLeft = new VYPeExpressionLow(this.program, this.regAlloc);
         ASMVariable varResLeft = lowLeft.visit(ctx.expression(0));
         VYPeExpressionLow lowRight = new VYPeExpressionLow(this.program, this.regAlloc);
@@ -61,7 +61,7 @@ public class VYPeExpressionLow extends VYPeParserBaseVisitor<ASMVariable> {
     @Override
     public ASMVariable visitMulDivModLabel(VYPeParserParser.MulDivModLabelContext ctx) {
         String op = ctx.op.getText();
-        System.out.print("op: " + op + "\n");
+//        System.out.print("op: " + op + "\n");
         VYPeExpressionLow lowLeft = new VYPeExpressionLow(this.program, this.regAlloc);
         ASMVariable varResLeft = lowLeft.visit(ctx.expression(0));
         VYPeExpressionLow lowRight = new VYPeExpressionLow(this.program, this.regAlloc);
@@ -104,7 +104,7 @@ public class VYPeExpressionLow extends VYPeParserBaseVisitor<ASMVariable> {
     @Override
     public ASMVariable visitGreaterLowerLabel(VYPeParserParser.GreaterLowerLabelContext ctx) {
         String op = ctx.op.getText();
-        System.out.print("op: " + op + "\n");
+//        System.out.print("op: " + op + "\n");
         VYPeExpressionLow lowLeft = new VYPeExpressionLow(this.program, this.regAlloc);
         ASMVariable varResLeft = lowLeft.visit(ctx.expression(0));
         VYPeExpressionLow lowRight = new VYPeExpressionLow(this.program, this.regAlloc);
@@ -153,7 +153,7 @@ public class VYPeExpressionLow extends VYPeParserBaseVisitor<ASMVariable> {
     @Override
     public ASMVariable visitEqualLabel(VYPeParserParser.EqualLabelContext ctx) {
         String op = ctx.op.getText();
-        System.out.print("op: " + op + "\n");
+//        System.out.print("op: " + op + "\n");
         VYPeExpressionLow lowLeft = new VYPeExpressionLow(this.program, this.regAlloc);
         ASMVariable varResLeft = lowLeft.visit(ctx.expression(0));
         VYPeExpressionLow lowRight = new VYPeExpressionLow(this.program, this.regAlloc);
@@ -275,7 +275,7 @@ public class VYPeExpressionLow extends VYPeParserBaseVisitor<ASMVariable> {
 
     @Override
     public ASMVariable visitIntLiteralLabel(VYPeParserParser.IntLiteralLabelContext ctx) {
-        System.out.print("int literal: " + ctx.getText() + "\n");
+//        System.out.print("int literal: " + ctx.getText() + "\n");
 
         ASMVariable varDst = this.regAlloc.getTempVar();
         ASMRegister regDst = this.regAlloc.getRegister(varDst);
@@ -287,7 +287,7 @@ public class VYPeExpressionLow extends VYPeParserBaseVisitor<ASMVariable> {
 
     @Override
     public ASMVariable visitCharLiteralLabel(VYPeParserParser.CharLiteralLabelContext ctx) {
-        System.out.print("char literal: " + ctx.getText() + "\n");
+//        System.out.print("char literal: " + ctx.getText() + "\n");
 
         ASMVariable varDst = this.regAlloc.getTempVar();
         ASMRegister regDst = this.regAlloc.getRegister(varDst);
@@ -313,7 +313,7 @@ public class VYPeExpressionLow extends VYPeParserBaseVisitor<ASMVariable> {
 
     @Override
     public ASMVariable visitStringLiteralLabel(VYPeParserParser.StringLiteralLabelContext ctx) {
-        System.out.print("string literal: " + ctx.getText() + "\n");
+//        System.out.print("string literal: " + ctx.getText() + "\n");
 
         ASMVariable varDst = this.regAlloc.getTempVar();
         ASMRegister regDst = this.regAlloc.getRegister(varDst);
@@ -328,7 +328,7 @@ public class VYPeExpressionLow extends VYPeParserBaseVisitor<ASMVariable> {
 
     @Override
     public ASMVariable visitIdentifierLabel(VYPeParserParser.IdentifierLabelContext ctx) {
-        System.out.print("identifier: " + ctx.getText() + "\n");
+//        System.out.print("identifier: " + ctx.getText() + "\n");
 
         ASMVariable varId = this.regAlloc.checkVariable(ctx.getText());
 
@@ -419,7 +419,7 @@ public class VYPeExpressionLow extends VYPeParserBaseVisitor<ASMVariable> {
         for (Value varType : parameterTypes) {
             ASMVariable varParam = parameters.get(i++);
             ASMRegister regParam = this.regAlloc.getRegister(varParam);
-            System.out.print("data type: " + this.regAlloc.getVariableDataType(varParam) + "\n");
+//            System.out.print("data type: " + this.regAlloc.getVariableDataType(varParam) + "\n");
 
             op = this.getPrintOpCode(varType.getType());
             this.program.addInstruction(op, regParam);
@@ -546,7 +546,7 @@ public class VYPeExpressionLow extends VYPeParserBaseVisitor<ASMVariable> {
     @Override
     public ASMVariable visitFunction_call(VYPeParserParser.Function_callContext ctx) {
         String name = ctx.getChild(0).getText();
-        System.out.print("function call: " + name + "\n");
+//        System.out.print("function call: " + name + "\n");
         ASMVariable varRes = null;
         List<ASMVariable> parameters = this.getFunctionCallParameters(name, ctx);
 
