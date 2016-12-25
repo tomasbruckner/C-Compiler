@@ -32,6 +32,12 @@ public class VYPeFunctionLow extends VYPeParserBaseVisitor<Void> {
         this.program.addLabel(functionName);
 
         ASMRegisterAllocator registerAllocator = new ASMRegisterAllocator(this.program);
+
+        // backup stack pointer to the frame pointer
+        ASMRegister regFramePtr = registerAllocator.getFramePtrReg();
+        ASMRegister regStackPtr = registerAllocator.getStackPtrReg();
+        this.program.addInstruction(ISA.ASMOpCode.MOV, regFramePtr, regStackPtr);
+
         // new scope has to initialized for the parameters
         registerAllocator.newScope();
         List<String> params = this.program.getFunctionParams(functionName);
@@ -46,13 +52,12 @@ public class VYPeFunctionLow extends VYPeParserBaseVisitor<Void> {
                 registerAllocator.addParameter(param, type, offset);
                 offset += ISA.REGISTER_SIZE;
                 paramIndex++;
+
+                // move all the variables into registers - hack because of loop at the start of the body
+                ASMVariable varParam = registerAllocator.checkVariable(param);
+                ASMRegister regParam = registerAllocator.getRegister(varParam);
             }
         }
-
-        // backup stack pointer to the frame pointer
-        ASMRegister regFramePtr = registerAllocator.getFramePtrReg();
-        ASMRegister regStackPtr = registerAllocator.getStackPtrReg();
-        this.program.addInstruction(ISA.ASMOpCode.MOV, regFramePtr, regStackPtr);
 
         VYPeParserParser.Block_statementsContext block = ctx.block_statements();
 
