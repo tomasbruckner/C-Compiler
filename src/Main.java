@@ -25,7 +25,7 @@ import java.util.ArrayList;
 public class Main {
 
     public static void main(String[] args) {
-        args = new String[] {"tests/asmtests/temp.c"};
+        //args = new String[] {"tests/asmtests/temp.c"};
         if(args.length < 1 || args.length > 2){
             System.exit(Constant.INTERNAL_ERROR);
         }
@@ -76,7 +76,7 @@ public class Main {
         lowerer.visit(parseTree);
         program.finalize();
 
-        program.debugPrint();
+        //program.debugPrint();
         program.printToFile();
 
         //System.out.println(parseTree.toStringTree());
