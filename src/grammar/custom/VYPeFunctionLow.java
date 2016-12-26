@@ -29,7 +29,12 @@ public class VYPeFunctionLow extends VYPeParserBaseVisitor<Void> {
     public Void visitFunction_definition(VYPeParserParser.Function_definitionContext ctx) {
         String functionName = ctx.Identifier().getText();
         this.program.setCurrentFunction(functionName);
-        this.program.addLabel(functionName);
+        if (functionName.equals("main")) {
+            this.program.addLabel(functionName);
+        }
+        else {
+            this.program.addLabel("$" + functionName);
+        }
 
         ASMRegisterAllocator registerAllocator = new ASMRegisterAllocator(this.program);
 

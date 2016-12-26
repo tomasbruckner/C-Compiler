@@ -729,7 +729,13 @@ public class VYPeExpressionLow extends VYPeParserBaseVisitor<ASMVariable> {
             }
 
             // call the function
-            ASMLabel labFunc = new ASMLabel(name);
+            ASMLabel labFunc;
+            if (name.equals("main")) {
+                labFunc = new ASMLabel(name);
+            }
+            else {
+                labFunc = new ASMLabel("$" + name);
+            }
             this.program.addInstruction(ISA.ASMOpCode.JAL, labFunc);
 
             if (paramCnt > 0) {
