@@ -9,9 +9,15 @@ import util.ISA;
 
 import java.util.List;
 
-/**
- * Created by Filip on 21-Dec-16.
- */
+/*************************************************************
+ * Filename: VYPeBlockLow.java
+ * Project: Compiler Implementation for VYPe16 Programming Language
+ * Compiler Team: 04
+ * Authors: Filip Benna, xbenna01
+ *          Tomas Bruckner, xbruck02
+ * Date: 21/12/2016
+ *************************************************************/
+
 public class VYPeBlockLow extends VYPeParserBaseVisitor<Void> {
     ASMProgram program;
     ASMRegisterAllocator regAlloc;

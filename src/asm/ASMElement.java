@@ -8,6 +8,7 @@ package asm;
  *          Tomas Bruckner, xbruck02
  * Date: 15/10/2016
  *************************************************************/
+
 public abstract class ASMElement {
     abstract public String getText();
 }

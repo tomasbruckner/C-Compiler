@@ -16,6 +16,7 @@ import java.util.HashMap;
  *          Tomas Bruckner, xbruck02
  * Date: 29/9/2016
  *************************************************************/
+
 public class FunctionTable {
     private HashMap<String, Function> functionList = new HashMap<>();
 

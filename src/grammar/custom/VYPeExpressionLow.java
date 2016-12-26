@@ -12,9 +12,15 @@ import values.Value;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Filip on 29-Oct-16.
- */
+/*************************************************************
+ * Filename: VYPeExpressionLow.java
+ * Project: Compiler Implementation for VYPe16 Programming Language
+ * Compiler Team: 04
+ * Authors: Filip Benna, xbenna01
+ *          Tomas Bruckner, xbruck02
+ * Date: 29/10/2016
+ *************************************************************/
+
 public class VYPeExpressionLow extends VYPeParserBaseVisitor<ASMVariable> {
 
     ASMProgram program;

@@ -14,6 +14,7 @@ import java.util.List;
  *          Tomas Bruckner, xbruck02
  * Date: 29/9/2016
  *************************************************************/
+
 public class Function {
     private Type returnType;
     private String name;

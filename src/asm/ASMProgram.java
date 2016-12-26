@@ -11,9 +11,15 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Filip on 08-Nov-16.
- */
+/*************************************************************
+ * Filename: ASMProgram.java
+ * Project: Compiler Implementation for VYPe16 Programming Language
+ * Compiler Team: 04
+ * Authors: Filip Benna, xbenna01
+ *          Tomas Bruckner, xbruck02
+ * Date: 8/11/2016
+ *************************************************************/
+
 public class ASMProgram {
     private ArrayList<ASMElement> program = new ArrayList<>();
     private ArrayList<ASMData> data = new ArrayList<>();

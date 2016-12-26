@@ -24,6 +24,7 @@ import java.util.List;
  *          Tomas Bruckner, xbruck02
  * Date: 9/10/2016
  *************************************************************/
+
 public class VYPeExpressionVisitor extends VYPeParserBaseVisitor {
     private FunctionTable functionTable;
     private SymbolTable symbolTable;

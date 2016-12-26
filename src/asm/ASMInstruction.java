@@ -4,9 +4,15 @@ import util.ISA;
 
 import java.util.ArrayList;
 
-/**
- * Created by Filip on 29-Oct-16.
- */
+/*************************************************************
+ * Filename: ASMInstruction.java
+ * Project: Compiler Implementation for VYPe16 Programming Language
+ * Compiler Team: 04
+ * Authors: Filip Benna, xbenna01
+ *          Tomas Bruckner, xbruck02
+ * Date: 29/10/2016
+ *************************************************************/
+
 public class ASMInstruction extends ASMElement  {
 
     ISA.ASMOpCode opCode;

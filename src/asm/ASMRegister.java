@@ -4,13 +4,14 @@ import util.Constant;
 import util.ISA;
 
 /*************************************************************
- * Filename: ASMElement.java
+ * Filename: ASMRegister.java
  * Project: Compiler Implementation for VYPe16 Programming Language
  * Compiler Team: 04
  * Authors: Filip Benna, xbenna01
  *          Tomas Bruckner, xbruck02
  * Date: 15/10/2016
  *************************************************************/
+
 public class ASMRegister extends ASMOperand {
     private Integer index;
 

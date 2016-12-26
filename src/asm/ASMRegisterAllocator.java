@@ -5,9 +5,15 @@ import util.ISA;
 
 import java.util.*;
 
-/**
- * Created by Filip on 09-Nov-16.
- */
+/*************************************************************
+ * Filename: ASMRegisterAllocator.java
+ * Project: Compiler Implementation for VYPe16 Programming Language
+ * Compiler Team: 04
+ * Authors: Filip Benna, xbenna01
+ *          Tomas Bruckner, xbruck02
+ * Date: 9/11/2016
+ *************************************************************/
+
 public class ASMRegisterAllocator {
 
 // LOCATION ///////////////////////////////////////////////////////////////////

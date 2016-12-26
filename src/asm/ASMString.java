@@ -1,8 +1,14 @@
 package asm;
 
-/**
- * Created by Filip on 08-Dec-16.
- */
+/*************************************************************
+ * Filename: ASMString.java
+ * Project: Compiler Implementation for VYPe16 Programming Language
+ * Compiler Team: 04
+ * Authors: Filip Benna, xbenna01
+ *          Tomas Bruckner, xbruck02
+ * Date: 8/12/2016
+ *************************************************************/
+
 public class ASMString extends ASMData {
     private String value;
 

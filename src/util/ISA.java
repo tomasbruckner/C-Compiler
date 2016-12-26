@@ -3,9 +3,15 @@ package util;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by Filip on 09-Nov-16.
- */
+/*************************************************************
+ * Filename: ISA.java
+ * Project: Compiler Implementation for VYPe16 Programming Language
+ * Compiler Team: 04
+ * Authors: Filip Benna, xbenna01
+ *          Tomas Bruckner, xbruck02
+ * Date: 9/11/2016
+ *************************************************************/
+
 public class ISA {
     public static final int REGCNT = 32;
     public static final int GPRCNT = 25;

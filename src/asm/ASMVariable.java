@@ -2,9 +2,15 @@ package asm;
 
 import util.Constant;
 
-/**
- * Created by Filip on 09-Nov-16.
- */
+/*************************************************************
+ * Filename: ASMVariable.java
+ * Project: Compiler Implementation for VYPe16 Programming Language
+ * Compiler Team: 04
+ * Authors: Filip Benna, xbenna01
+ *          Tomas Bruckner, xbruck02
+ * Date: 9/11/2016
+ *************************************************************/
+
 public class ASMVariable {
     boolean empty;
     boolean temporary;
