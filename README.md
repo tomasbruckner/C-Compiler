@@ -1,3 +1,3 @@
 # README #
 
-VYPe16 compiler. VYPEe16 is language based on C that simplifies few concepts.
+Compiler of simplified C language implemented using ANTLR4.
